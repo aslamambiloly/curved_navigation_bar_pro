@@ -50,6 +50,7 @@ class _HomePageState extends State<HomePage> {
         child: _pages[_index],
       ),
       bottomNavigationBar: CurvedNavigationBarPro(
+        // navbarStyle: CNBPStyles.emeraldPill,
         items: const [
           CurvedNavigationItemPro(
             icon: Icons.home_outlined,

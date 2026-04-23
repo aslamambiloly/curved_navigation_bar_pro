@@ -4,6 +4,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import 'cnbp_style.dart';
 import 'curved_navigation_item_pro.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -43,21 +44,28 @@ class CurvedNavigationBarPro extends StatefulWidget {
     required this.items,
     required this.onTap,
     this.currentIndex = 0,
-    this.backgroundColor = Colors.white,
+    // ── Style preset (optional) ──────────────────────────────────────────────
+    this.navbarStyle,
+    // ── Colours (override the preset or the built-in default) ───────────────
+    this.backgroundColor,
     this.activeColor,
     this.activeIconColor,
-    this.inactiveColor = const Color(0xFFADB5BD),
+    this.inactiveColor,
     this.fabColor,
-    this.barHeight = 110.0,
-    this.fabRadius = 24.0,
-    this.fabGap = 10.0,
-    this.fabSink = 22.0,
-    this.notchShoulderRadius = 12.0,
-    this.cornerRadius = 0.0,
-    this.elevation = 14.0,
-    this.shadowColor = const Color(0x2A000000),
-    this.animationDuration = const Duration(milliseconds: 400),
-    this.animationCurve = Curves.easeInOutCubic,
+    // ── Geometry ─────────────────────────────────────────────────────────────
+    this.barHeight,
+    this.fabRadius,
+    this.fabGap,
+    this.fabSink,
+    this.notchShoulderRadius,
+    this.cornerRadius,
+    // ── Shadow ───────────────────────────────────────────────────────────────
+    this.elevation,
+    this.shadowColor,
+    // ── Animation ────────────────────────────────────────────────────────────
+    this.animationDuration,
+    this.animationCurve,
+    // ── Text styles ──────────────────────────────────────────────────────────
     this.activeTextStyle,
     this.inactiveTextStyle,
   })  : assert(
@@ -81,75 +89,103 @@ class CurvedNavigationBarPro extends StatefulWidget {
   /// Index of the currently selected item (0-based). Defaults to `0`.
   final int currentIndex;
 
-  // ── Colours ──────────────────────────────────────────────────────────────────
+  // ── Style preset ─────────────────────────────────────────────────────────────
 
-  /// Background colour of the bar. Defaults to [Colors.white].
-  final Color backgroundColor;
+  /// Optional built-in style preset. Supplies default values for every visual
+  /// property. Any individually passed parameter takes precedence over the
+  /// preset, so you can use a preset as a base and override only what you need:
+  ///
+  /// ```dart
+  /// CurvedNavigationBarPro(
+  ///   items: myItems,
+  ///   onTap: (i) => setState(() => _index = i),
+  ///   navbarStyle: CNBPStyles.goldenHour,
+  ///   fabRadius: 30,  // overrides the preset value
+  /// )
+  /// ```
+  final CNBPStyles? navbarStyle;
+
+  // ── Colours – null → use preset → use built-in default ───────────────────────
+
+  /// Background colour of the bar.
+  /// Defaults to the preset value, or [Colors.white] when no preset is set.
+  final Color? backgroundColor;
 
   /// Colour for active label text.
-  ///
-  /// Defaults to [ColorScheme.primary] from the nearest [Theme].
+  /// Defaults to the preset value, or [ColorScheme.primary] from the [Theme].
   final Color? activeColor;
 
-  /// Icon colour inside the FAB bubble. Defaults to [Colors.white].
+  /// Icon colour inside the FAB bubble.
+  /// Defaults to the preset value, or [Colors.white].
   final Color? activeIconColor;
 
-  /// Icon and label colour for inactive items. Defaults to `#ADB5BD`.
-  final Color inactiveColor;
+  /// Icon and label colour for inactive items.
+  /// Defaults to the preset value, or `#ADB5BD`.
+  final Color? inactiveColor;
 
-  /// Background colour of the FAB bubble. Defaults to [activeColor].
+  /// Background colour of the FAB bubble.
+  /// Defaults to the preset value, or [activeColor].
   final Color? fabColor;
 
   // ── Geometry ─────────────────────────────────────────────────────────────────
 
   /// Total pixel height of the bar (not counting any FAB protrusion).
-  /// Defaults to `110`.
-  final double barHeight;
+  /// Defaults to the preset value, or `110`.
+  final double? barHeight;
 
-  /// Radius of the FAB bubble in logical pixels. Defaults to `24`.
-  final double fabRadius;
+  /// Radius of the FAB bubble in logical pixels.
+  /// Defaults to the preset value, or `24`.
+  final double? fabRadius;
 
-  /// Extra spacing between the FAB edge and the notch arc. Defaults to `10`.
-  final double fabGap;
+  /// Extra spacing between the FAB edge and the notch arc.
+  /// Defaults to the preset value, or `10`.
+  final double? fabGap;
 
   /// How many pixels the FAB centre sinks **below** the bar's top edge.
   ///
   /// - `0`: centre is at the bar's top (half protruding, half inside).
   /// - `fabRadius`: FAB is fully inside; its top edge is flush with the bar top.
   ///
-  /// Defaults to `22`.
-  final double fabSink;
+  /// Defaults to the preset value, or `22`.
+  final double? fabSink;
 
   /// Radius of the smooth C¹-continuous shoulder curves that transition the
   /// flat bar surface into the notch arc. `0` gives sharp corners.
-  /// Defaults to `12`.
-  final double notchShoulderRadius;
+  /// Defaults to the preset value, or `12`.
+  final double? notchShoulderRadius;
 
-  /// Radius of the top-left and top-right corners of the bar. Defaults to `0`.
-  final double cornerRadius;
+  /// Radius of the top-left and top-right corners of the bar.
+  /// Defaults to the preset value, or `0`.
+  final double? cornerRadius;
 
   // ── Shadow ───────────────────────────────────────────────────────────────────
 
-  /// Elevation used to compute the bar's drop-shadow depth. Defaults to `14`.
-  final double elevation;
+  /// Elevation used to compute the bar's drop-shadow depth.
+  /// Defaults to the preset value, or `14`.
+  final double? elevation;
 
-  /// Shadow colour. Defaults to `rgba(0,0,0,0.16)`.
-  final Color shadowColor;
+  /// Shadow colour.
+  /// Defaults to the preset value, or `rgba(0,0,0,0.16)`.
+  final Color? shadowColor;
 
   // ── Animation ────────────────────────────────────────────────────────────────
 
-  /// Duration of the notch slide animation. Defaults to `400 ms`.
-  final Duration animationDuration;
+  /// Duration of the notch slide animation.
+  /// Defaults to the preset value, or `400 ms`.
+  final Duration? animationDuration;
 
-  /// Easing curve for the notch slide. Defaults to [Curves.easeInOutCubic].
-  final Curve animationCurve;
+  /// Easing curve for the notch slide.
+  /// Defaults to the preset value, or [Curves.easeInOutCubic].
+  final Curve? animationCurve;
 
   // ── Text styles ───────────────────────────────────────────────────────────────
 
-  /// Custom text style for the active label. Overrides the built-in default.
+  /// Custom text style for the active label. Overrides the preset and the
+  /// built-in default.
   final TextStyle? activeTextStyle;
 
-  /// Custom text style for inactive labels. Overrides the built-in default.
+  /// Custom text style for inactive labels. Overrides the preset and the
+  /// built-in default.
   final TextStyle? inactiveTextStyle;
 
   @override
@@ -169,7 +205,10 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
       widget.items.length == 1 ? 0.5 : index / (widget.items.length - 1);
 
   double get _liveFraction {
-    final t = widget.animationCurve.transform(
+    final curve = widget.animationCurve ??
+        widget.navbarStyle?.data.animationCurve ??
+        Curves.easeInOutCubic;
+    final t = curve.transform(
       _controller.value.clamp(0.0, 1.0),
     );
     return _fromFraction + (_toFraction - _fromFraction) * t;
@@ -182,7 +221,9 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
     _toFraction = _fromFraction;
     _controller = AnimationController(
       vsync: this,
-      duration: widget.animationDuration,
+      duration: widget.animationDuration ??
+          widget.navbarStyle?.data.animationDuration ??
+          const Duration(milliseconds: 400),
     )
       ..addListener(() => setState(() {}))
       ..value = 1.0;
@@ -198,9 +239,15 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
         ..value = 0.0
         ..forward();
     }
-    // Sync duration changes without rebuilding the controller.
-    if (old.animationDuration != widget.animationDuration) {
-      _controller.duration = widget.animationDuration;
+    // Sync duration changes (considering presets) without rebuilding the controller.
+    final newDuration = widget.animationDuration ??
+        widget.navbarStyle?.data.animationDuration ??
+        const Duration(milliseconds: 400);
+    final oldDuration = old.animationDuration ??
+        old.navbarStyle?.data.animationDuration ??
+        const Duration(milliseconds: 400);
+    if (oldDuration != newDuration) {
+      _controller.duration = newDuration;
     }
   }
 
@@ -213,23 +260,57 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final activeColor = widget.activeColor ?? theme.colorScheme.primary;
-    final fabColor = widget.fabColor ?? activeColor;
+    final styleData = widget.navbarStyle?.data;
+
+    // ── Resolve: explicit param > style preset > hardcoded default ────────────
+    final activeColor =
+        widget.activeColor ?? styleData?.activeColor ?? theme.colorScheme.primary;
+    final fabColor =
+        widget.fabColor ?? styleData?.fabColor ?? activeColor;
+    final activeIconColor =
+        widget.activeIconColor ?? styleData?.activeIconColor;
+    final backgroundColor =
+        widget.backgroundColor ?? styleData?.backgroundColor ?? Colors.white;
+    final inactiveColor =
+        widget.inactiveColor ?? styleData?.inactiveColor ?? const Color(0xFFADB5BD);
+    final barHeight = widget.barHeight ?? styleData?.barHeight ?? 110.0;
+    final fabRadius = widget.fabRadius ?? styleData?.fabRadius ?? 24.0;
+    final fabGap = widget.fabGap ?? styleData?.fabGap ?? 10.0;
+    final fabSink =
+        (widget.fabSink ?? styleData?.fabSink ?? 22.0).clamp(0.0, fabRadius);
+    final notchShoulderRadius =
+        widget.notchShoulderRadius ?? styleData?.notchShoulderRadius ?? 12.0;
+    final cornerRadius =
+        widget.cornerRadius ?? styleData?.cornerRadius ?? 0.0;
+    final elevation = widget.elevation ?? styleData?.elevation ?? 14.0;
+    final shadowColor =
+        widget.shadowColor ?? styleData?.shadowColor ?? const Color(0x2A000000);
+    final animationDuration = widget.animationDuration ??
+        styleData?.animationDuration ??
+        const Duration(milliseconds: 400);
+    // animationCurve is consumed by _liveFraction (which resolves it itself)
+    // so no local variable is needed here.
+    final activeTextStyle =
+        widget.activeTextStyle ?? styleData?.activeTextStyle;
+    final inactiveTextStyle =
+        widget.inactiveTextStyle ?? styleData?.inactiveTextStyle;
+    // ─────────────────────────────────────────────────────────────────────────
+
     final fraction = _liveFraction;
 
     return LayoutBuilder(
       builder: (context, constraints) {
         final totalWidth = constraints.maxWidth;
         final itemWidth = totalWidth / widget.items.length;
-        final notchR = widget.fabRadius + widget.fabGap;
-        final sink = widget.fabSink.clamp(0.0, widget.fabRadius);
-        final protrude = widget.fabRadius - sink;
+        final notchR = fabRadius + fabGap;
+        final sink = fabSink; // already clamped above
+        final protrude = fabRadius - sink;
 
         final rawCX =
             fraction * (widget.items.length - 1) * itemWidth + itemWidth / 2;
         final bubbleCX = rawCX.clamp(
-          widget.fabRadius.toDouble(),
-          totalWidth - widget.fabRadius,
+          fabRadius.toDouble(),
+          totalWidth - fabRadius,
         );
 
         final activeItem = widget.items[widget.currentIndex];
@@ -240,7 +321,7 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
           explicitChildNodes: true,
           child: SizedBox(
             width: totalWidth,
-            height: widget.barHeight + protrude,
+            height: barHeight + protrude,
             child: Stack(
               clipBehavior: Clip.none,
               children: [
@@ -249,17 +330,17 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  height: widget.barHeight,
+                  height: barHeight,
                   child: CustomPaint(
                     painter: _SemicircleNotchPainter(
                       notchCX: bubbleCX,
                       notchR: notchR,
                       fabSink: sink,
-                      notchShoulderRadius: widget.notchShoulderRadius,
-                      cornerRadius: widget.cornerRadius,
-                      color: widget.backgroundColor,
-                      shadowColor: widget.shadowColor,
-                      elevation: widget.elevation,
+                      notchShoulderRadius: notchShoulderRadius,
+                      cornerRadius: cornerRadius,
+                      color: backgroundColor,
+                      shadowColor: shadowColor,
+                      elevation: elevation,
                     ),
                   ),
                 ),
@@ -269,7 +350,7 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
                   bottom: 0,
                   left: 0,
                   right: 0,
-                  height: widget.barHeight,
+                  height: barHeight,
                   child: Row(
                     children: List.generate(widget.items.length, (i) {
                       return Expanded(
@@ -278,10 +359,10 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
                           index: i,
                           isActive: i == widget.currentIndex,
                           activeColor: activeColor,
-                          inactiveColor: widget.inactiveColor,
-                          animationDuration: widget.animationDuration,
-                          activeTextStyle: widget.activeTextStyle,
-                          inactiveTextStyle: widget.inactiveTextStyle,
+                          inactiveColor: inactiveColor,
+                          animationDuration: animationDuration,
+                          activeTextStyle: activeTextStyle,
+                          inactiveTextStyle: inactiveTextStyle,
                           onTap: () => widget.onTap(i),
                         ),
                       );
@@ -291,13 +372,13 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
 
                 // ── FAB bubble ───────────────────────────────────────────────
                 Positioned(
-                  left: bubbleCX - widget.fabRadius,
+                  left: bubbleCX - fabRadius,
                   top: 0,
                   child: _Bubble(
                     key: ValueKey(widget.currentIndex),
                     icon: fabIcon,
-                    radius: widget.fabRadius,
-                    activeIconColor: widget.activeIconColor,
+                    radius: fabRadius,
+                    activeIconColor: activeIconColor,
                     color: fabColor,
                   ),
                 ),

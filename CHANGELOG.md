@@ -1,3 +1,7 @@
+## 1.0.8
+
+* Added showcase, playground and showcase II GIF to documentation.
+
 ## 1.0.7
 
 * Updated the pubspec.yaml with the latest screenshots

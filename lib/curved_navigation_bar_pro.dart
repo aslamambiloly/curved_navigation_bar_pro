@@ -19,5 +19,6 @@
 /// ```
 library curved_navigation_bar_pro;
 
+export 'src/cnbp_style.dart';
 export 'src/curved_navigation_bar_pro.dart';
 export 'src/curved_navigation_item_pro.dart';

@@ -14,6 +14,7 @@ A beautiful Flutter bottom navigation bar with a **smooth animated curved notch*
 - Animated notch that slides smoothly to the selected item
 - Elastic pop-in animation for the FAB bubble
 - Mathematically continuous C¹ shoulder curves (no kinks at the notch edges)
+- **10 built-in style presets** — drop in a complete look with one parameter
 - Full theming — colours, geometry, elevation, text styles
 - Built-in accessibility semantics
 - 2–6 navigation items
@@ -25,15 +26,19 @@ A beautiful Flutter bottom navigation bar with a **smooth animated curved notch*
 
 <table>
   <tr>
+    <td align="center"><b>Showcase</b></td>
     <td align="center"><b>Playground</b></td>
-    <td align="center"><b>Basic Example</b></td>
+    <td align="center"><b>Showcase II</b></td>
   </tr>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/playground.gif" width="240"/>
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase.gif" width="250"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/demo.gif" width="240"/>
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/playground.gif" width="250"/>
+    </td>
+     <td>
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase2.gif" width="250"/>
     </td>
   </tr>
 </table>
@@ -46,7 +51,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^1.0.7
+  curved_navigation_bar_pro: ^1.0.8
 ```
 
 Then run:
@@ -143,6 +148,66 @@ CurvedNavigationBarPro(
 
 ---
 
+## Built-in Style Presets
+
+Choose from 10 ready-made styles with a single `navbarStyle` parameter.
+Every individual parameter you pass **overrides** the preset value — so presets
+are a starting point, not a constraint.
+
+### Apply a preset
+
+```dart
+CurvedNavigationBarPro(
+  items: myItems,
+  onTap: (i) => setState(() => _index = i),
+  currentIndex: _index,
+  navbarStyle: CNBPStyles.goldenHour, // full Golden Hour theme in one line
+)
+```
+
+### Apply a preset and override one value
+
+```dart
+CurvedNavigationBarPro(
+  items: myItems,
+  onTap: (i) => setState(() => _index = i),
+  currentIndex: _index,
+  navbarStyle: CNBPStyles.berryBlossom,
+  fabRadius: 32,       // ← overrides only this; everything else stays preset
+)
+```
+
+### Use preset data directly
+
+```dart
+// Read a preset's values for your own logic
+final data = CNBPStyles.royalAmethyst.data;
+print(data.activeColor); // Color(0xFFBE73FF)
+
+// Or tweak a preset into a custom CNBPStyleData object
+final myStyle = CNBPStyles.arcticFrost.data.copyWith(
+  cornerRadius: 0,
+  elevation: 16,
+);
+```
+
+### Available presets
+
+| `CNBPStyles.*` | Bar background | Accent colour | Highlights |
+|---|---|---|---|
+| `classicIndigo` | White | `#6C63FF` indigo | Default look, standard geometry |
+| `deepSpaceDark` | `#1A1A2E` charcoal | `#00E5FF` cyan | Sharp notch, spaced-caps labels |
+| `roundedCoral` | White | `#FF6B6B` coral | Pill corners (`cornerRadius: 28`), smooth shoulders |
+| `minimalMono` | White | `#2D3748` slate | Fully sunk FAB, sharp notch, monochrome |
+| `emeraldPill` | `#0F2D26` dark green | `#00C896` emerald | Large FAB, rounded corners, suits 5 items |
+| `sunsetAmber` | White | `#FF9F43` amber | Travel theme, smooth shoulders, `easeInOutSine` |
+| `royalAmethyst` | `#0E0829` deep navy | `#BE73FF` lavender | Large protruding FAB, suits 3 items, `easeOutBack` |
+| `arcticFrost` | `#F0F4F8` steel grey | `#2B6CB0` steel blue | Fully sunk FAB, pill corners, light theme |
+| `berryBlossom` | `#1C0A1C` dark purple | `#FF6AC1` hot pink | Ultra-smooth notch, suits 5 items, `elasticOut` |
+| `goldenHour` | `#121008` ink black | `#FFD700` gold | Dark icon in FAB, finance theme, `easeInOutCubic` |
+
+---
+
 ## API Reference
 
 ### `CurvedNavigationBarPro`
@@ -152,23 +217,26 @@ CurvedNavigationBarPro(
 | `items` | `List<CurvedNavigationItemPro>` | **required** | 2–6 navigation items |
 | `onTap` | `ValueChanged<int>` | **required** | Callback when an item is tapped |
 | `currentIndex` | `int` | `0` | Selected item index |
-| `backgroundColor` | `Color` | `Colors.white` | Bar background |
-| `activeColor` | `Color?` | theme primary | Active label & default FAB colour |
-| `activeIconColor` | `Color?` | `Colors.white` | Icon colour inside the FAB bubble |
-| `inactiveColor` | `Color` | `#ADB5BD` | Inactive icon & label colour |
-| `fabColor` | `Color?` | `activeColor` | FAB bubble background |
-| `barHeight` | `double` | `110` | Bar height in logical pixels |
-| `fabRadius` | `double` | `24` | FAB bubble radius |
-| `fabGap` | `double` | `10` | Gap between FAB and notch arc |
-| `fabSink` | `double` | `22` | Pixels the FAB centre sinks below the bar top |
-| `notchShoulderRadius` | `double` | `12` | Shoulder fillet radius (0 = sharp corners) |
-| `cornerRadius` | `double` | `0` | Top-left / top-right bar corner radius |
-| `elevation` | `double` | `14` | Shadow depth |
-| `shadowColor` | `Color` | `rgba(0,0,0,0.16)` | Shadow colour |
-| `animationDuration` | `Duration` | `400 ms` | Notch slide duration |
-| `animationCurve` | `Curve` | `easeInOutCubic` | Notch slide curve |
-| `activeTextStyle` | `TextStyle?` | — | Override active label style |
-| `inactiveTextStyle` | `TextStyle?` | — | Override inactive label style |
+| `navbarStyle` | `CNBPStyles?` | `null` | Built-in preset — supplies defaults for all visual params |
+| `backgroundColor` | `Color?` | preset → `Colors.white` | Bar background |
+| `activeColor` | `Color?` | preset → theme primary | Active label & default FAB colour |
+| `activeIconColor` | `Color?` | preset → `Colors.white` | Icon colour inside the FAB bubble |
+| `inactiveColor` | `Color?` | preset → `#ADB5BD` | Inactive icon & label colour |
+| `fabColor` | `Color?` | preset → `activeColor` | FAB bubble background |
+| `barHeight` | `double?` | preset → `110` | Bar height in logical pixels |
+| `fabRadius` | `double?` | preset → `24` | FAB bubble radius |
+| `fabGap` | `double?` | preset → `10` | Gap between FAB edge and notch arc |
+| `fabSink` | `double?` | preset → `22` | Pixels the FAB centre sinks below the bar top |
+| `notchShoulderRadius` | `double?` | preset → `12` | Shoulder fillet radius (0 = sharp corners) |
+| `cornerRadius` | `double?` | preset → `0` | Top-left / top-right bar corner radius |
+| `elevation` | `double?` | preset → `14` | Shadow depth |
+| `shadowColor` | `Color?` | preset → `rgba(0,0,0,0.16)` | Shadow colour |
+| `animationDuration` | `Duration?` | preset → `400 ms` | Notch slide duration |
+| `animationCurve` | `Curve?` | preset → `easeInOutCubic` | Notch slide curve |
+| `activeTextStyle` | `TextStyle?` | preset → built-in | Override active label style |
+| `inactiveTextStyle` | `TextStyle?` | preset → built-in | Override inactive label style |
+
+> **Resolution order:** explicit parameter → `navbarStyle` preset → hardcoded default
 
 ### `CurvedNavigationItemPro`
 
