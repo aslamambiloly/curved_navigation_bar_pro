@@ -25,8 +25,8 @@ A beautiful Flutter bottom navigation bar with a **smooth animated curved notch*
 
 <table>
   <tr>
-    <td align="center"><b>Navigation</b></td>
     <td align="center"><b>Playground</b></td>
+    <td align="center"><b>Basic Example</b></td>
   </tr>
   <tr>
     <td>
