@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_redundant_argument_values
+
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -484,14 +486,14 @@ class _NavItemTile extends StatelessWidget {
               style: isActive
                   ? activeTextStyle ??
                       TextStyle(
-                        fontSize: 10,
+                        fontSize: 12,
                         fontWeight: FontWeight.w700,
                         letterSpacing: 0.9,
                         color: activeColor,
                       )
                   : inactiveTextStyle ??
                       TextStyle(
-                        fontSize: 10,
+                        fontSize: 12,
                         fontWeight: FontWeight.w500,
                         letterSpacing: 0.2,
                         color: inactiveColor,

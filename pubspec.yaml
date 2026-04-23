@@ -2,13 +2,15 @@ name: curved_navigation_bar_pro
 description: >
   A beautiful Flutter bottom navigation bar with an animated curved notch FAB,
   smooth elastic bubble animation, and fully customisable theming.
-version: 1.0.0
+version: 1.0.1
 homepage: https://github.com/aslamambiloly/curved_navigation_bar_pro
 repository: https://github.com/aslamambiloly/curved_navigation_bar_pro
 issue_tracker: https://github.com/aslamambiloly/curved_navigation_bar_pro/issues
 screenshots:
   - description: 'Animated curved notch FAB sliding between nav items'
     path: doc/demo.gif
+  - description: 'Interactive playground showing real-time customisation of all parameters'
+    path: doc/playground.gif
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
@@ -24,3 +26,21 @@ dev_dependencies:
   flutter_lints: ^3.0.0
 
 flutter:
+  uses-material-design: true
+  fonts:
+    - family: sora
+      fonts:
+        - asset: assets/fonts/Sora-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Sora-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Sora-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Sora-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Sora-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Sora-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Sora-ExtraBold.ttf
+          weight: 800
