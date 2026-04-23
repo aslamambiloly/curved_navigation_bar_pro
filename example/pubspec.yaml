@@ -1,5 +1,5 @@
-name: curved_nav_bar_example
-description: Example application for the curved_nav_bar package.
+name: curved_navigation_bar_pro_example
+description: Example application for the curved_navigation_bar_pro package.
 publish_to: none
 version: 1.0.0
 
@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  curved_nav_bar:
+  curved_navigation_bar_pro:
     path: ../
 
 flutter:

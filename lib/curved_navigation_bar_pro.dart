@@ -4,7 +4,7 @@
 /// ## Quick start
 ///
 /// ```dart
-/// import 'package:curved_nav_bar/curved_nav_bar.dart';
+/// import 'package:curved_navigation_bar_pro/curved_navigation_bar_pro.dart';
 ///
 /// CurvedNavBar(
 ///   items: const [
@@ -17,7 +17,7 @@
 ///   onTap: (i) => setState(() => _index = i),
 /// )
 /// ```
-library curved_nav_bar;
+library curved_navigation_bar_pro;
 
-export 'src/curved_nav_bar.dart';
-export 'src/curved_nav_item.dart';
+export 'src/curved_navigation_bar_pro.dart';
+export 'src/curved_navigation_item_pro.dart';

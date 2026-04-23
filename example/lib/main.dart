@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:curved_nav_bar/curved_nav_bar.dart';
+import 'package:curved_navigation_bar_pro/curved_navigation_bar_pro.dart';
 
 void main() => runApp(const ExampleApp());
 
@@ -49,24 +49,24 @@ class _HomePageState extends State<HomePage> {
         duration: const Duration(milliseconds: 300),
         child: _pages[_index],
       ),
-      bottomNavigationBar: CurvedNavBar(
+      bottomNavigationBar: CurvedNavBarPro(
         items: const [
-          CurvedNavItem(
+          CurvedNavItemPro(
             icon: Icons.home_outlined,
             activeIcon: Icons.home_rounded,
             label: 'HOME',
           ),
-          CurvedNavItem(
+          CurvedNavItemPro(
             icon: Icons.search_outlined,
             activeIcon: Icons.search_rounded,
             label: 'SEARCH',
           ),
-          CurvedNavItem(
+          CurvedNavItemPro(
             icon: Icons.favorite_outline,
             activeIcon: Icons.favorite_rounded,
             label: 'SAVED',
           ),
-          CurvedNavItem(
+          CurvedNavItemPro(
             icon: Icons.person_outline_rounded,
             activeIcon: Icons.person_rounded,
             label: 'PROFILE',

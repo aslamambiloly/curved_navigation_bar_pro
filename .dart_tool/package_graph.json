@@ -1,10 +1,10 @@
 {
   "roots": [
-    "curved_nav_bar_pro"
+    "curved_navigation_bar_pro"
   ],
   "packages": [
     {
-      "name": "curved_nav_bar_pro",
+      "name": "curved_navigation_bar_pro",
       "version": "1.0.0",
       "dependencies": [
         "flutter"

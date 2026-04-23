@@ -2,7 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
-import 'curved_nav_item.dart';
+import 'curved_navigation_item_pro.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  Public widget
@@ -32,11 +32,11 @@ import 'curved_nav_item.dart';
 ///   body: ...,
 /// )
 /// ```
-class CurvedNavBar extends StatefulWidget {
-  /// Creates a [CurvedNavBar].
+class CurvedNavBarPro extends StatefulWidget {
+  /// Creates a [CurvedNavBarPro].
   ///
   /// [items] must contain between 2 and 6 entries (inclusive).
-  const CurvedNavBar({
+  const CurvedNavBarPro({
     super.key,
     required this.items,
     required this.onTap,
@@ -71,7 +71,7 @@ class CurvedNavBar extends StatefulWidget {
   // ── Content ─────────────────────────────────────────────────────────────────
 
   /// The navigation items (2–6).
-  final List<CurvedNavItem> items;
+  final List<CurvedNavItemPro> items;
 
   /// Called when the user taps a navigation item; receives the tapped index.
   final ValueChanged<int> onTap;
@@ -151,13 +151,13 @@ class CurvedNavBar extends StatefulWidget {
   final TextStyle? inactiveTextStyle;
 
   @override
-  State<CurvedNavBar> createState() => _CurvedNavBarState();
+  State<CurvedNavBarPro> createState() => _CurvedNavBarProState();
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  State
 // ─────────────────────────────────────────────────────────────────────────────
-class _CurvedNavBarState extends State<CurvedNavBar>
+class _CurvedNavBarProState extends State<CurvedNavBarPro>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late double _fromFraction;
@@ -187,7 +187,7 @@ class _CurvedNavBarState extends State<CurvedNavBar>
   }
 
   @override
-  void didUpdateWidget(CurvedNavBar old) {
+  void didUpdateWidget(CurvedNavBarPro old) {
     super.didUpdateWidget(old);
     if (old.currentIndex != widget.currentIndex) {
       _fromFraction = _liveFraction;
@@ -417,8 +417,7 @@ class _SemicircleNotchPainter extends CustomPainter {
         path.shift(Offset(0, -elevation * 0.15)),
         Paint()
           ..color = shadowColor
-          ..maskFilter =
-              MaskFilter.blur(BlurStyle.normal, elevation * 0.6),
+          ..maskFilter = MaskFilter.blur(BlurStyle.normal, elevation * 0.6),
       );
     }
 
@@ -453,7 +452,7 @@ class _NavItemTile extends StatelessWidget {
     this.inactiveTextStyle,
   });
 
-  final CurvedNavItem item;
+  final CurvedNavItemPro item;
   final int index;
   final bool isActive;
   final Color activeColor;

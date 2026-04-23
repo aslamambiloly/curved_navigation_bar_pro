@@ -1,6 +1,6 @@
-# curved_nav_bar
+# curved_navigation_bar_pro
 
-[![pub version](https://img.shields.io/pub/v/curved_nav_bar.svg)](https://pub.dev/packages/curved_nav_bar)
+[![pub version](https://img.shields.io/pub/v/curved_navigation_bar_pro.svg)](https://pub.dev/packages/curved_navigation_bar_pro)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
 
@@ -33,7 +33,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_nav_bar: ^1.0.0
+  curved_navigation_bar_pro: ^1.0.0
 ```
 
 Then run:
@@ -47,7 +47,7 @@ flutter pub get
 ## Quick start
 
 ```dart
-import 'package:curved_nav_bar/curved_nav_bar.dart';
+import 'package:curved_navigation_bar_pro/curved_navigation_bar_pro.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({super.key});

@@ -1,18 +1,20 @@
+import 'package:curved_navigation_bar_pro/curved_navigation_bar_pro.dart';
+import 'package:curved_navigation_bar_pro/src/curved_navigation_bar_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:curved_nav_bar/curved_nav_bar.dart';
 
 const _items = [
-  CurvedNavItem(icon: Icons.home_outlined, activeIcon: Icons.home, label: 'HOME'),
-  CurvedNavItem(icon: Icons.search, label: 'SEARCH'),
-  CurvedNavItem(icon: Icons.favorite_outline, label: 'SAVED'),
-  CurvedNavItem(icon: Icons.person_outline, label: 'PROFILE'),
+  CurvedNavItemPro(
+      icon: Icons.home_outlined, activeIcon: Icons.home, label: 'HOME'),
+  CurvedNavItemPro(icon: Icons.search, label: 'SEARCH'),
+  CurvedNavItemPro(icon: Icons.favorite_outline, label: 'SAVED'),
+  CurvedNavItemPro(icon: Icons.person_outline, label: 'PROFILE'),
 ];
 
 Widget _buildApp({int index = 0, ValueChanged<int>? onTap}) {
   return MaterialApp(
     home: Scaffold(
-      bottomNavigationBar: CurvedNavBar(
+      bottomNavigationBar: CurvedNavBarPro(
         items: _items,
         currentIndex: index,
         onTap: onTap ?? (_) {},
@@ -22,7 +24,7 @@ Widget _buildApp({int index = 0, ValueChanged<int>? onTap}) {
 }
 
 void main() {
-  group('CurvedNavBar', () {
+  group('CurvedNavBarPro', () {
     testWidgets('renders all item labels', (tester) async {
       await tester.pumpWidget(_buildApp());
       for (final item in _items) {
@@ -49,8 +51,8 @@ void main() {
 
     testWidgets('throws assertion for fewer than 2 items', (tester) async {
       expect(
-        () => CurvedNavBar(
-          items: const [CurvedNavItem(icon: Icons.home, label: 'HOME')],
+        () => CurvedNavBarPro(
+          items: const [CurvedNavItemPro(icon: Icons.home, label: 'HOME')],
           onTap: (_) {},
         ),
         throwsAssertionError,
@@ -59,23 +61,23 @@ void main() {
 
     testWidgets('throws assertion for more than 6 items', (tester) async {
       const many = [
-        CurvedNavItem(icon: Icons.home, label: 'A'),
-        CurvedNavItem(icon: Icons.home, label: 'B'),
-        CurvedNavItem(icon: Icons.home, label: 'C'),
-        CurvedNavItem(icon: Icons.home, label: 'D'),
-        CurvedNavItem(icon: Icons.home, label: 'E'),
-        CurvedNavItem(icon: Icons.home, label: 'F'),
-        CurvedNavItem(icon: Icons.home, label: 'G'),
+        CurvedNavItemPro(icon: Icons.home, label: 'A'),
+        CurvedNavItemPro(icon: Icons.home, label: 'B'),
+        CurvedNavItemPro(icon: Icons.home, label: 'C'),
+        CurvedNavItemPro(icon: Icons.home, label: 'D'),
+        CurvedNavItemPro(icon: Icons.home, label: 'E'),
+        CurvedNavItemPro(icon: Icons.home, label: 'F'),
+        CurvedNavItemPro(icon: Icons.home, label: 'G'),
       ];
       expect(
-        () => CurvedNavBar(items: many, onTap: (_) {}),
+        () => CurvedNavBarPro(items: many, onTap: (_) {}),
         throwsAssertionError,
       );
     });
 
     testWidgets('throws assertion for out-of-range currentIndex', (tester) async {
       expect(
-        () => CurvedNavBar(items: _items, currentIndex: 99, onTap: (_) {}),
+        () => CurvedNavBarPro(items: _items, currentIndex: 99, onTap: (_) {}),
         throwsAssertionError,
       );
     });
@@ -84,7 +86,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            bottomNavigationBar: CurvedNavBar(
+            bottomNavigationBar: CurvedNavBarPro(
               items: _items,
               currentIndex: 0,
               onTap: (_) {},
