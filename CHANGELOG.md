@@ -1,6 +1,7 @@
 ## 1.0.8
 
 * Added showcase, playground and showcase II GIF to documentation.
+* Added 10 built-in style presets.
 
 ## 1.0.7
 
