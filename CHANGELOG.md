@@ -1,3 +1,7 @@
+## 1.0.3
+
+* Added GitHub Sponsors funding config.
+
 ## 1.0.2
 
 * Added side by side GIF layout to documentation.

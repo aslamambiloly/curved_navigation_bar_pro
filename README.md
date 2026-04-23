@@ -30,10 +30,10 @@ A beautiful Flutter bottom navigation bar with a **smooth animated curved notch*
   </tr>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/demo.gif" width="220"/>
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/demo.gif" width="240"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/playground.gif" width="220"/>
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/playground.gif" width="240"/>
     </td>
   </tr>
 </table>
@@ -46,7 +46,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^1.0.2
+  curved_navigation_bar_pro: ^1.0.3
 ```
 
 Then run:
@@ -197,4 +197,4 @@ PRs and issues are welcome! Please open an issue first for significant changes.
 
 ## License
 
-[MIT](LICENSE) © 2025 aslamambiloly
+[MIT](LICENSE) © 2026 aslamambiloly
