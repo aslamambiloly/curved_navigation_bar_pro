@@ -11,13 +11,13 @@ A beautiful Flutter bottom navigation bar with a **smooth animated curved notch*
 
 ## Features
 
-- 🎯 Animated notch that slides smoothly to the selected item
-- 💫 Elastic pop-in animation for the FAB bubble
-- 📐 Mathematically continuous C¹ shoulder curves (no kinks at the notch edges)
-- 🎨 Full theming — colours, geometry, elevation, text styles
-- ♿ Built-in accessibility semantics
-- 🧩 2–6 navigation items
-- 📦 Zero dependencies beyond Flutter
+- Animated notch that slides smoothly to the selected item
+- Elastic pop-in animation for the FAB bubble
+- Mathematically continuous C¹ shoulder curves (no kinks at the notch edges)
+- Full theming — colours, geometry, elevation, text styles
+- Built-in accessibility semantics
+- 2–6 navigation items
+- Zero dependencies beyond Flutter
 
 ---
 
@@ -46,7 +46,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^1.0.4
+  curved_navigation_bar_pro: ^1.0.5
 ```
 
 Then run:
@@ -75,20 +75,20 @@ class _MyPageState extends State<MyPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ...,
-      bottomNavigationBar: CurvedNavBar(
+      bottomNavigationBar: CurvedNavigationBarPro(
         items: const [
-          CurvedNavItem(
+          CurvedNavigationItemPro(
             icon: Icons.home_outlined,
             activeIcon: Icons.home_rounded,
             label: 'HOME',
           ),
-          CurvedNavItem(icon: Icons.search_outlined, label: 'SEARCH'),
-          CurvedNavItem(
+          CurvedNavigationItemPro(icon: Icons.search_outlined, label: 'SEARCH'),
+          CurvedNavigationItemPro(
             icon: Icons.favorite_outline,
             activeIcon: Icons.favorite_rounded,
             label: 'SAVED',
           ),
-          CurvedNavItem(
+          CurvedNavigationItemPro(
             icon: Icons.person_outline_rounded,
             activeIcon: Icons.person_rounded,
             label: 'PROFILE',
@@ -107,7 +107,7 @@ class _MyPageState extends State<MyPage> {
 ## Customisation
 
 ```dart
-CurvedNavBar(
+CurvedNavigationBarPro(
   items: ...,
   currentIndex: _index,
   onTap: (i) => setState(() => _index = i),
@@ -145,11 +145,11 @@ CurvedNavBar(
 
 ## API Reference
 
-### `CurvedNavBar`
+### `CurvedNavigationBarPro`
 
 | Property | Type | Default | Description |
 |---|---|---|---|
-| `items` | `List<CurvedNavItem>` | **required** | 2–6 navigation items |
+| `items` | `List<CurvedNavigationItemPro>` | **required** | 2–6 navigation items |
 | `onTap` | `ValueChanged<int>` | **required** | Callback when an item is tapped |
 | `currentIndex` | `int` | `0` | Selected item index |
 | `backgroundColor` | `Color` | `Colors.white` | Bar background |
@@ -170,7 +170,7 @@ CurvedNavBar(
 | `activeTextStyle` | `TextStyle?` | — | Override active label style |
 | `inactiveTextStyle` | `TextStyle?` | — | Override inactive label style |
 
-### `CurvedNavItem`
+### `CurvedNavigationItemPro`
 
 | Property | Type | Description |
 |---|---|---|

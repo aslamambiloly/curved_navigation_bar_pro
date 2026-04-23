@@ -1,3 +1,7 @@
+## 1.0.5
+
+* Replaced the widget name in the readme with the latest ones
+
 ## 1.0.4
 
 * Trigger analysis pipeline re-run.
