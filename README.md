@@ -184,4 +184,4 @@ PRs and issues are welcome! Please open an issue first for significant changes.
 
 ## License
 
-[MIT](LICENSE) © 2025 Your Name
+[MIT](LICENSE) © 2025 aslamambiloly
