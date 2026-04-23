@@ -1,3 +1,7 @@
+## 1.0.6
+
+* Updated the readme with the latest screenshots
+
 ## 1.0.5
 
 * Replaced the widget name in the readme with the latest ones
