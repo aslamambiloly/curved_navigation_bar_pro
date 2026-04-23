@@ -3,6 +3,7 @@
 [![pub version](https://img.shields.io/pub/v/curved_navigation_bar_pro.svg)](https://pub.dev/packages/curved_navigation_bar_pro)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/aslamambiloly?style=flat&logo=github&label=Sponsor&color=ea4aaa)](https://github.com/sponsors/aslamambiloly)
 
 A beautiful Flutter bottom navigation bar with a **smooth animated curved notch**, an **elastic FAB bubble** that glides between items, and comprehensive theming support.
 
