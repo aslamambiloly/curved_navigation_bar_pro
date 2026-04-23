@@ -30,10 +30,10 @@ A beautiful Flutter bottom navigation bar with a **smooth animated curved notch*
   </tr>
   <tr>
     <td>
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/demo.gif" width="240"/>
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/playground.gif" width="240"/>
     </td>
     <td>
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/playground.gif" width="240"/>
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/demo.gif" width="240"/>
     </td>
   </tr>
 </table>
