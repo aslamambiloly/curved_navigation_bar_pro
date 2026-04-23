@@ -1,3 +1,7 @@
+## 1.0.4
+
+* Trigger analysis pipeline re-run.
+
 ## 1.0.3
 
 * Added GitHub Sponsors funding config.

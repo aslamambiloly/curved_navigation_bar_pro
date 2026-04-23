@@ -1,7 +1,7 @@
 name: curved_navigation_bar_pro_example
 description: Example application for the curved_navigation_bar_pro package.
 publish_to: none
-version: 1.0.3
+version: 1.0.4
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
