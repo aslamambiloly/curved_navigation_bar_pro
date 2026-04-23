@@ -22,8 +22,7 @@ A beautiful Flutter bottom navigation bar with a **smooth animated curved notch*
 
 ## Preview
 
-<!-- Replace with an actual GIF or screenshot once you have one -->
-> _(Add a GIF here using [Lottie](https://github.com/xvrh/lottie-flutter) or a screen recording)_
+![CurvedNavBar demo](https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/demo.gif)
 
 ---
 

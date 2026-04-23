@@ -6,6 +6,9 @@ version: 1.0.0
 homepage: https://github.com/aslamambiloly/curved_navigation_bar_pro
 repository: https://github.com/aslamambiloly/curved_navigation_bar_pro
 issue_tracker: https://github.com/aslamambiloly/curved_navigation_bar_pro/issues
+screenshots:
+  - description: 'Animated curved notch FAB sliding between nav items'
+    path: doc/demo.gif
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
