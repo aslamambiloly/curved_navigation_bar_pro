@@ -13,9 +13,9 @@ import 'package:flutter/material.dart';
 /// )
 /// ```
 @immutable
-class CurvedNavItemPro {
+class CurvedNavigationItemPro {
   /// Creates a navigation item.
-  const CurvedNavItemPro({
+  const CurvedNavigationItemPro({
     required this.icon,
     this.activeIcon,
     required this.label,

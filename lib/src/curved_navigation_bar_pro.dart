@@ -32,11 +32,11 @@ import 'curved_navigation_item_pro.dart';
 ///   body: ...,
 /// )
 /// ```
-class CurvedNavBarPro extends StatefulWidget {
-  /// Creates a [CurvedNavBarPro].
+class CurvedNavigationBarPro extends StatefulWidget {
+  /// Creates a [CurvedNavigationBarPro].
   ///
   /// [items] must contain between 2 and 6 entries (inclusive).
-  const CurvedNavBarPro({
+  const CurvedNavigationBarPro({
     super.key,
     required this.items,
     required this.onTap,
@@ -71,7 +71,7 @@ class CurvedNavBarPro extends StatefulWidget {
   // ── Content ─────────────────────────────────────────────────────────────────
 
   /// The navigation items (2–6).
-  final List<CurvedNavItemPro> items;
+  final List<CurvedNavigationItemPro> items;
 
   /// Called when the user taps a navigation item; receives the tapped index.
   final ValueChanged<int> onTap;
@@ -151,13 +151,13 @@ class CurvedNavBarPro extends StatefulWidget {
   final TextStyle? inactiveTextStyle;
 
   @override
-  State<CurvedNavBarPro> createState() => _CurvedNavBarProState();
+  State<CurvedNavigationBarPro> createState() => _CurvedNavigationBarProState();
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  State
 // ─────────────────────────────────────────────────────────────────────────────
-class _CurvedNavBarProState extends State<CurvedNavBarPro>
+class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late double _fromFraction;
@@ -187,7 +187,7 @@ class _CurvedNavBarProState extends State<CurvedNavBarPro>
   }
 
   @override
-  void didUpdateWidget(CurvedNavBarPro old) {
+  void didUpdateWidget(CurvedNavigationBarPro old) {
     super.didUpdateWidget(old);
     if (old.currentIndex != widget.currentIndex) {
       _fromFraction = _liveFraction;
@@ -452,7 +452,7 @@ class _NavItemTile extends StatelessWidget {
     this.inactiveTextStyle,
   });
 
-  final CurvedNavItemPro item;
+  final CurvedNavigationItemPro item;
   final int index;
   final bool isActive;
   final Color activeColor;

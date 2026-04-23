@@ -1,20 +1,19 @@
 import 'package:curved_navigation_bar_pro/curved_navigation_bar_pro.dart';
-import 'package:curved_navigation_bar_pro/src/curved_navigation_bar_pro.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 const _items = [
-  CurvedNavItemPro(
+  CurvedNavigationItemPro(
       icon: Icons.home_outlined, activeIcon: Icons.home, label: 'HOME'),
-  CurvedNavItemPro(icon: Icons.search, label: 'SEARCH'),
-  CurvedNavItemPro(icon: Icons.favorite_outline, label: 'SAVED'),
-  CurvedNavItemPro(icon: Icons.person_outline, label: 'PROFILE'),
+  CurvedNavigationItemPro(icon: Icons.search, label: 'SEARCH'),
+  CurvedNavigationItemPro(icon: Icons.favorite_outline, label: 'SAVED'),
+  CurvedNavigationItemPro(icon: Icons.person_outline, label: 'PROFILE'),
 ];
 
 Widget _buildApp({int index = 0, ValueChanged<int>? onTap}) {
   return MaterialApp(
     home: Scaffold(
-      bottomNavigationBar: CurvedNavBarPro(
+      bottomNavigationBar: CurvedNavigationBarPro(
         items: _items,
         currentIndex: index,
         onTap: onTap ?? (_) {},
@@ -24,7 +23,7 @@ Widget _buildApp({int index = 0, ValueChanged<int>? onTap}) {
 }
 
 void main() {
-  group('CurvedNavBarPro', () {
+  group('CurvedNavigationBarPro', () {
     testWidgets('renders all item labels', (tester) async {
       await tester.pumpWidget(_buildApp());
       for (final item in _items) {
@@ -42,7 +41,8 @@ void main() {
       expect(tappedIndex, equals(1));
     });
 
-    testWidgets('updates active item when currentIndex changes', (tester) async {
+    testWidgets('updates active item when currentIndex changes',
+        (tester) async {
       await tester.pumpWidget(_buildApp(index: 0));
       await tester.pumpWidget(_buildApp(index: 2));
       await tester.pumpAndSettle();
@@ -51,8 +51,10 @@ void main() {
 
     testWidgets('throws assertion for fewer than 2 items', (tester) async {
       expect(
-        () => CurvedNavBarPro(
-          items: const [CurvedNavItemPro(icon: Icons.home, label: 'HOME')],
+        () => CurvedNavigationBarPro(
+          items: const [
+            CurvedNavigationItemPro(icon: Icons.home, label: 'HOME')
+          ],
           onTap: (_) {},
         ),
         throwsAssertionError,
@@ -61,23 +63,25 @@ void main() {
 
     testWidgets('throws assertion for more than 6 items', (tester) async {
       const many = [
-        CurvedNavItemPro(icon: Icons.home, label: 'A'),
-        CurvedNavItemPro(icon: Icons.home, label: 'B'),
-        CurvedNavItemPro(icon: Icons.home, label: 'C'),
-        CurvedNavItemPro(icon: Icons.home, label: 'D'),
-        CurvedNavItemPro(icon: Icons.home, label: 'E'),
-        CurvedNavItemPro(icon: Icons.home, label: 'F'),
-        CurvedNavItemPro(icon: Icons.home, label: 'G'),
+        CurvedNavigationItemPro(icon: Icons.home, label: 'A'),
+        CurvedNavigationItemPro(icon: Icons.home, label: 'B'),
+        CurvedNavigationItemPro(icon: Icons.home, label: 'C'),
+        CurvedNavigationItemPro(icon: Icons.home, label: 'D'),
+        CurvedNavigationItemPro(icon: Icons.home, label: 'E'),
+        CurvedNavigationItemPro(icon: Icons.home, label: 'F'),
+        CurvedNavigationItemPro(icon: Icons.home, label: 'G'),
       ];
       expect(
-        () => CurvedNavBarPro(items: many, onTap: (_) {}),
+        () => CurvedNavigationBarPro(items: many, onTap: (_) {}),
         throwsAssertionError,
       );
     });
 
-    testWidgets('throws assertion for out-of-range currentIndex', (tester) async {
+    testWidgets('throws assertion for out-of-range currentIndex',
+        (tester) async {
       expect(
-        () => CurvedNavBarPro(items: _items, currentIndex: 99, onTap: (_) {}),
+        () => CurvedNavigationBarPro(
+            items: _items, currentIndex: 99, onTap: (_) {}),
         throwsAssertionError,
       );
     });
@@ -86,7 +90,7 @@ void main() {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
-            bottomNavigationBar: CurvedNavBarPro(
+            bottomNavigationBar: CurvedNavigationBarPro(
               items: _items,
               currentIndex: 0,
               onTap: (_) {},

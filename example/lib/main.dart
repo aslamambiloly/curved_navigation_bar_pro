@@ -49,24 +49,24 @@ class _HomePageState extends State<HomePage> {
         duration: const Duration(milliseconds: 300),
         child: _pages[_index],
       ),
-      bottomNavigationBar: CurvedNavBarPro(
+      bottomNavigationBar: CurvedNavigationBarPro(
         items: const [
-          CurvedNavItemPro(
+          CurvedNavigationItemPro(
             icon: Icons.home_outlined,
             activeIcon: Icons.home_rounded,
             label: 'HOME',
           ),
-          CurvedNavItemPro(
+          CurvedNavigationItemPro(
             icon: Icons.search_outlined,
             activeIcon: Icons.search_rounded,
             label: 'SEARCH',
           ),
-          CurvedNavItemPro(
+          CurvedNavigationItemPro(
             icon: Icons.favorite_outline,
             activeIcon: Icons.favorite_rounded,
             label: 'SAVED',
           ),
-          CurvedNavItemPro(
+          CurvedNavigationItemPro(
             icon: Icons.person_outline_rounded,
             activeIcon: Icons.person_rounded,
             label: 'PROFILE',
