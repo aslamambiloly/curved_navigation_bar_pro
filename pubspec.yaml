@@ -2,15 +2,14 @@ name: curved_navigation_bar_pro
 description: >
   A beautiful Flutter bottom navigation bar with an animated curved notch FAB,
   smooth elastic bubble animation, and fully customisable theming.
-version: 1.0.6
+version: 1.0.7
 homepage: https://github.com/aslamambiloly/curved_navigation_bar_pro
 repository: https://github.com/aslamambiloly/curved_navigation_bar_pro
 issue_tracker: https://github.com/aslamambiloly/curved_navigation_bar_pro/issues
 screenshots:
-  - description: 'Interactive playground showing real-time customisation of all parameters'
-    path: doc/playground.gif
   - description: 'Animated curved notch FAB sliding between nav items'
-    path: doc/demo.gif
+    path: doc/ss.png
+
 
 environment:
   sdk: ">=3.0.0 <4.0.0"

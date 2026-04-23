@@ -1,3 +1,7 @@
+## 1.0.7
+
+* Updated the pubspec.yaml with the latest screenshots
+
 ## 1.0.6
 
 * Updated the readme with the latest screenshots
