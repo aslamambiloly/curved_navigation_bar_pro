@@ -1,0 +1,17 @@
+name: curved_nav_bar_example
+description: Example application for the curved_nav_bar package.
+publish_to: none
+version: 1.0.0
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.10.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  curved_nav_bar:
+    path: ../
+
+flutter:
+  uses-material-design: true
