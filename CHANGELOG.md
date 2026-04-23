@@ -1,9 +1,13 @@
+## 1.0.2
+
+* Added side by side GIF layout to documentation.
+
 ## 1.0.1
 
 * Added interactive playground example (`plaground.dart`).
 * Added playground GIF to documentation.
 
-## 1.0.1
+## 1.0.0
 
 * Initial release.
 * `CurvedNavigationBarPro` widget with smooth animated curved notch.
