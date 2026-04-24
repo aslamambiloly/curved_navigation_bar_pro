@@ -53,22 +53,22 @@ class _HomePageState extends State<HomePage> {
         // navbarStyle: CNBPStyles.emeraldPill,
         items: const [
           CurvedNavigationItemPro(
-            icon: Icons.home_outlined,
+            inactiveIcon: Icons.home_outlined,
             activeIcon: Icons.home_rounded,
             label: 'HOME',
           ),
           CurvedNavigationItemPro(
-            icon: Icons.search_outlined,
+            inactiveIcon: Icons.search_outlined,
             activeIcon: Icons.search_rounded,
             label: 'SEARCH',
           ),
           CurvedNavigationItemPro(
-            icon: Icons.favorite_outline,
+            inactiveIcon: Icons.favorite_outline,
             activeIcon: Icons.favorite_rounded,
             label: 'SAVED',
           ),
           CurvedNavigationItemPro(
-            icon: Icons.person_outline_rounded,
+            inactiveIcon: Icons.person_outline_rounded,
             activeIcon: Icons.person_rounded,
             label: 'PROFILE',
           ),

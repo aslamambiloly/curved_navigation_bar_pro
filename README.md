@@ -83,18 +83,18 @@ class _MyPageState extends State<MyPage> {
       bottomNavigationBar: CurvedNavigationBarPro(
         items: const [
           CurvedNavigationItemPro(
-            icon: Icons.home_outlined,
+            inactiveIcon: Icons.home_outlined,
             activeIcon: Icons.home_rounded,
             label: 'HOME',
           ),
-          CurvedNavigationItemPro(icon: Icons.search_outlined, label: 'SEARCH'),
+          CurvedNavigationItemPro(inactiveIcon: Icons.search_outlined, label: 'SEARCH'),
           CurvedNavigationItemPro(
-            icon: Icons.favorite_outline,
+            inactiveIcon: Icons.favorite_outline,
             activeIcon: Icons.favorite_rounded,
             label: 'SAVED',
           ),
           CurvedNavigationItemPro(
-            icon: Icons.person_outline_rounded,
+            inactiveIcon: Icons.person_outline_rounded,
             activeIcon: Icons.person_rounded,
             label: 'PROFILE',
           ),
@@ -242,7 +242,7 @@ final myStyle = CNBPStyles.arcticFrost.data.copyWith(
 
 | Property | Type | Description |
 |---|---|---|
-| `icon` | `IconData` | Icon shown when inactive |
+| `inactiveIcon` | `IconData` | Icon shown when inactive |
 | `activeIcon` | `IconData?` | Icon shown in the FAB when active (falls back to `icon`) |
 | `label` | `String` | Label text beneath the icon |
 

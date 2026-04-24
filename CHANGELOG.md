@@ -1,3 +1,7 @@
+## 1.0.9
+
+* Added support for long labels.
+
 ## 1.0.8
 
 * Added showcase, playground and showcase II GIF to documentation.

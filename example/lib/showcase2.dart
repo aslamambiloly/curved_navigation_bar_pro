@@ -524,7 +524,7 @@ class _NavPreviewState extends State<_NavPreview> {
   @override
   Widget build(BuildContext context) {
     final item = widget.items[_index];
-    final icon = item.activeIcon ?? item.icon;
+    final icon = item.activeIcon ?? item.inactiveIcon;
 
     return Container(
       color: widget.bgColor,
@@ -574,19 +574,19 @@ class _Style6 extends StatelessWidget {
   static const _accent = Color(0xFFFF9F43);
   static const _items = [
     CurvedNavigationItemPro(
-        icon: Icons.flight_outlined,
+        inactiveIcon: Icons.flight_outlined,
         activeIcon: Icons.flight_rounded,
         label: 'Flights'),
     CurvedNavigationItemPro(
-        icon: Icons.hotel_outlined,
+        inactiveIcon: Icons.hotel_outlined,
         activeIcon: Icons.hotel_rounded,
         label: 'Hotels'),
     CurvedNavigationItemPro(
-        icon: Icons.explore_outlined,
+        inactiveIcon: Icons.explore_outlined,
         activeIcon: Icons.explore_rounded,
         label: 'Explore'),
     CurvedNavigationItemPro(
-        icon: Icons.person_outline_rounded,
+        inactiveIcon: Icons.person_outline_rounded,
         activeIcon: Icons.person_rounded,
         label: 'Profile'),
   ];
@@ -645,15 +645,15 @@ class _Style7 extends StatelessWidget {
   static const _barBg = Color(0xFF0E0829);
   static const _items = [
     CurvedNavigationItemPro(
-        icon: Icons.auto_awesome_outlined,
+        inactiveIcon: Icons.auto_awesome_outlined,
         activeIcon: Icons.auto_awesome_rounded,
         label: 'Magic'),
     CurvedNavigationItemPro(
-        icon: Icons.palette_outlined,
+        inactiveIcon: Icons.palette_outlined,
         activeIcon: Icons.palette_rounded,
         label: 'Create'),
     CurvedNavigationItemPro(
-        icon: Icons.account_circle_outlined,
+        inactiveIcon: Icons.account_circle_outlined,
         activeIcon: Icons.account_circle_rounded,
         label: 'You'),
   ];
@@ -711,19 +711,19 @@ class _Style8 extends StatelessWidget {
   static const _accent = Color(0xFF2B6CB0);
   static const _items = [
     CurvedNavigationItemPro(
-        icon: Icons.wb_sunny_outlined,
+        inactiveIcon: Icons.wb_sunny_outlined,
         activeIcon: Icons.wb_sunny_rounded,
         label: 'Today'),
     CurvedNavigationItemPro(
-        icon: Icons.bar_chart_outlined,
+        inactiveIcon: Icons.bar_chart_outlined,
         activeIcon: Icons.bar_chart_rounded,
         label: 'Stats'),
     CurvedNavigationItemPro(
-        icon: Icons.water_drop_outlined,
+        inactiveIcon: Icons.water_drop_outlined,
         activeIcon: Icons.water_drop_rounded,
         label: 'Hydro'),
     CurvedNavigationItemPro(
-        icon: Icons.settings_outlined,
+        inactiveIcon: Icons.settings_outlined,
         activeIcon: Icons.settings_rounded,
         label: 'Prefs'),
   ];
@@ -782,23 +782,23 @@ class _Style9 extends StatelessWidget {
   static const _barBg = Color(0xFF1C0A1C);
   static const _items = [
     CurvedNavigationItemPro(
-        icon: Icons.home_outlined,
+        inactiveIcon: Icons.home_outlined,
         activeIcon: Icons.home_rounded,
         label: 'Home'),
     CurvedNavigationItemPro(
-        icon: Icons.chat_bubble_outline_rounded,
+        inactiveIcon: Icons.chat_bubble_outline_rounded,
         activeIcon: Icons.chat_bubble_rounded,
         label: 'Chat'),
     CurvedNavigationItemPro(
-        icon: Icons.add_photo_alternate_outlined,
+        inactiveIcon: Icons.add_photo_alternate_outlined,
         activeIcon: Icons.add_photo_alternate_rounded,
         label: 'Post'),
     CurvedNavigationItemPro(
-        icon: Icons.notifications_outlined,
+        inactiveIcon: Icons.notifications_outlined,
         activeIcon: Icons.notifications_rounded,
         label: 'Notify'),
     CurvedNavigationItemPro(
-        icon: Icons.person_outline_rounded,
+        inactiveIcon: Icons.person_outline_rounded,
         activeIcon: Icons.person_rounded,
         label: 'Me'),
   ];
@@ -857,19 +857,19 @@ class _Style10 extends StatelessWidget {
   static const _barBg = Color(0xFF121008);
   static const _items = [
     CurvedNavigationItemPro(
-        icon: Icons.account_balance_wallet_outlined,
+        inactiveIcon: Icons.account_balance_wallet_outlined,
         activeIcon: Icons.account_balance_wallet_rounded,
         label: 'Wallet'),
     CurvedNavigationItemPro(
-        icon: Icons.show_chart_rounded,
+        inactiveIcon: Icons.show_chart_rounded,
         activeIcon: Icons.show_chart_rounded,
         label: 'Markets'),
     CurvedNavigationItemPro(
-        icon: Icons.receipt_long_outlined,
+        inactiveIcon: Icons.receipt_long_outlined,
         activeIcon: Icons.receipt_long_rounded,
         label: 'History'),
     CurvedNavigationItemPro(
-        icon: Icons.person_outline_rounded,
+        inactiveIcon: Icons.person_outline_rounded,
         activeIcon: Icons.person_rounded,
         label: 'Account'),
   ];

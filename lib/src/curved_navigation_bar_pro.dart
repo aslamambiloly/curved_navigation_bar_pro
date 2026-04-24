@@ -314,7 +314,7 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
         );
 
         final activeItem = widget.items[widget.currentIndex];
-        final fabIcon = activeItem.activeIcon ?? activeItem.icon;
+        final fabIcon = activeItem.activeIcon ?? activeItem.inactiveIcon;
 
         return Semantics(
           container: true,
@@ -559,7 +559,7 @@ class _NavItemTile extends StatelessWidget {
             AnimatedOpacity(
               opacity: isActive ? 0.0 : 1.0,
               duration: const Duration(milliseconds: 100),
-              child: Icon(item.icon, size: 22, color: inactiveColor),
+              child: Icon(item.inactiveIcon, size: 22, color: inactiveColor),
             ),
             const SizedBox(height: 10),
             AnimatedDefaultTextStyle(
@@ -579,7 +579,10 @@ class _NavItemTile extends StatelessWidget {
                         letterSpacing: 0.2,
                         color: inactiveColor,
                       ),
-              child: Text(item.label),
+              child: Text(
+                item.label,
+                textAlign: TextAlign.center,
+              ),
             ),
           ],
         ),

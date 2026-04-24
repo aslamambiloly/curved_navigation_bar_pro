@@ -242,7 +242,7 @@ class _NavPreviewState extends State<_NavPreview> {
   @override
   Widget build(BuildContext context) {
     final item = widget.items[_index];
-    final icon = item.activeIcon ?? item.icon;
+    final icon = item.activeIcon ?? item.inactiveIcon;
 
     return Container(
       color: widget.bgColor,
@@ -293,19 +293,19 @@ class _Style1 extends StatelessWidget {
 
   static const _items = [
     CurvedNavigationItemPro(
-        icon: Icons.home_outlined,
+        inactiveIcon: Icons.home_outlined,
         activeIcon: Icons.home_rounded,
         label: 'Home'),
     CurvedNavigationItemPro(
-        icon: Icons.search_outlined,
+        inactiveIcon: Icons.search_outlined,
         activeIcon: Icons.search_rounded,
         label: 'Search'),
     CurvedNavigationItemPro(
-        icon: Icons.favorite_outline,
+        inactiveIcon: Icons.favorite_outline,
         activeIcon: Icons.favorite_rounded,
         label: 'Saved'),
     CurvedNavigationItemPro(
-        icon: Icons.person_outline_rounded,
+        inactiveIcon: Icons.person_outline_rounded,
         activeIcon: Icons.person_rounded,
         label: 'Profile'),
   ];
@@ -351,19 +351,19 @@ class _Style2 extends StatelessWidget {
 
   static const _items = [
     CurvedNavigationItemPro(
-        icon: Icons.dashboard_outlined,
+        inactiveIcon: Icons.dashboard_outlined,
         activeIcon: Icons.dashboard_rounded,
         label: 'Dash'),
     CurvedNavigationItemPro(
-        icon: Icons.explore_outlined,
+        inactiveIcon: Icons.explore_outlined,
         activeIcon: Icons.explore_rounded,
         label: 'Explore'),
     CurvedNavigationItemPro(
-        icon: Icons.notifications_outlined,
+        inactiveIcon: Icons.notifications_outlined,
         activeIcon: Icons.notifications_rounded,
         label: 'Alerts'),
     CurvedNavigationItemPro(
-        icon: Icons.settings_outlined,
+        inactiveIcon: Icons.settings_outlined,
         activeIcon: Icons.settings_rounded,
         label: 'Settings'),
   ];
@@ -424,19 +424,19 @@ class _Style3 extends StatelessWidget {
 
   static const _items = [
     CurvedNavigationItemPro(
-        icon: Icons.storefront_outlined,
+        inactiveIcon: Icons.storefront_outlined,
         activeIcon: Icons.storefront_rounded,
         label: 'Shop'),
     CurvedNavigationItemPro(
-        icon: Icons.shopping_bag_outlined,
+        inactiveIcon: Icons.shopping_bag_outlined,
         activeIcon: Icons.shopping_bag_rounded,
         label: 'Bag'),
     CurvedNavigationItemPro(
-        icon: Icons.local_offer_outlined,
+        inactiveIcon: Icons.local_offer_outlined,
         activeIcon: Icons.local_offer_rounded,
         label: 'Deals'),
     CurvedNavigationItemPro(
-        icon: Icons.person_outline_rounded,
+        inactiveIcon: Icons.person_outline_rounded,
         activeIcon: Icons.person_rounded,
         label: 'Me'),
   ];
@@ -482,15 +482,15 @@ class _Style4 extends StatelessWidget {
 
   static const _items = [
     CurvedNavigationItemPro(
-        icon: Icons.grid_view_outlined,
+        inactiveIcon: Icons.grid_view_outlined,
         activeIcon: Icons.grid_view_rounded,
         label: 'Feed'),
     CurvedNavigationItemPro(
-        icon: Icons.photo_camera_outlined,
+        inactiveIcon: Icons.photo_camera_outlined,
         activeIcon: Icons.photo_camera_rounded,
         label: 'Camera'),
     CurvedNavigationItemPro(
-        icon: Icons.inbox_outlined,
+        inactiveIcon: Icons.inbox_outlined,
         activeIcon: Icons.inbox_rounded,
         label: 'Inbox'),
   ];
@@ -549,23 +549,23 @@ class _Style5 extends StatelessWidget {
 
   static const _items = [
     CurvedNavigationItemPro(
-        icon: Icons.home_outlined,
+        inactiveIcon: Icons.home_outlined,
         activeIcon: Icons.home_rounded,
         label: 'Home'),
     CurvedNavigationItemPro(
-        icon: Icons.map_outlined,
+        inactiveIcon: Icons.map_outlined,
         activeIcon: Icons.map_rounded,
         label: 'Map'),
     CurvedNavigationItemPro(
-        icon: Icons.eco_outlined,
+        inactiveIcon: Icons.eco_outlined,
         activeIcon: Icons.eco_rounded,
         label: 'Nature'),
     CurvedNavigationItemPro(
-        icon: Icons.star_outline_rounded,
+        inactiveIcon: Icons.star_outline_rounded,
         activeIcon: Icons.star_rounded,
         label: 'Stars'),
     CurvedNavigationItemPro(
-        icon: Icons.account_circle_outlined,
+        inactiveIcon: Icons.account_circle_outlined,
         activeIcon: Icons.account_circle_rounded,
         label: 'Account'),
   ];

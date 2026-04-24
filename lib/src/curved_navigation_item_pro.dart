@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 /// A single item in a [CurvedNavBar].
 ///
-/// Each item has a required [icon] and [label]. An optional [activeIcon] is
+/// Each item has a required [inactiveIcon] and [label]. An optional [activeIcon] is
 /// shown inside the animated FAB bubble when that tab is selected.
 ///
 /// ```dart
@@ -18,17 +18,17 @@ import 'package:flutter/material.dart';
 class CurvedNavigationItemPro {
   /// Creates a navigation item.
   const CurvedNavigationItemPro({
-    required this.icon,
+    required this.inactiveIcon,
     this.activeIcon,
     required this.label,
   });
 
   /// Icon shown in the bar when the item is **inactive**.
-  final IconData icon;
+  final IconData inactiveIcon;
 
   /// Icon shown inside the FAB bubble when this item is **active**.
   ///
-  /// Defaults to [icon] when omitted.
+  /// Defaults to [inactiveIcon] when omitted.
   final IconData? activeIcon;
 
   /// Short label drawn below the icon (or below the notch area when active).

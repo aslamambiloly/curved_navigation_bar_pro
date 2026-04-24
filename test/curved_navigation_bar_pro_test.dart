@@ -6,10 +6,10 @@ import 'package:flutter_test/flutter_test.dart';
 
 const _items = [
   CurvedNavigationItemPro(
-      icon: Icons.home_outlined, activeIcon: Icons.home, label: 'HOME'),
-  CurvedNavigationItemPro(icon: Icons.search, label: 'SEARCH'),
-  CurvedNavigationItemPro(icon: Icons.favorite_outline, label: 'SAVED'),
-  CurvedNavigationItemPro(icon: Icons.person_outline, label: 'PROFILE'),
+      inactiveIcon: Icons.home_outlined, activeIcon: Icons.home, label: 'HOME'),
+  CurvedNavigationItemPro(inactiveIcon: Icons.search, label: 'SEARCH'),
+  CurvedNavigationItemPro(inactiveIcon: Icons.favorite_outline, label: 'SAVED'),
+  CurvedNavigationItemPro(inactiveIcon: Icons.person_outline, label: 'PROFILE'),
 ];
 
 Widget _buildApp({int index = 0, ValueChanged<int>? onTap}) {
@@ -55,7 +55,7 @@ void main() {
       expect(
         () => CurvedNavigationBarPro(
           items: const [
-            CurvedNavigationItemPro(icon: Icons.home, label: 'HOME')
+            CurvedNavigationItemPro(inactiveIcon: Icons.home, label: 'HOME')
           ],
           onTap: (_) {},
         ),
@@ -65,13 +65,13 @@ void main() {
 
     testWidgets('throws assertion for more than 6 items', (tester) async {
       const many = [
-        CurvedNavigationItemPro(icon: Icons.home, label: 'A'),
-        CurvedNavigationItemPro(icon: Icons.home, label: 'B'),
-        CurvedNavigationItemPro(icon: Icons.home, label: 'C'),
-        CurvedNavigationItemPro(icon: Icons.home, label: 'D'),
-        CurvedNavigationItemPro(icon: Icons.home, label: 'E'),
-        CurvedNavigationItemPro(icon: Icons.home, label: 'F'),
-        CurvedNavigationItemPro(icon: Icons.home, label: 'G'),
+        CurvedNavigationItemPro(inactiveIcon: Icons.home, label: 'A'),
+        CurvedNavigationItemPro(inactiveIcon: Icons.home, label: 'B'),
+        CurvedNavigationItemPro(inactiveIcon: Icons.home, label: 'C'),
+        CurvedNavigationItemPro(inactiveIcon: Icons.home, label: 'D'),
+        CurvedNavigationItemPro(inactiveIcon: Icons.home, label: 'E'),
+        CurvedNavigationItemPro(inactiveIcon: Icons.home, label: 'F'),
+        CurvedNavigationItemPro(inactiveIcon: Icons.home, label: 'G'),
       ];
       expect(
         () => CurvedNavigationBarPro(items: many, onTap: (_) {}),

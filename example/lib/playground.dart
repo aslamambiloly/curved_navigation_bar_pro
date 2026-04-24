@@ -128,27 +128,27 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
 
   static const _allItems = [
     CurvedNavigationItemPro(
-        icon: Icons.home_outlined,
+        inactiveIcon: Icons.home_outlined,
         activeIcon: Icons.home_rounded,
         label: 'Home'),
     CurvedNavigationItemPro(
-        icon: Icons.search_outlined,
+        inactiveIcon: Icons.search_outlined,
         activeIcon: Icons.search_rounded,
         label: 'Search'),
     CurvedNavigationItemPro(
-        icon: Icons.favorite_outline,
+        inactiveIcon: Icons.favorite_outline,
         activeIcon: Icons.favorite_rounded,
         label: 'Saved'),
     CurvedNavigationItemPro(
-        icon: Icons.person_outline_rounded,
+        inactiveIcon: Icons.person_outline_rounded,
         activeIcon: Icons.person_rounded,
         label: 'Profile'),
     CurvedNavigationItemPro(
-        icon: Icons.notifications_outlined,
+        inactiveIcon: Icons.notifications_outlined,
         activeIcon: Icons.notifications_rounded,
         label: 'Alerts'),
     CurvedNavigationItemPro(
-        icon: Icons.settings_outlined,
+        inactiveIcon: Icons.settings_outlined,
         activeIcon: Icons.settings_rounded,
         label: 'Settings'),
   ];
@@ -303,7 +303,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                               _items[_navIndex.clamp(0, _items.length - 1)]
                                       .activeIcon ??
                                   _items[_navIndex.clamp(0, _items.length - 1)]
-                                      .icon,
+                                      .inactiveIcon,
                               color: _p.activeColor,
                               size: 32,
                             ),
