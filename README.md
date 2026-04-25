@@ -242,9 +242,61 @@ final myStyle = CNBPStyles.arcticFrost.data.copyWith(
 
 | Property | Type | Description |
 |---|---|---|
-| `inactiveIcon` | `IconData` | Icon shown when inactive |
-| `activeIcon` | `IconData?` | Icon shown in the FAB when active (falls back to `icon`) |
+| `inactiveIcon` | `IconData?` | Icon shown when inactive (ignored if `inactiveWidget` is provided) |
+| `activeIcon` | `IconData?` | Icon shown when active (ignored if `activeWidget` is provided) |
+| `inactiveWidget` | `Widget?` | Custom widget shown when inactive (takes priority over `inactiveIcon`) |
+| `activeWidget` | `Widget?` | Custom widget shown when active (takes priority over `activeIcon`) |
 | `label` | `String` | Label text beneath the icon |
+
+> Note: You must provide at least one of `inactiveIcon` or `inactiveWidget`.
+
+### Example with Lottie and Svg
+
+<img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/lottie.gif" width="480"/>
+
+```dart
+CurvedNavigationBarPro(
+  items: [
+    // Lottie Example
+    CurvedNavigationItemPro(
+      inactiveIcon: Icons.favorite_outline,
+      activeIcon: Icons.favorite_rounded,
+      activeWidget: Lottie.asset(
+        'lotties/cart.json',
+        repeat: false,
+        width: 25,
+      ),
+      label: 'SAVED',
+    ),
+
+    // Svg Example
+    CurvedNavigationItemPro(
+      inactiveIcon: Icons.person_outline_rounded,
+      activeIcon: Icons.person_rounded,
+      activeWidget: SvgPicture.asset(
+        'assets/images/call.svg',
+        colorFilter: const ColorFilter.mode(
+          Colors.white,
+          BlendMode.srcIn,
+        ),
+        width: 25,
+      ),
+      inactiveWidget: SvgPicture.asset(
+        'assets/images/call.svg',
+        colorFilter: const ColorFilter.mode(
+          Colors.green,
+          BlendMode.srcIn,
+        ),
+        width: 25,
+      ),
+      label: 'PROFILE',
+    ),
+  ],
+  currentIndex: _index,
+  onTap: (i) => setState(() => _index = i),
+)
+```
+> Note: You can use any widget as an icon, including Lottie and Svg. But keep in mind to set the repeat as false for Lottie and set the colorFilter for Svg.
 
 ---
 

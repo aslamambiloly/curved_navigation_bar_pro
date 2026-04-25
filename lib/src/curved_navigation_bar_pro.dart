@@ -314,7 +314,10 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
         );
 
         final activeItem = widget.items[widget.currentIndex];
-        final fabIcon = activeItem.activeIcon ?? activeItem.inactiveIcon;
+        final activeWidget = activeItem.resolvedActiveWidget(
+          color: activeIconColor ?? Colors.white,
+          size: fabRadius * 0.92,
+        );
 
         return Semantics(
           container: true,
@@ -376,10 +379,9 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
                   top: 0,
                   child: _Bubble(
                     key: ValueKey(widget.currentIndex),
-                    icon: fabIcon,
                     radius: fabRadius,
-                    activeIconColor: activeIconColor,
                     color: fabColor,
+                    child: activeWidget,
                   ),
                 ),
               ],
@@ -559,7 +561,10 @@ class _NavItemTile extends StatelessWidget {
             AnimatedOpacity(
               opacity: isActive ? 0.0 : 1.0,
               duration: const Duration(milliseconds: 100),
-              child: Icon(item.inactiveIcon, size: 22, color: inactiveColor),
+              child: item.resolvedInactiveWidget(
+                color: inactiveColor,
+                size: 22,
+              ),
             ),
             const SizedBox(height: 10),
             AnimatedDefaultTextStyle(
@@ -597,16 +602,15 @@ class _NavItemTile extends StatelessWidget {
 class _Bubble extends StatefulWidget {
   const _Bubble({
     super.key,
-    required this.icon,
+    required this.child,
     required this.radius,
     required this.color,
-    this.activeIconColor,
   });
 
-  final IconData icon;
+  /// The widget to render inside the bubble (already resolved by the caller).
+  final Widget child;
   final double radius;
   final Color color;
-  final Color? activeIconColor;
 
   @override
   State<_Bubble> createState() => _BubbleState();
@@ -647,11 +651,7 @@ class _BubbleState extends State<_Bubble> with SingleTickerProviderStateMixin {
           color: widget.color,
           shape: BoxShape.circle,
         ),
-        child: Icon(
-          widget.icon,
-          color: widget.activeIconColor ?? Colors.white,
-          size: widget.radius * 0.92,
-        ),
+        child: Center(child: widget.child),
       ),
     );
   }

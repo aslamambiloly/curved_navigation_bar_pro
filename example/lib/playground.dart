@@ -14,13 +14,13 @@ class PlaygroundApp extends StatelessWidget {
       theme: ThemeData(
         colorSchemeSeed: const Color(0xFF6C63FF),
         useMaterial3: true,
-        fontFamily: 'packages/curved_navigation_bar_pro/sora',
+        fontFamily: 'sora',
       ),
       darkTheme: ThemeData(
         colorSchemeSeed: const Color(0xFF6C63FF),
         brightness: Brightness.light,
         useMaterial3: true,
-        fontFamily: 'packages/curved_navigation_bar_pro/sora',
+        fontFamily: 'sora',
       ),
       themeMode: ThemeMode.light,
       home: const PlaygroundPage(),
@@ -185,7 +185,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                             color: Colors.white,
                             fontSize: 28,
                             fontFamily:
-                                'packages/curved_navigation_bar_pro/sora',
+                                'sora',
                             fontWeight: FontWeight.w800,
                             letterSpacing: -0.5,
                           ),
@@ -197,7 +197,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                             color: Colors.white54,
                             fontSize: 13,
                             fontFamily:
-                                'packages/curved_navigation_bar_pro/sora',
+                                'sora',
                             fontWeight: FontWeight.w400,
                           ),
                         ),
@@ -223,7 +223,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                       style: TextStyle(
                         fontSize: 13,
                         letterSpacing: 0,
-                        fontFamily: 'packages/curved_navigation_bar_pro/sora',
+                        fontFamily: 'sora',
                         fontWeight: FontWeight.w600,
                       ),
                     ),
@@ -264,7 +264,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                               fontSize: 12,
                               fontWeight: FontWeight.w700,
                               fontFamily:
-                                  'packages/curved_navigation_bar_pro/sora',
+                                  'sora',
                               letterSpacing: 0.4,
                             ),
                           ),
@@ -282,7 +282,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                             color: Colors.white24,
                             fontSize: 11,
                             fontFamily:
-                                'packages/curved_navigation_bar_pro/sora',
+                                'sora',
                           ),
                         ),
                       ],
@@ -316,7 +316,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                                 fontWeight: FontWeight.w700,
                                 fontSize: 15,
                                 fontFamily:
-                                    'packages/curved_navigation_bar_pro/sora',
+                                    'sora',
                                 letterSpacing: 0,
                               ),
                             ),
@@ -387,7 +387,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                                 fontSize: 12,
                                 fontWeight: FontWeight.w700,
                                 fontFamily:
-                                    'packages/curved_navigation_bar_pro/sora',
+                                    'sora',
                                 letterSpacing: 0.4,
                               ),
                             ),
@@ -405,7 +405,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                               color: Colors.white24,
                               fontSize: 11,
                               fontFamily:
-                                  'packages/curved_navigation_bar_pro/sora',
+                                  'sora',
                             ),
                           ),
                         ],
@@ -598,7 +598,7 @@ class _PlaygroundPageState extends State<PlaygroundPage> {
                                       fontSize: 13,
                                       fontWeight: FontWeight.w600,
                                       fontFamily:
-                                          'packages/curved_navigation_bar_pro/sora',
+                                          'sora',
                                     ),
                                   ),
                                 ),
@@ -639,7 +639,7 @@ class _SectionLabel extends StatelessWidget {
               color: color.withValues(alpha: 0.7),
               fontSize: 10,
               fontWeight: FontWeight.w700,
-              fontFamily: 'packages/curved_navigation_bar_pro/sora',
+              fontFamily: 'sora',
               letterSpacing: 1.2,
             ),
           ),

@@ -1,3 +1,8 @@
+## 1.0.10
+
+* Added lottie, svg or any Widget support to `CurvedNavigationBarPro`.
+* Added lottie and svg example to documentation.
+
 ## 1.0.9
 
 * Added support for long labels.

@@ -10,8 +10,33 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^2.2.4
+  lottie: ^3.3.3
   curved_navigation_bar_pro:
     path: ../
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/lotties/
+
+  fonts:
+    - family: sora
+      fonts:
+        - asset: assets/fonts/Sora-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/Sora-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Sora-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Sora-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Sora-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Sora-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Sora-ExtraBold.ttf
+          weight: 800
+
+

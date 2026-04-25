@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar_pro/curved_navigation_bar_pro.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:lottie/lottie.dart';
 
 void main() => runApp(const ExampleApp());
 
@@ -51,7 +53,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: CurvedNavigationBarPro(
         // navbarStyle: CNBPStyles.emeraldPill,
-        items: const [
+        items: [
           CurvedNavigationItemPro(
             inactiveIcon: Icons.home_outlined,
             activeIcon: Icons.home_rounded,
@@ -63,14 +65,35 @@ class _HomePageState extends State<HomePage> {
             label: 'SEARCH',
           ),
           CurvedNavigationItemPro(
-            inactiveIcon: Icons.favorite_outline,
             activeIcon: Icons.favorite_rounded,
-            label: 'SAVED',
+            activeWidget: Lottie.asset(
+              'lotties/cart.json',
+              repeat: false,
+              width: 30,
+            ),
+            inactiveIcon: Icons.shopping_cart_outlined,
+            label: 'CART',
           ),
           CurvedNavigationItemPro(
             inactiveIcon: Icons.person_outline_rounded,
             activeIcon: Icons.person_rounded,
-            label: 'PROFILE',
+            activeWidget: SvgPicture.asset(
+              'assets/images/call.svg',
+              colorFilter: const ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
+              width: 30,
+            ),
+            inactiveWidget: SvgPicture.asset(
+              'assets/images/call.svg',
+              colorFilter: const ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
+              width: 25,
+            ),
+            label: '',
           ),
         ],
         currentIndex: _index,

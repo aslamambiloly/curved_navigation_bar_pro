@@ -199,14 +199,14 @@ enum CNBPStyles {
             fontWeight: FontWeight.w800,
             letterSpacing: 1.2,
             color: Color(0xFF00E5FF),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
           inactiveTextStyle: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.w500,
             letterSpacing: 0.3,
             color: Color(0xFF4A4A6A),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
         );
 
@@ -253,13 +253,13 @@ enum CNBPStyles {
             fontWeight: FontWeight.w600,
             letterSpacing: 0.4,
             color: Color(0xFF2D3748),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
           inactiveTextStyle: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.w400,
             color: Color(0xFFCBD5E0),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
         );
 
@@ -286,13 +286,13 @@ enum CNBPStyles {
             fontWeight: FontWeight.w700,
             letterSpacing: 0.8,
             color: Color(0xFF00C896),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
           inactiveTextStyle: TextStyle(
             fontSize: 10,
             fontWeight: FontWeight.w400,
             color: Color(0xFF2E5448),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
         );
 
@@ -319,13 +319,13 @@ enum CNBPStyles {
             fontWeight: FontWeight.w700,
             letterSpacing: 0.3,
             color: Color(0xFFFF9F43),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
           inactiveTextStyle: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.w400,
             color: Color(0xFFD4C4B0),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
         );
 
@@ -352,13 +352,13 @@ enum CNBPStyles {
             fontWeight: FontWeight.w800,
             letterSpacing: 1.0,
             color: Color(0xFFBE73FF),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
           inactiveTextStyle: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w400,
             color: Color(0xFF3D2A5C),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
         );
 
@@ -385,13 +385,13 @@ enum CNBPStyles {
             fontWeight: FontWeight.w700,
             letterSpacing: 0.3,
             color: Color(0xFF2B6CB0),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
           inactiveTextStyle: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.w400,
             color: Color(0xFFA0AEBE),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
         );
 
@@ -418,13 +418,13 @@ enum CNBPStyles {
             fontWeight: FontWeight.w700,
             letterSpacing: 0.5,
             color: Color(0xFFFF6AC1),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
           inactiveTextStyle: TextStyle(
             fontSize: 10,
             fontWeight: FontWeight.w400,
             color: Color(0xFF4A1A4A),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
         );
 
@@ -451,13 +451,13 @@ enum CNBPStyles {
             fontWeight: FontWeight.w800,
             letterSpacing: 0.8,
             color: Color(0xFFFFD700),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
           inactiveTextStyle: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.w400,
             color: Color(0xFF3A3218),
-            fontFamily: 'packages/curved_navigation_bar_pro/sora',
+            fontFamily: 'sora',
           ),
         );
     }

@@ -19,7 +19,7 @@ class ShowcaseApp2 extends StatelessWidget {
       theme: ThemeData(
         colorSchemeSeed: const Color(0xFF6C63FF),
         useMaterial3: true,
-        fontFamily: 'packages/curved_navigation_bar_pro/sora',
+        fontFamily: 'sora',
       ),
       // ↓ Change this to jump straight to any style (1–5)
       home: const ShowcasePage2(),
@@ -143,7 +143,7 @@ class _ShowcasePage2State extends State<ShowcasePage2> {
                                   fontSize: 28,
                                   fontWeight: FontWeight.w800,
                                   fontFamily:
-                                      'packages/curved_navigation_bar_pro/sora',
+                                      'sora',
                                   letterSpacing: -0.5,
                                 ),
                               ),
@@ -154,7 +154,7 @@ class _ShowcasePage2State extends State<ShowcasePage2> {
                                   color: Colors.white54,
                                   fontSize: 13,
                                   fontFamily:
-                                      'packages/curved_navigation_bar_pro/sora',
+                                      'sora',
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),
@@ -178,7 +178,7 @@ class _ShowcasePage2State extends State<ShowcasePage2> {
                               fontSize: 12,
                               fontWeight: FontWeight.w700,
                               fontFamily:
-                                  'packages/curved_navigation_bar_pro/sora',
+                                  'sora',
                               letterSpacing: 0.5,
                             ),
                           ),
@@ -276,7 +276,7 @@ class _JumpBanner extends StatelessWidget {
                 style: const TextStyle(
                   color: Colors.white54,
                   fontSize: 12,
-                  fontFamily: 'packages/curved_navigation_bar_pro/sora',
+                  fontFamily: 'sora',
                 ),
                 children: [
                   TextSpan(
@@ -415,7 +415,7 @@ class _StyleCardState extends State<_StyleCard>
                       color: Colors.white60,
                       fontSize: 13,
                       fontWeight: FontWeight.w700,
-                      fontFamily: 'packages/curved_navigation_bar_pro/sora',
+                      fontFamily: 'sora',
                     ),
                   ),
                 ),
@@ -431,7 +431,7 @@ class _StyleCardState extends State<_StyleCard>
                           fontSize: 15,
                           fontWeight: FontWeight.w700,
                           fontFamily:
-                              'packages/curved_navigation_bar_pro/sora',
+                              'sora',
                           letterSpacing: 0,
                         ),
                       ),
@@ -443,7 +443,7 @@ class _StyleCardState extends State<_StyleCard>
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                           fontFamily:
-                              'packages/curved_navigation_bar_pro/sora',
+                              'sora',
                         ),
                       ),
                     ],
@@ -472,7 +472,7 @@ class _StyleCardState extends State<_StyleCard>
                             fontWeight: FontWeight.w800,
                             letterSpacing: 1.0,
                             fontFamily:
-                                'packages/curved_navigation_bar_pro/sora',
+                                'sora',
                           ),
                         ),
                       ),
@@ -548,7 +548,7 @@ class _NavPreviewState extends State<_NavPreview> {
                         color: widget.accentColor,
                         fontWeight: FontWeight.w700,
                         fontSize: 13,
-                        fontFamily: 'packages/curved_navigation_bar_pro/sora',
+                        fontFamily: 'sora',
                         letterSpacing: 0,
                       ),
                     ),
@@ -621,13 +621,13 @@ class _Style6 extends StatelessWidget {
           fontWeight: FontWeight.w700,
           color: _accent,
           letterSpacing: 0.3,
-          fontFamily: 'packages/curved_navigation_bar_pro/sora',
+          fontFamily: 'sora',
         ),
         inactiveTextStyle: const TextStyle(
           fontSize: 11,
           fontWeight: FontWeight.w400,
           color: Color(0xFFD4C4B0),
-          fontFamily: 'packages/curved_navigation_bar_pro/sora',
+          fontFamily: 'sora',
         ),
       ),
     );
@@ -688,13 +688,13 @@ class _Style7 extends StatelessWidget {
           fontWeight: FontWeight.w800,
           color: _accent,
           letterSpacing: 1.0,
-          fontFamily: 'packages/curved_navigation_bar_pro/sora',
+          fontFamily: 'sora',
         ),
         inactiveTextStyle: const TextStyle(
           fontSize: 12,
           fontWeight: FontWeight.w400,
           color: Color(0xFF3D2A5C),
-          fontFamily: 'packages/curved_navigation_bar_pro/sora',
+          fontFamily: 'sora',
         ),
       ),
     );
@@ -758,13 +758,13 @@ class _Style8 extends StatelessWidget {
           fontWeight: FontWeight.w700,
           color: _accent,
           letterSpacing: 0.3,
-          fontFamily: 'packages/curved_navigation_bar_pro/sora',
+          fontFamily: 'sora',
         ),
         inactiveTextStyle: const TextStyle(
           fontSize: 11,
           fontWeight: FontWeight.w400,
           color: Color(0xFFA0AEBE),
-          fontFamily: 'packages/curved_navigation_bar_pro/sora',
+          fontFamily: 'sora',
         ),
       ),
     );
@@ -833,13 +833,13 @@ class _Style9 extends StatelessWidget {
           fontWeight: FontWeight.w700,
           color: _accent,
           letterSpacing: 0.5,
-          fontFamily: 'packages/curved_navigation_bar_pro/sora',
+          fontFamily: 'sora',
         ),
         inactiveTextStyle: const TextStyle(
           fontSize: 10,
           fontWeight: FontWeight.w400,
           color: Color(0xFF4A1A4A),
-          fontFamily: 'packages/curved_navigation_bar_pro/sora',
+          fontFamily: 'sora',
         ),
       ),
     );
@@ -904,13 +904,13 @@ class _Style10 extends StatelessWidget {
           fontWeight: FontWeight.w800,
           color: _accent,
           letterSpacing: 0.8,
-          fontFamily: 'packages/curved_navigation_bar_pro/sora',
+          fontFamily: 'sora',
         ),
         inactiveTextStyle: const TextStyle(
           fontSize: 11,
           fontWeight: FontWeight.w400,
           color: Color(0xFF3A3218),
-          fontFamily: 'packages/curved_navigation_bar_pro/sora',
+          fontFamily: 'sora',
         ),
       ),
     );
