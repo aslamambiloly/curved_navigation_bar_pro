@@ -4,7 +4,6 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/aslamambiloly?style=flat&logo=github&label=Sponsor&color=ea4aaa)](https://github.com/sponsors/aslamambiloly)
-[![Code quality](https://www.code-inspect.com/api/project/github/aslamambiloly/curved_navigation_bar_pro?token=9141542d-71c1-4de5-a582-a6f7719c74d4)](https://www.code-inspect.com)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/aslamambiloly/curved_navigation_bar_pro?style=flat)](https://github.com/aslamambiloly/curved_navigation_bar_pro)
 [![GitHub forks](https://img.shields.io/github/forks/aslamambiloly/curved_navigation_bar_pro?style=flat)](https://github.com/aslamambiloly/curved_navigation_bar_pro/fork)
 [![GitHub issues](https://img.shields.io/github/issues-closed/aslamambiloly/curved_navigation_bar_pro?style=flat)](https://github.com/aslamambiloly/curved_navigation_bar_pro/issues?q=is%3Aissue+is%3Aclosed)
