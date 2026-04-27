@@ -1,3 +1,7 @@
+## 1.0.12
+
+* Updated lottie example GIF with the latest animation.
+
 ## 1.0.11
 
 * Added `showLabel` parameter to `CurvedNavigationBarPro` widget.

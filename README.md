@@ -58,7 +58,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^1.0.11
+  curved_navigation_bar_pro: ^1.0.12
 ```
 
 Then run:
@@ -261,7 +261,7 @@ final myStyle = CNBPStyles.arcticFrost.data.copyWith(
 
 ## Example with Lottie and Svg
 
-<img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/lottie.gif" width="480"/>
+<img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/lottie1.gif" width="480"/>
 
 ```dart
 CurvedNavigationBarPro(
