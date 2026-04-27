@@ -1,3 +1,7 @@
+## 1.0.11
+
+* Added `showLabel` parameter to `CurvedNavigationBarPro` widget.
+
 ## 1.0.10
 
 * Added lottie, svg or any Widget support to `CurvedNavigationBarPro`.

@@ -38,6 +38,7 @@ class CNBPStyleData {
     this.animationCurve,
     this.activeTextStyle,
     this.inactiveTextStyle,
+    this.showLabel,
   });
 
   final Color? backgroundColor;
@@ -57,6 +58,7 @@ class CNBPStyleData {
   final Curve? animationCurve;
   final TextStyle? activeTextStyle;
   final TextStyle? inactiveTextStyle;
+  final bool? showLabel;
 
   /// Returns a copy of this style with the specified fields replaced.
   CNBPStyleData copyWith({
@@ -77,6 +79,7 @@ class CNBPStyleData {
     Curve? animationCurve,
     TextStyle? activeTextStyle,
     TextStyle? inactiveTextStyle,
+    bool? showLabel,
   }) =>
       CNBPStyleData(
         backgroundColor: backgroundColor ?? this.backgroundColor,
@@ -96,6 +99,7 @@ class CNBPStyleData {
         animationCurve: animationCurve ?? this.animationCurve,
         activeTextStyle: activeTextStyle ?? this.activeTextStyle,
         inactiveTextStyle: inactiveTextStyle ?? this.inactiveTextStyle,
+        showLabel: showLabel ?? this.showLabel,
       );
 }
 

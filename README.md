@@ -4,6 +4,12 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/aslamambiloly?style=flat&logo=github&label=Sponsor&color=ea4aaa)](https://github.com/sponsors/aslamambiloly)
+![CodeFactor grade](https://www.codefactor.io/repository/github/aslamambiloly/curved_navigation_bar_pro/badge/grade)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/aslamambiloly/curved_navigation_bar_pro?style=flat)](https://github.com/aslamambiloly/curved_navigation_bar_pro)
+[![GitHub forks](https://img.shields.io/github/forks/aslamambiloly/curved_navigation_bar_pro?style=flat)](https://github.com/aslamambiloly/curved_navigation_bar_pro/fork)
+[![GitHub issues](https://img.shields.io/github/issues-closed/aslamambiloly/curved_navigation_bar_pro?style=flat)](https://github.com/aslamambiloly/curved_navigation_bar_pro/issues?q=is%3Aissue+is%3Aclosed)
+[![GitHub issues](https://img.shields.io/github/issues/aslamambiloly/curved_navigation_bar_pro?style=flat)](https://github.com/aslamambiloly/curved_navigation_bar_pro/issues)
+
 
 A beautiful Flutter bottom navigation bar with a **smooth animated curved notch**, an **elastic FAB bubble** that glides between items, and comprehensive theming support.
 
@@ -18,6 +24,7 @@ A beautiful Flutter bottom navigation bar with a **smooth animated curved notch*
 - Full theming — colours, geometry, elevation, text styles
 - Built-in accessibility semantics
 - 2–6 navigation items
+- Lottie, SVG, Image or any Widget support for Icons
 - Zero dependencies beyond Flutter
 
 ---
@@ -51,7 +58,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^1.0.10
+  curved_navigation_bar_pro: ^1.0.11
 ```
 
 Then run:
@@ -85,18 +92,17 @@ class _MyPageState extends State<MyPage> {
           CurvedNavigationItemPro(
             inactiveIcon: Icons.home_outlined,
             activeIcon: Icons.home_rounded,
-            label: 'HOME',
+            label: 'Home',
           ),
-          CurvedNavigationItemPro(inactiveIcon: Icons.search_outlined, label: 'SEARCH'),
           CurvedNavigationItemPro(
             inactiveIcon: Icons.favorite_outline,
             activeIcon: Icons.favorite_rounded,
-            label: 'SAVED',
+            label: 'Saved',
           ),
           CurvedNavigationItemPro(
             inactiveIcon: Icons.person_outline_rounded,
             activeIcon: Icons.person_rounded,
-            label: 'PROFILE',
+            label: 'Profile',
           ),
         ],
         currentIndex: _index,
@@ -235,6 +241,7 @@ final myStyle = CNBPStyles.arcticFrost.data.copyWith(
 | `animationCurve` | `Curve?` | preset → `easeInOutCubic` | Notch slide curve |
 | `activeTextStyle` | `TextStyle?` | preset → built-in | Override active label style |
 | `inactiveTextStyle` | `TextStyle?` | preset → built-in | Override inactive label style |
+| `showLabel` | `bool?` | preset → `true` | Toggle visibility of labels below the icons |
 
 > **Resolution order:** explicit parameter → `navbarStyle` preset → hardcoded default
 
@@ -250,7 +257,9 @@ final myStyle = CNBPStyles.arcticFrost.data.copyWith(
 
 > Note: You must provide at least one of `inactiveIcon` or `inactiveWidget`.
 
-### Example with Lottie and Svg
+---
+
+## Example with Lottie and Svg
 
 <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/lottie.gif" width="480"/>
 
@@ -259,22 +268,24 @@ CurvedNavigationBarPro(
   items: [
     // Lottie Example
     CurvedNavigationItemPro(
-      inactiveIcon: Icons.favorite_outline,
-      activeIcon: Icons.favorite_rounded,
       activeWidget: Lottie.asset(
         'lotties/cart.json',
         repeat: false,
         width: 25,
       ),
-      label: 'SAVED',
+      inactiveWidget: Lottie.asset(
+        'lotties/cart.json',
+        repeat: false,
+        animate: false,
+        width: 25,
+      ),
+      label: 'Cart',
     ),
 
     // Svg Example
     CurvedNavigationItemPro(
-      inactiveIcon: Icons.person_outline_rounded,
-      activeIcon: Icons.person_rounded,
       activeWidget: SvgPicture.asset(
-        'assets/images/call.svg',
+        'assets/images/profile_fill.svg',
         colorFilter: const ColorFilter.mode(
           Colors.white,
           BlendMode.srcIn,
@@ -282,21 +293,22 @@ CurvedNavigationBarPro(
         width: 25,
       ),
       inactiveWidget: SvgPicture.asset(
-        'assets/images/call.svg',
+        'assets/images/profile.svg',
         colorFilter: const ColorFilter.mode(
           Colors.green,
           BlendMode.srcIn,
         ),
         width: 25,
       ),
-      label: 'PROFILE',
+      label: 'Profile',
     ),
   ],
   currentIndex: _index,
   onTap: (i) => setState(() => _index = i),
 )
+
 ```
-> Note: You can use any widget as an icon, including Lottie and Svg. But keep in mind to set the repeat as false for Lottie and set the colorFilter for Svg.
+> Note: Keep in mind to set the `repeat` as false for Lottie and set the `colorFilter` for Svg for a better user experience.
 
 ---
 

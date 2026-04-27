@@ -68,6 +68,7 @@ class CurvedNavigationBarPro extends StatefulWidget {
     // ── Text styles ──────────────────────────────────────────────────────────
     this.activeTextStyle,
     this.inactiveTextStyle,
+    this.showLabel,
   })  : assert(
           items.length >= 2 && items.length <= 6,
           'CurvedNavBar requires between 2 and 6 items, '
@@ -187,6 +188,9 @@ class CurvedNavigationBarPro extends StatefulWidget {
   /// Custom text style for inactive labels. Overrides the preset and the
   /// built-in default.
   final TextStyle? inactiveTextStyle;
+  /// Whether to show labels below the icons.
+  /// Defaults to the preset value, or `true`.
+  final bool? showLabel;
 
   @override
   State<CurvedNavigationBarPro> createState() => _CurvedNavigationBarProState();
@@ -294,6 +298,7 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
         widget.activeTextStyle ?? styleData?.activeTextStyle;
     final inactiveTextStyle =
         widget.inactiveTextStyle ?? styleData?.inactiveTextStyle;
+    final showLabel = widget.showLabel ?? styleData?.showLabel ?? true;
     // ─────────────────────────────────────────────────────────────────────────
 
     final fraction = _liveFraction;
@@ -366,6 +371,7 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
                           animationDuration: animationDuration,
                           activeTextStyle: activeTextStyle,
                           inactiveTextStyle: inactiveTextStyle,
+                          showLabel: showLabel,
                           onTap: () => widget.onTap(i),
                         ),
                       );
@@ -535,6 +541,7 @@ class _NavItemTile extends StatelessWidget {
     required this.onTap,
     this.activeTextStyle,
     this.inactiveTextStyle,
+    required this.showLabel,
   });
 
   final CurvedNavigationItemPro item;
@@ -544,6 +551,7 @@ class _NavItemTile extends StatelessWidget {
   final Color inactiveColor;
   final Duration animationDuration;
   final TextStyle? activeTextStyle, inactiveTextStyle;
+  final bool showLabel;
   final VoidCallback onTap;
 
   @override
@@ -566,29 +574,31 @@ class _NavItemTile extends StatelessWidget {
                 size: 22,
               ),
             ),
-            const SizedBox(height: 10),
-            AnimatedDefaultTextStyle(
-              duration: animationDuration,
-              style: isActive
-                  ? activeTextStyle ??
-                      TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 0.9,
-                        color: activeColor,
-                      )
-                  : inactiveTextStyle ??
-                      TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w500,
-                        letterSpacing: 0.2,
-                        color: inactiveColor,
-                      ),
-              child: Text(
-                item.label,
-                textAlign: TextAlign.center,
+            if (showLabel) ...[
+              const SizedBox(height: 10),
+              AnimatedDefaultTextStyle(
+                duration: animationDuration,
+                style: isActive
+                    ? activeTextStyle ??
+                        TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.9,
+                          color: activeColor,
+                        )
+                    : inactiveTextStyle ??
+                        TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500,
+                          letterSpacing: 0.2,
+                          color: inactiveColor,
+                        ),
+                child: Text(
+                  item.label,
+                  textAlign: TextAlign.center,
+                ),
               ),
-            ),
+            ],
           ],
         ),
       ),
