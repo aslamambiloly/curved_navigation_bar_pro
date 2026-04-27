@@ -1,3 +1,7 @@
+## 1.0.14
+
+* Enhanced readme with new screenshots and demo GIFs.
+
 ## 1.0.13
 
 * Bug fixes and performance improvements.

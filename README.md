@@ -57,7 +57,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^1.0.13
+  curved_navigation_bar_pro: ^1.0.14
 ```
 
 Then run:
@@ -213,54 +213,9 @@ final myStyle = CNBPStyles.arcticFrost.data.copyWith(
 
 ---
 
-## API Reference
-
-### `CurvedNavigationBarPro`
-
-| Property | Type | Default | Description |
-|---|---|---|---|
-| `items` | `List<CurvedNavigationItemPro>` | **required** | 2–6 navigation items |
-| `onTap` | `ValueChanged<int>` | **required** | Callback when an item is tapped |
-| `currentIndex` | `int` | `0` | Selected item index |
-| `navbarStyle` | `CNBPStyles?` | `null` | Built-in preset — supplies defaults for all visual params |
-| `backgroundColor` | `Color?` | preset → `Colors.white` | Bar background |
-| `activeColor` | `Color?` | preset → theme primary | Active label & default FAB colour |
-| `activeIconColor` | `Color?` | preset → `Colors.white` | Icon colour inside the FAB bubble |
-| `inactiveColor` | `Color?` | preset → `#ADB5BD` | Inactive icon & label colour |
-| `fabColor` | `Color?` | preset → `activeColor` | FAB bubble background |
-| `barHeight` | `double?` | preset → `110` | Bar height in logical pixels |
-| `fabRadius` | `double?` | preset → `24` | FAB bubble radius |
-| `fabGap` | `double?` | preset → `10` | Gap between FAB edge and notch arc |
-| `fabSink` | `double?` | preset → `22` | Pixels the FAB centre sinks below the bar top |
-| `notchShoulderRadius` | `double?` | preset → `12` | Shoulder fillet radius (0 = sharp corners) |
-| `cornerRadius` | `double?` | preset → `0` | Top-left / top-right bar corner radius |
-| `elevation` | `double?` | preset → `14` | Shadow depth |
-| `shadowColor` | `Color?` | preset → `rgba(0,0,0,0.16)` | Shadow colour |
-| `animationDuration` | `Duration?` | preset → `400 ms` | Notch slide duration |
-| `animationCurve` | `Curve?` | preset → `easeInOutCubic` | Notch slide curve |
-| `activeTextStyle` | `TextStyle?` | preset → built-in | Override active label style |
-| `inactiveTextStyle` | `TextStyle?` | preset → built-in | Override inactive label style |
-| `showLabel` | `bool?` | preset → `true` | Toggle visibility of labels below the icons |
-
-> **Resolution order:** explicit parameter → `navbarStyle` preset → hardcoded default
-
-### `CurvedNavigationItemPro`
-
-| Property | Type | Description |
-|---|---|---|
-| `inactiveIcon` | `IconData?` | Icon shown when inactive (ignored if `inactiveWidget` is provided) |
-| `activeIcon` | `IconData?` | Icon shown when active (ignored if `activeWidget` is provided) |
-| `inactiveWidget` | `Widget?` | Custom widget shown when inactive (takes priority over `inactiveIcon`) |
-| `activeWidget` | `Widget?` | Custom widget shown when active (takes priority over `activeIcon`) |
-| `label` | `String` | Label text beneath the icon |
-
-> Note: You must provide at least one of `inactiveIcon` or `inactiveWidget`.
-
----
-
 ## Example with Lottie and Svg
 
-<img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/lottie1.gif" width="480"/>
+
 
 ```dart
 CurvedNavigationBarPro(
@@ -308,6 +263,51 @@ CurvedNavigationBarPro(
 
 ```
 > Note: Keep in mind to set the `repeat` as false for Lottie and set the `colorFilter` for Svg for a better user experience.
+<img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/lottie1.gif" width="400"/>
+---
+
+## API Reference
+
+### `CurvedNavigationBarPro`
+
+| Property | Type | Default | Description |
+|---|---|---|---|
+| `items` | `List<CurvedNavigationItemPro>` | **required** | 2–6 navigation items |
+| `onTap` | `ValueChanged<int>` | **required** | Callback when an item is tapped |
+| `currentIndex` | `int` | `0` | Selected item index |
+| `navbarStyle` | `CNBPStyles?` | `null` | Built-in preset — supplies defaults for all visual params |
+| `backgroundColor` | `Color?` | preset → `Colors.white` | Bar background |
+| `activeColor` | `Color?` | preset → theme primary | Active label & default FAB colour |
+| `activeIconColor` | `Color?` | preset → `Colors.white` | Icon colour inside the FAB bubble |
+| `inactiveColor` | `Color?` | preset → `#ADB5BD` | Inactive icon & label colour |
+| `fabColor` | `Color?` | preset → `activeColor` | FAB bubble background |
+| `barHeight` | `double?` | preset → `110` | Bar height in logical pixels |
+| `fabRadius` | `double?` | preset → `24` | FAB bubble radius |
+| `fabGap` | `double?` | preset → `10` | Gap between FAB edge and notch arc |
+| `fabSink` | `double?` | preset → `22` | Pixels the FAB centre sinks below the bar top |
+| `notchShoulderRadius` | `double?` | preset → `12` | Shoulder fillet radius (0 = sharp corners) |
+| `cornerRadius` | `double?` | preset → `0` | Top-left / top-right bar corner radius |
+| `elevation` | `double?` | preset → `14` | Shadow depth |
+| `shadowColor` | `Color?` | preset → `rgba(0,0,0,0.16)` | Shadow colour |
+| `animationDuration` | `Duration?` | preset → `400 ms` | Notch slide duration |
+| `animationCurve` | `Curve?` | preset → `easeInOutCubic` | Notch slide curve |
+| `activeTextStyle` | `TextStyle?` | preset → built-in | Override active label style |
+| `inactiveTextStyle` | `TextStyle?` | preset → built-in | Override inactive label style |
+| `showLabel` | `bool?` | preset → `true` | Toggle visibility of labels below the icons |
+
+> **Resolution order:** explicit parameter → `navbarStyle` preset → hardcoded default
+
+### `CurvedNavigationItemPro`
+
+| Property | Type | Description |
+|---|---|---|
+| `inactiveIcon` | `IconData?` | Icon shown when inactive (ignored if `inactiveWidget` is provided) |
+| `activeIcon` | `IconData?` | Icon shown when active (ignored if `activeWidget` is provided) |
+| `inactiveWidget` | `Widget?` | Custom widget shown when inactive (takes priority over `inactiveIcon`) |
+| `activeWidget` | `Widget?` | Custom widget shown when active (takes priority over `activeIcon`) |
+| `label` | `String` | Label text beneath the icon |
+
+> Note: You must provide at least one of `inactiveIcon` or `inactiveWidget`.
 
 ---
 
