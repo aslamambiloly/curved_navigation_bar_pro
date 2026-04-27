@@ -1,3 +1,7 @@
+## 1.0.13
+
+* Bug fixes and performance improvements.
+
 ## 1.0.12
 
 * Updated lottie example GIF with the latest animation.
