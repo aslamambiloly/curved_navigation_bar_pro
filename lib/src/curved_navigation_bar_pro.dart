@@ -69,6 +69,8 @@ class CurvedNavigationBarPro extends StatefulWidget {
     this.activeTextStyle,
     this.inactiveTextStyle,
     this.showLabel,
+    this.inactiveIconSize,
+    this.activeIconSize, 
   })  : assert(
           items.length >= 2 && items.length <= 6,
           'CurvedNavBar requires between 2 and 6 items, '
@@ -188,9 +190,16 @@ class CurvedNavigationBarPro extends StatefulWidget {
   /// Custom text style for inactive labels. Overrides the preset and the
   /// built-in default.
   final TextStyle? inactiveTextStyle;
+
   /// Whether to show labels below the icons.
   /// Defaults to the preset value, or `true`.
   final bool? showLabel;
+
+  /// Icon size for inactive items.
+  final double? inactiveIconSize;
+
+  /// Icon size for active items.
+  final double? activeIconSize;
 
   @override
   State<CurvedNavigationBarPro> createState() => _CurvedNavigationBarProState();
@@ -298,7 +307,11 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
         widget.activeTextStyle ?? styleData?.activeTextStyle;
     final inactiveTextStyle =
         widget.inactiveTextStyle ?? styleData?.inactiveTextStyle;
-    final showLabel = widget.showLabel ?? styleData?.showLabel ?? true;
+final showLabel = widget.showLabel ?? styleData?.showLabel ?? true;
+    final inactiveIconSize =
+        widget.inactiveIconSize ?? styleData?.inactiveIconSize ?? 24.0;
+    final activeIconSize =
+        widget.activeIconSize ?? styleData?.activeIconSize ?? fabRadius * 0.92; 
     // ─────────────────────────────────────────────────────────────────────────
 
     final fraction = _liveFraction;
@@ -321,7 +334,7 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
         final activeItem = widget.items[widget.currentIndex];
         final activeWidget = activeItem.resolvedActiveWidget(
           color: activeIconColor ?? Colors.white,
-          size: fabRadius * 0.92,
+          size: activeIconSize,
         );
 
         return Semantics(
@@ -370,6 +383,7 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
                           inactiveColor: inactiveColor,
                           animationDuration: animationDuration,
                           activeTextStyle: activeTextStyle,
+                          inactiveIconSize: inactiveIconSize,
                           inactiveTextStyle: inactiveTextStyle,
                           showLabel: showLabel,
                           onTap: () => widget.onTap(i),
@@ -539,6 +553,7 @@ class _NavItemTile extends StatelessWidget {
     required this.inactiveColor,
     required this.animationDuration,
     required this.onTap,
+    required this.inactiveIconSize, //todo
     this.activeTextStyle,
     this.inactiveTextStyle,
     required this.showLabel,
@@ -549,6 +564,7 @@ class _NavItemTile extends StatelessWidget {
   final bool isActive;
   final Color activeColor;
   final Color inactiveColor;
+  final double inactiveIconSize;
   final Duration animationDuration;
   final TextStyle? activeTextStyle, inactiveTextStyle;
   final bool showLabel;
@@ -571,32 +587,42 @@ class _NavItemTile extends StatelessWidget {
               duration: const Duration(milliseconds: 100),
               child: item.resolvedInactiveWidget(
                 color: inactiveColor,
-                size: 22,
+                size: inactiveIconSize,
               ),
             ),
             if (showLabel) ...[
               const SizedBox(height: 10),
-              AnimatedDefaultTextStyle(
-                duration: animationDuration,
-                style: isActive
-                    ? activeTextStyle ??
-                        TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0.9,
-                          color: activeColor,
-                        )
-                    : inactiveTextStyle ??
-                        TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w500,
-                          letterSpacing: 0.2,
-                          color: inactiveColor,
-                        ),
-                child: Text(
-                  item.label,
-                  textAlign: TextAlign.center,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: AnimatedDefaultTextStyle(
+                      duration: animationDuration,
+                      style: isActive
+                          ? activeTextStyle?.copyWith(color: activeColor) ??
+                              TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.9,
+                                color: activeColor,
+                              )
+                          : inactiveTextStyle?.copyWith(color: inactiveColor) ??
+                              TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w500,
+                                letterSpacing: 0.2,
+                                color: inactiveColor,
+                              ),
+                      child: Text(
+                        item.label,
+                        maxLines: 1,
+                        softWrap: false,
+                        overflow: TextOverflow.fade,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ],
@@ -666,3 +692,61 @@ class _BubbleState extends State<_Bubble> with SingleTickerProviderStateMixin {
     );
   }
 }
+
+
+// class _AmbiText extends StatelessWidget {
+//   final String text;
+//   final TextStyle? style;
+//   final int maxLines;
+//   final TextAlign? textAlign;
+//   const _AmbiText({
+//     required this.text,
+//     this.style,
+//     this.textAlign,
+//     this.maxLines = 1,
+//   });
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return LayoutBuilder(
+//       builder: (context, constraints) {
+//         final tp = TextPainter(
+//           text: TextSpan(text: text, style: style),
+//           maxLines: maxLines,
+//           textDirection: TextDirection.ltr,
+//         )..layout(maxWidth: constraints.maxWidth);
+
+//         final didOverflow = tp.didExceedMaxLines;
+//         final height = tp.height;
+
+//         if (didOverflow) {
+//           return SizedBox(
+//             height: height,
+//             child: ClipRect(
+//               child: Marquee(
+//                 text: text,
+//                 style: style,
+//                 blankSpace: 20,
+//                 velocity: 30,
+//                 startAfter: const Duration(milliseconds: 2),
+//                 pauseAfterRound: const Duration(seconds: 5),
+//                 showFadingOnlyWhenScrolling: false,
+//                 fadingEdgeStartFraction: 0.025,
+//                 fadingEdgeEndFraction: 0.1,
+//               ),
+//             ),
+//           );
+//         } else {
+//           return Text(
+//             text,
+//             style: style,
+//             maxLines: 1,
+//             textAlign: textAlign,
+//             overflow: TextOverflow.fade,
+//             softWrap: false,
+//           );
+//         }
+//       },
+//     );
+//   }
+// }

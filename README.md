@@ -57,7 +57,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^1.0.14
+  curved_navigation_bar_pro: ^1.0.15
 ```
 
 Then run:
@@ -148,6 +148,10 @@ CurvedNavigationBarPro(
   // Text styles (optional overrides)
   activeTextStyle: const TextStyle(fontSize: 11, fontWeight: FontWeight.w800),
   inactiveTextStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.w400),
+
+  // Icon sizes
+  inactiveIconSize: 24,
+  activeIconSize: 22,
 )
 ```
 
@@ -296,6 +300,8 @@ CurvedNavigationBarPro(
 | `activeTextStyle` | `TextStyle?` | preset → built-in | Override active label style |
 | `inactiveTextStyle` | `TextStyle?` | preset → built-in | Override inactive label style |
 | `showLabel` | `bool?` | preset → `true` | Toggle visibility of labels below the icons |
+| `inactiveIconSize` | `double?` | preset → `24.0` | Icon size for inactive nav items |
+| `activeIconSize` | `double?` | preset → `fabRadius × 0.92` | Icon size inside the FAB bubble |
 
 > **Resolution order:** explicit parameter → `navbarStyle` preset → hardcoded default
 

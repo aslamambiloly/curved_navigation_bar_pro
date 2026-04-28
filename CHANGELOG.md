@@ -1,3 +1,9 @@
+## 1.0.15
+
+* Added `inactiveIconSize` parameter to control the size of inactive item icons.
+* Added `activeIconSize` parameter to control the icon size inside the FAB bubble.
+* Fixed overflow issue for long labels
+
 ## 1.0.14
 
 * Enhanced readme with new screenshots and demo GIFs.

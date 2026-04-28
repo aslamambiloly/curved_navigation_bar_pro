@@ -39,6 +39,8 @@ class CNBPStyleData {
     this.activeTextStyle,
     this.inactiveTextStyle,
     this.showLabel,
+    this.inactiveIconSize,
+    this.activeIconSize,
   });
 
   final Color? backgroundColor;
@@ -59,6 +61,8 @@ class CNBPStyleData {
   final TextStyle? activeTextStyle;
   final TextStyle? inactiveTextStyle;
   final bool? showLabel;
+  final double? inactiveIconSize;
+  final double? activeIconSize;
 
   /// Returns a copy of this style with the specified fields replaced.
   CNBPStyleData copyWith({
@@ -80,6 +84,8 @@ class CNBPStyleData {
     TextStyle? activeTextStyle,
     TextStyle? inactiveTextStyle,
     bool? showLabel,
+    double? inactiveIconSize,
+    double? activeIconSize,
   }) =>
       CNBPStyleData(
         backgroundColor: backgroundColor ?? this.backgroundColor,
@@ -100,6 +106,8 @@ class CNBPStyleData {
         activeTextStyle: activeTextStyle ?? this.activeTextStyle,
         inactiveTextStyle: inactiveTextStyle ?? this.inactiveTextStyle,
         showLabel: showLabel ?? this.showLabel,
+        inactiveIconSize: inactiveIconSize ?? this.inactiveIconSize,
+        activeIconSize: activeIconSize ?? this.activeIconSize,
       );
 }
 

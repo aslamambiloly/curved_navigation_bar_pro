@@ -53,11 +53,22 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: CurvedNavigationBarPro(
         // navbarStyle: CNBPStyles.emeraldPill,
+        barHeight: 90,
+        inactiveTextStyle: TextStyle(
+          color: Colors.black,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+        activeTextStyle: TextStyle(
+          color: Colors.grey,
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
         items: [
           CurvedNavigationItemPro(
             inactiveIcon: Icons.home_outlined,
             activeIcon: Icons.home_rounded,
-            label: 'HOME',
+            label: 'HOME bhvhgh',
           ),
           CurvedNavigationItemPro(
             inactiveIcon: Icons.search_outlined,
@@ -80,20 +91,20 @@ class _HomePageState extends State<HomePage> {
             activeWidget: SvgPicture.asset(
               'assets/images/call.svg',
               colorFilter: const ColorFilter.mode(
-                Colors.white,
+                Colors.green,
                 BlendMode.srcIn,
               ),
-              width: 30,
+              width: 22,
             ),
             inactiveWidget: SvgPicture.asset(
               'assets/images/call.svg',
               colorFilter: const ColorFilter.mode(
-                Colors.white,
+                Colors.green,
                 BlendMode.srcIn,
               ),
-              width: 25,
+              width: 22,
             ),
-            label: '',
+            label: 'PROFILE',
           ),
         ],
         currentIndex: _index,
