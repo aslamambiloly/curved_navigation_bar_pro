@@ -1,3 +1,7 @@
+## 1.0.16
+
+* Bug fixes and performance improvements.
+
 ## 1.0.15
 
 * Added `inactiveIconSize` parameter to control the size of inactive item icons.

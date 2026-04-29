@@ -1,7 +1,6 @@
 # curved_navigation_bar_pro
 
 [![pub version](https://img.shields.io/pub/v/curved_navigation_bar_pro.svg)](https://pub.dev/packages/curved_navigation_bar_pro)
-[![Popularity](https://img.shields.io/pub/popularity/curved_navigation_bar_pro?style=flat)](https://pub.dev/packages/curved_navigation_bar_pro)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/aslamambiloly?style=flat&logo=github&label=Sponsor&color=ea4aaa)](https://github.com/sponsors/aslamambiloly)
@@ -12,8 +11,6 @@
 
 
 A beautiful Flutter bottom navigation bar with a **smooth animated curved notch**, an **elastic FAB bubble** that glides between items, and comprehensive theming support.
-
----
 
 ## Features
 
@@ -26,8 +23,6 @@ A beautiful Flutter bottom navigation bar with a **smooth animated curved notch*
 - 2–6 navigation items
 - Lottie, SVG, Image or any Widget support for Icons
 - Zero dependencies beyond Flutter
-
----
 
 ## Preview
 
@@ -50,15 +45,13 @@ A beautiful Flutter bottom navigation bar with a **smooth animated curved notch*
   </tr>
 </table>
 
----
-
 ## Installation
 
 Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^1.0.15
+  curved_navigation_bar_pro: ^1.0.16
 ```
 
 Then run:
@@ -66,8 +59,6 @@ Then run:
 ```bash
 flutter pub get
 ```
-
----
 
 ## Quick start
 
@@ -113,8 +104,6 @@ class _MyPageState extends State<MyPage> {
 }
 ```
 
----
-
 ## Customisation
 
 ```dart
@@ -155,8 +144,6 @@ CurvedNavigationBarPro(
   activeIconSize: 22,
 )
 ```
-
----
 
 ## Built-in Style Presets
 
@@ -216,7 +203,6 @@ final myStyle = CNBPStyles.arcticFrost.data.copyWith(
 | `berryBlossom` | `#1C0A1C` dark purple | `#FF6AC1` hot pink | Ultra-smooth notch, suits 5 items, `elasticOut` |
 | `goldenHour` | `#121008` ink black | `#FFD700` gold | Dark icon in FAB, finance theme, `easeInOutCubic` |
 
----
 
 ## Example with Lottie and Svg
 
@@ -271,7 +257,6 @@ CurvedNavigationBarPro(
 
 <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/lottie1.gif" width="400"/>
 
----
 
 ## API Reference
 
@@ -318,7 +303,6 @@ CurvedNavigationBarPro(
 
 > Note: You must provide at least one of `inactiveIcon` or `inactiveWidget`.
 
----
 
 ## Running the example
 
@@ -327,13 +311,11 @@ cd example
 flutter run
 ```
 
----
 
 ## Contributing
 
 PRs and issues are welcome! Please open an issue first for significant changes.
 
----
 
 ## License
 
