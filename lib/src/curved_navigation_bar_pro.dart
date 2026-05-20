@@ -475,42 +475,56 @@ class _SemicircleNotchPainter extends CustomPainter {
       final dist = S + notchR;
       final ratio = S / dist;
 
-      final p1Left = Offset(xsLeft, 0);
       final p2Left = Offset(
         leftCenter.dx + (cn.dx - leftCenter.dx) * ratio,
         leftCenter.dy + (cn.dy - leftCenter.dy) * ratio,
       );
 
       final rightCenter = Offset(xsRight, S);
-      final p1Right = Offset(xsRight, 0);
       final p2Right = Offset(
         rightCenter.dx + (cn.dx - rightCenter.dx) * ratio,
         rightCenter.dy + (cn.dy - rightCenter.dy) * ratio,
       );
 
+      // ── Left corner ─────────────────────────────────────────────────────────
+      // Always start at (0, cornerRadius) so path.close() draws the left wall
+      // correctly even when the notch shoulder overlaps the corner zone.
+      path.moveTo(0, cornerRadius);
+      path.quadraticBezierTo(0, 0, cornerRadius, 0);
+
+      // ── Left shoulder ────────────────────────────────────────────────────────
       if (xsLeft > cornerRadius) {
-        path.moveTo(0, cornerRadius);
-        path.quadraticBezierTo(0, 0, cornerRadius, 0);
-        path.lineTo(p1Left.dx, 0);
+        // Normal case: shoulder fits — draw the smooth C¹ arc.
+        path.lineTo(xsLeft, 0);
+        path.arcToPoint(p2Left, radius: Radius.circular(S), clockwise: true);
       } else {
-        path.moveTo(p1Left.dx, 0);
+        // Shoulder overlaps corner zone: the arc distance would exceed 2·S,
+        // causing Flutter to inflate the radius and produce a visible bump.
+        // Use a straight line from the corner end to the notch tangent instead.
+        path.lineTo(math.max(p2Left.dx, cornerRadius), p2Left.dy.clamp(0.0, p2Left.dy));
       }
 
-      path.arcToPoint(p2Left, radius: Radius.circular(S), clockwise: true);
+      // ── Notch arc ───────────────────────────────────────────────────────────
       path.arcToPoint(
         p2Right,
         radius: Radius.circular(notchR),
         clockwise: false,
         largeArc: S < fabSink,
       );
-      path.arcToPoint(p1Right, radius: Radius.circular(S), clockwise: true);
 
+      // ── Right shoulder ───────────────────────────────────────────────────────
       if (xsRight < size.width - cornerRadius) {
+        // Normal case: shoulder fits — draw the smooth C¹ arc.
+        path.arcToPoint(Offset(xsRight, 0), radius: Radius.circular(S), clockwise: true);
         path.lineTo(size.width - cornerRadius, 0);
-        path.quadraticBezierTo(size.width, 0, size.width, cornerRadius);
       } else {
-        path.lineTo(size.width, p1Right.dy);
+        // Shoulder overlaps corner zone: straight line to corner start.
+        path.lineTo(size.width - cornerRadius, 0);
       }
+
+      // ── Right corner ─────────────────────────────────────────────────────────
+      // Always draw it so the corner is never left sharp.
+      path.quadraticBezierTo(size.width, 0, size.width, cornerRadius);
     }
 
     path.lineTo(size.width, size.height);

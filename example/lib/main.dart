@@ -37,6 +37,8 @@ class _HomePageState extends State<HomePage> {
     _PageContent(emoji: '🔍', label: 'Search'),
     _PageContent(emoji: '❤️', label: 'Saved'),
     _PageContent(emoji: '👤', label: 'Profile'),
+    _PageContent(emoji: '👤', label: 'Settings'),
+
   ];
 
   @override
@@ -53,7 +55,8 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: CurvedNavigationBarPro(
         // navbarStyle: CNBPStyles.emeraldPill,
-        barHeight: 90,
+        barHeight: 120,
+        cornerRadius: 40,
         inactiveTextStyle: TextStyle(
           color: Colors.black,
           fontSize: 16,
@@ -74,6 +77,16 @@ class _HomePageState extends State<HomePage> {
             inactiveIcon: Icons.search_outlined,
             activeIcon: Icons.search_rounded,
             label: 'SEARCH',
+          ),
+          CurvedNavigationItemPro(
+            activeIcon: Icons.favorite_rounded,
+            activeWidget: Lottie.asset(
+              'lotties/cart.json',
+              repeat: false,
+              width: 30,
+            ),
+            inactiveIcon: Icons.shopping_cart_outlined,
+            label: 'CART',
           ),
           CurvedNavigationItemPro(
             activeIcon: Icons.favorite_rounded,
