@@ -32,6 +32,7 @@ class CNBPStyleData {
     this.fabSink,
     this.notchShoulderRadius,
     this.cornerRadius,
+    this.contentPadding,
     this.elevation,
     this.shadowColor,
     this.animationDuration,
@@ -54,6 +55,7 @@ class CNBPStyleData {
   final double? fabSink;
   final double? notchShoulderRadius;
   final double? cornerRadius;
+  final double? contentPadding;
   final double? elevation;
   final Color? shadowColor;
   final Duration? animationDuration;
@@ -77,6 +79,7 @@ class CNBPStyleData {
     double? fabSink,
     double? notchShoulderRadius,
     double? cornerRadius,
+    double? contentPadding,
     double? elevation,
     Color? shadowColor,
     Duration? animationDuration,
@@ -99,6 +102,7 @@ class CNBPStyleData {
         fabSink: fabSink ?? this.fabSink,
         notchShoulderRadius: notchShoulderRadius ?? this.notchShoulderRadius,
         cornerRadius: cornerRadius ?? this.cornerRadius,
+        contentPadding: contentPadding ?? this.contentPadding,
         elevation: elevation ?? this.elevation,
         shadowColor: shadowColor ?? this.shadowColor,
         animationDuration: animationDuration ?? this.animationDuration,

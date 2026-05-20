@@ -1,3 +1,32 @@
+## 2.0.0
+
+**Major Release** — Breaking changes and significant new features.
+
+### ✨ New Features
+
+* **Notification Badges** — Add badges to any navigation item with `badgeText`, `badgeColor`, `badgeTextColor`, or a fully custom `badgeWidget`. Display counts ("3"), dots ("•"), or any custom widget.
+* **Content Padding** — New `contentPadding` parameter to add horizontal padding to the items row. Useful when `cornerRadius` is large to prevent items from being clipped visually. Defaults to `cornerRadius` value.
+* **Fixed Corner Radius Bug** — Corner radius now renders correctly with proper C¹-continuous curves and no visual artifacts.
+
+### 🔧 Improvements
+
+* Enhanced `CurvedNavigationItemPro` with badge support properties.
+* Improved geometry calculations for better visual consistency across all presets.
+* Better handling of edge cases when FAB is near bar corners.
+* Updated all 10 style presets to work seamlessly with the new features.
+
+### 📝 Documentation
+
+* Added comprehensive badge usage examples.
+* Updated API reference with new parameters.
+* Enhanced README with badge feature showcase.
+
+### ⚠️ Breaking Changes
+
+* None — this is a fully backward-compatible release. Existing code will continue to work without modifications.
+
+---
+
 ## 1.0.16
 
 * Bug fixes and performance improvements.

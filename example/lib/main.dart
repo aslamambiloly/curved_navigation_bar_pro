@@ -11,7 +11,7 @@ class ExampleApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'CurvedNavBarPro Example',
+      title: 'CurvedNavigationBarPro Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorSchemeSeed: Colors.indigo,
@@ -36,8 +36,8 @@ class _HomePageState extends State<HomePage> {
     _PageContent(emoji: '🏠', label: 'Home'),
     _PageContent(emoji: '🔍', label: 'Search'),
     _PageContent(emoji: '❤️', label: 'Saved'),
+    _PageContent(emoji: '🛒', label: 'Cart'),
     _PageContent(emoji: '👤', label: 'Profile'),
-    _PageContent(emoji: '👤', label: 'Settings'),
 
   ];
 
@@ -46,7 +46,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xFFF4F6FA),
       appBar: AppBar(
-        title: const Text('CurvedNavBar Demo'),
+        title: const Text('CurvedNavigationBarPro'),
         centerTitle: true,
       ),
       body: AnimatedSwitcher(
@@ -54,70 +54,71 @@ class _HomePageState extends State<HomePage> {
         child: _pages[_index],
       ),
       bottomNavigationBar: CurvedNavigationBarPro(
-        // navbarStyle: CNBPStyles.emeraldPill,
-        barHeight: 120,
-        cornerRadius: 40,
+        barHeight: 100,
+        cornerRadius: 20,
+        activeColor: const Color(0xFF6C63FF),
         inactiveTextStyle: TextStyle(
-          color: Colors.black,
-          fontSize: 16,
-          fontWeight: FontWeight.bold,
+          color: Colors.grey[600],
+          fontSize: 11,
+          fontWeight: FontWeight.w500,
         ),
-        activeTextStyle: TextStyle(
-          color: Colors.grey,
-          fontSize: 16,
+        activeTextStyle: const TextStyle(
+          color: Color(0xFF6C63FF),
+          fontSize: 11,
           fontWeight: FontWeight.bold,
         ),
         items: [
-          CurvedNavigationItemPro(
+          const CurvedNavigationItemPro(
             inactiveIcon: Icons.home_outlined,
             activeIcon: Icons.home_rounded,
-            label: 'HOME bhvhgh',
+            label: 'Home',
+            badgeText: '3',
           ),
-          CurvedNavigationItemPro(
+          const CurvedNavigationItemPro(
             inactiveIcon: Icons.search_outlined,
             activeIcon: Icons.search_rounded,
-            label: 'SEARCH',
+            label: 'Search',
+            badgeText: '•',
+          ),
+          const CurvedNavigationItemPro(
+            inactiveIcon: Icons.favorite_border_rounded,
+            activeIcon: Icons.favorite_rounded,
+            label: 'Saved',
           ),
           CurvedNavigationItemPro(
-            activeIcon: Icons.favorite_rounded,
+            inactiveIcon: Icons.shopping_cart_outlined,
+            activeIcon: Icons.shopping_cart_rounded,
             activeWidget: Lottie.asset(
               'lotties/cart.json',
               repeat: false,
-              width: 30,
+              width: 28,
             ),
-            inactiveIcon: Icons.shopping_cart_outlined,
-            label: 'CART',
+            label: 'Cart',
+            badgeColor: Colors.orange[800],
           ),
-          CurvedNavigationItemPro(
-            activeIcon: Icons.favorite_rounded,
-            activeWidget: Lottie.asset(
-              'lotties/cart.json',
-              repeat: false,
-              width: 30,
-            ),
-            inactiveIcon: Icons.shopping_cart_outlined,
-            label: 'CART',
-          ),
+          
           CurvedNavigationItemPro(
             inactiveIcon: Icons.person_outline_rounded,
             activeIcon: Icons.person_rounded,
-            activeWidget: SvgPicture.asset(
-              'assets/images/call.svg',
-              colorFilter: const ColorFilter.mode(
-                Colors.green,
-                BlendMode.srcIn,
-              ),
-              width: 22,
-            ),
             inactiveWidget: SvgPicture.asset(
               'assets/images/call.svg',
               colorFilter: const ColorFilter.mode(
-                Colors.green,
+                Colors.grey,
                 BlendMode.srcIn,
               ),
               width: 22,
             ),
-            label: 'PROFILE',
+            activeWidget: SvgPicture.asset(
+              'assets/images/call.svg',
+              colorFilter: const ColorFilter.mode(
+                Colors.white,
+                BlendMode.srcIn,
+              ),
+              width: 22,
+            ),
+            label: 'Profile',
+            badgeText: 'NEW',
+            badgeColor: Colors.teal[600],
           ),
         ],
         currentIndex: _index,

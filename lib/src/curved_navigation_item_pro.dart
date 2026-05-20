@@ -43,6 +43,10 @@ class CurvedNavigationItemPro {
     this.inactiveWidget,
     this.activeWidget,
     required this.label,
+    this.badgeText,
+    this.badgeColor,
+    this.badgeTextColor,
+    this.badgeWidget,
   }) : assert(
           inactiveIcon != null || inactiveWidget != null,
           'Provide at least one of inactiveIcon or inactiveWidget.',
@@ -79,6 +83,22 @@ class CurvedNavigationItemPro {
 
   /// Short label drawn below the icon (or below the notch area when active).
   final String label;
+
+  // ── Badge Customisation ──────────────────────────────────────────────────────
+
+  /// Optional notification badge text (e.g. "3", "99+", or "•").
+  /// If null or empty, no badge is displayed.
+  final String? badgeText;
+
+  /// Optional color for the badge bubble. Defaults to [Color(0xFFE53935)].
+  final Color? badgeColor;
+
+  /// Optional color for the badge text. Defaults to [Colors.white].
+  final Color? badgeTextColor;
+
+  /// Optional custom widget to display as the badge.
+  /// If provided, this overrides [badgeText], [badgeColor], and [badgeTextColor].
+  final Widget? badgeWidget;
 
   // ── Resolved widget helpers (used internally by the widget) ────────────────
 

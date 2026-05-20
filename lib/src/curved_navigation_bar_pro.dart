@@ -59,6 +59,7 @@ class CurvedNavigationBarPro extends StatefulWidget {
     this.fabSink,
     this.notchShoulderRadius,
     this.cornerRadius,
+    this.contentPadding,
     // ── Shadow ───────────────────────────────────────────────────────────────
     this.elevation,
     this.shadowColor,
@@ -160,6 +161,12 @@ class CurvedNavigationBarPro extends StatefulWidget {
   /// Radius of the top-left and top-right corners of the bar.
   /// Defaults to the preset value, or `0`.
   final double? cornerRadius;
+
+  /// Horizontal padding added to both ends of the navigation items row.
+  /// Useful when [cornerRadius] is large — push items away from the rounded
+  /// corners so they don't get clipped visually.
+  /// Defaults to the preset value, or `0`.
+  final double? contentPadding;
 
   // ── Shadow ───────────────────────────────────────────────────────────────────
 
@@ -295,6 +302,8 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
         widget.notchShoulderRadius ?? styleData?.notchShoulderRadius ?? 12.0;
     final cornerRadius =
         widget.cornerRadius ?? styleData?.cornerRadius ?? 0.0;
+    final contentPadding =
+        widget.contentPadding ?? styleData?.contentPadding ?? cornerRadius;
     final elevation = widget.elevation ?? styleData?.elevation ?? 14.0;
     final shadowColor =
         widget.shadowColor ?? styleData?.shadowColor ?? const Color(0x2A000000);
@@ -319,12 +328,13 @@ final showLabel = widget.showLabel ?? styleData?.showLabel ?? true;
     return LayoutBuilder(
       builder: (context, constraints) {
         final totalWidth = constraints.maxWidth;
-        final itemWidth = totalWidth / widget.items.length;
+        final paddedWidth = totalWidth - 2 * contentPadding;
+        final itemWidth = paddedWidth / widget.items.length;
         final notchR = fabRadius + fabGap;
         final sink = fabSink; // already clamped above
         final protrude = fabRadius - sink;
 
-        final rawCX =
+        final rawCX = contentPadding +
             fraction * (widget.items.length - 1) * itemWidth + itemWidth / 2;
         final bubbleCX = rawCX.clamp(
           fabRadius.toDouble(),
@@ -332,9 +342,17 @@ final showLabel = widget.showLabel ?? styleData?.showLabel ?? true;
         );
 
         final activeItem = widget.items[widget.currentIndex];
-        final activeWidget = activeItem.resolvedActiveWidget(
+        final rawActiveWidget = activeItem.resolvedActiveWidget(
           color: activeIconColor ?? Colors.white,
           size: activeIconSize,
+        );
+        final activeWidget = _BadgeWrapper(
+          badgeText: activeItem.badgeText,
+          badgeColor: activeItem.badgeColor,
+          badgeTextColor: activeItem.badgeTextColor,
+          badgeWidget: activeItem.badgeWidget,
+          barBackgroundColor: fabColor,
+          child: rawActiveWidget,
         );
 
         return Semantics(
@@ -372,24 +390,28 @@ final showLabel = widget.showLabel ?? styleData?.showLabel ?? true;
                   left: 0,
                   right: 0,
                   height: barHeight,
-                  child: Row(
-                    children: List.generate(widget.items.length, (i) {
-                      return Expanded(
-                        child: _NavItemTile(
-                          item: widget.items[i],
-                          index: i,
-                          isActive: i == widget.currentIndex,
-                          activeColor: activeColor,
-                          inactiveColor: inactiveColor,
-                          animationDuration: animationDuration,
-                          activeTextStyle: activeTextStyle,
-                          inactiveIconSize: inactiveIconSize,
-                          inactiveTextStyle: inactiveTextStyle,
-                          showLabel: showLabel,
-                          onTap: () => widget.onTap(i),
-                        ),
-                      );
-                    }),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: contentPadding),
+                    child: Row(
+                      children: List.generate(widget.items.length, (i) {
+                        return Expanded(
+                          child: _NavItemTile(
+                            item: widget.items[i],
+                            index: i,
+                            isActive: i == widget.currentIndex,
+                            activeColor: activeColor,
+                            inactiveColor: inactiveColor,
+                            animationDuration: animationDuration,
+                            activeTextStyle: activeTextStyle,
+                            inactiveIconSize: inactiveIconSize,
+                            inactiveTextStyle: inactiveTextStyle,
+                            showLabel: showLabel,
+                            onTap: () => widget.onTap(i),
+                            barBackgroundColor: backgroundColor,
+                          ),
+                        );
+                      }),
+                    ),
                   ),
                 ),
 
@@ -440,30 +462,46 @@ class _SemicircleNotchPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final path = Path();
     final S = notchShoulderRadius;
 
+    // ── Bar base: RRect with top-left and top-right corner radii ───────────────
+    // Using an RRect guarantees the corners are always correct, completely
+    // independent of where the notch sits. We then subtract the notch cutout.
+    final barPath = Path()
+      ..addRRect(
+        RRect.fromLTRBAndCorners(
+          0,
+          0,
+          size.width,
+          size.height,
+          topLeft: Radius.circular(cornerRadius),
+          topRight: Radius.circular(cornerRadius),
+        ),
+      );
+
+    // ── Notch cutout ────────────────────────────────────────────────────────────
+    // Build the notch as a standalone closed path (it may extend beyond the bar
+    // boundary — Path.combine clips it automatically).
+    final notchCutout = Path();
+
     if (S <= 0.1) {
-      // Sharp corners fallback
+      // Simple semicircle cutout (no shoulder curves).
       final halfChord = math.sqrt(
         math.max(0.0, notchR * notchR - fabSink * fabSink),
       );
       final leftEdge = notchCX - halfChord;
       final rightEdge = notchCX + halfChord;
 
-      path.moveTo(0, cornerRadius);
-      path.quadraticBezierTo(0, 0, cornerRadius, 0);
-      path.lineTo(leftEdge, 0);
-      path.arcToPoint(
+      notchCutout.moveTo(leftEdge, 0);
+      notchCutout.arcToPoint(
         Offset(rightEdge, 0),
         radius: Radius.circular(notchR),
         clockwise: false,
         largeArc: fabSink > 0,
       );
-      path.lineTo(size.width - cornerRadius, 0);
-      path.quadraticBezierTo(size.width, 0, size.width, cornerRadius);
+      notchCutout.close(); // straight line back across the top edge
     } else {
-      // C¹-tangent shoulder paths
+      // C¹-tangent shoulder cutout.
       final distSq =
           math.pow(S + notchR, 2) - math.pow(fabSink - S, 2) as double;
       final dx = math.sqrt(math.max(0.0, distSq));
@@ -479,58 +517,38 @@ class _SemicircleNotchPainter extends CustomPainter {
         leftCenter.dx + (cn.dx - leftCenter.dx) * ratio,
         leftCenter.dy + (cn.dy - leftCenter.dy) * ratio,
       );
-
       final rightCenter = Offset(xsRight, S);
       final p2Right = Offset(
         rightCenter.dx + (cn.dx - rightCenter.dx) * ratio,
         rightCenter.dy + (cn.dy - rightCenter.dy) * ratio,
       );
 
-      // ── Left corner ─────────────────────────────────────────────────────────
-      // Always start at (0, cornerRadius) so path.close() draws the left wall
-      // correctly even when the notch shoulder overlaps the corner zone.
-      path.moveTo(0, cornerRadius);
-      path.quadraticBezierTo(0, 0, cornerRadius, 0);
-
-      // ── Left shoulder ────────────────────────────────────────────────────────
-      if (xsLeft > cornerRadius) {
-        // Normal case: shoulder fits — draw the smooth C¹ arc.
-        path.lineTo(xsLeft, 0);
-        path.arcToPoint(p2Left, radius: Radius.circular(S), clockwise: true);
-      } else {
-        // Shoulder overlaps corner zone: the arc distance would exceed 2·S,
-        // causing Flutter to inflate the radius and produce a visible bump.
-        // Use a straight line from the corner end to the notch tangent instead.
-        path.lineTo(math.max(p2Left.dx, cornerRadius), p2Left.dy.clamp(0.0, p2Left.dy));
-      }
-
-      // ── Notch arc ───────────────────────────────────────────────────────────
-      path.arcToPoint(
+      notchCutout.moveTo(xsLeft, 0);
+      notchCutout.arcToPoint(
+        p2Left,
+        radius: Radius.circular(S),
+        clockwise: true,
+      );
+      notchCutout.arcToPoint(
         p2Right,
         radius: Radius.circular(notchR),
         clockwise: false,
         largeArc: S < fabSink,
       );
-
-      // ── Right shoulder ───────────────────────────────────────────────────────
-      if (xsRight < size.width - cornerRadius) {
-        // Normal case: shoulder fits — draw the smooth C¹ arc.
-        path.arcToPoint(Offset(xsRight, 0), radius: Radius.circular(S), clockwise: true);
-        path.lineTo(size.width - cornerRadius, 0);
-      } else {
-        // Shoulder overlaps corner zone: straight line to corner start.
-        path.lineTo(size.width - cornerRadius, 0);
-      }
-
-      // ── Right corner ─────────────────────────────────────────────────────────
-      // Always draw it so the corner is never left sharp.
-      path.quadraticBezierTo(size.width, 0, size.width, cornerRadius);
+      notchCutout.arcToPoint(
+        Offset(xsRight, 0),
+        radius: Radius.circular(S),
+        clockwise: true,
+      );
+      notchCutout.close(); // straight line back across the top edge
     }
 
-    path.lineTo(size.width, size.height);
-    path.lineTo(0, size.height);
-    path.close();
+    // ── Combine: bar minus notch ────────────────────────────────────────────────
+    // Path.combine clips the cutout to the bar boundary automatically, so
+    // there are no artifacts when the notch is near the edges or corners.
+    final path = Path.combine(PathOperation.difference, barPath, notchCutout);
 
+    // ── Shadow ──────────────────────────────────────────────────────────────────
     if (elevation > 0) {
       canvas.drawPath(
         path.shift(Offset(0, -elevation * 0.15)),
@@ -567,10 +585,11 @@ class _NavItemTile extends StatelessWidget {
     required this.inactiveColor,
     required this.animationDuration,
     required this.onTap,
-    required this.inactiveIconSize, //todo
+    required this.inactiveIconSize,
     this.activeTextStyle,
     this.inactiveTextStyle,
     required this.showLabel,
+    required this.barBackgroundColor,
   });
 
   final CurvedNavigationItemPro item;
@@ -583,6 +602,7 @@ class _NavItemTile extends StatelessWidget {
   final TextStyle? activeTextStyle, inactiveTextStyle;
   final bool showLabel;
   final VoidCallback onTap;
+  final Color barBackgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -599,9 +619,16 @@ class _NavItemTile extends StatelessWidget {
             AnimatedOpacity(
               opacity: isActive ? 0.0 : 1.0,
               duration: const Duration(milliseconds: 100),
-              child: item.resolvedInactiveWidget(
-                color: inactiveColor,
-                size: inactiveIconSize,
+              child: _BadgeWrapper(
+                badgeText: item.badgeText,
+                badgeColor: item.badgeColor,
+                badgeTextColor: item.badgeTextColor,
+                badgeWidget: item.badgeWidget,
+                barBackgroundColor: barBackgroundColor,
+                child: item.resolvedInactiveWidget(
+                  color: inactiveColor,
+                  size: inactiveIconSize,
+                ),
               ),
             ),
             if (showLabel) ...[
@@ -764,3 +791,81 @@ class _BubbleState extends State<_Bubble> with SingleTickerProviderStateMixin {
 //     );
 //   }
 // }
+
+// ─────────────────────────────────────────────────────────────────────────────
+//  Badge Wrapper
+// ─────────────────────────────────────────────────────────────────────────────
+class _BadgeWrapper extends StatelessWidget {
+  const _BadgeWrapper({
+    required this.child,
+    this.badgeText,
+    this.badgeColor,
+    this.badgeTextColor,
+    this.badgeWidget,
+    required this.barBackgroundColor,
+  });
+
+  final Widget child;
+  final String? badgeText;
+  final Color? badgeColor;
+  final Color? badgeTextColor;
+  final Widget? badgeWidget;
+  final Color barBackgroundColor;
+
+  @override
+  Widget build(BuildContext context) {
+    final hasBadge = badgeWidget != null || (badgeText != null && badgeText!.isNotEmpty);
+    if (!hasBadge) return child;
+
+    Widget badge;
+    if (badgeWidget != null) {
+      badge = badgeWidget!;
+    } else {
+      final isDot = badgeText == '•';
+      badge = Container(
+        padding: isDot 
+            ? EdgeInsets.zero 
+            : const EdgeInsets.symmetric(horizontal: 4.5, vertical: 2),
+        constraints: BoxConstraints(
+          minWidth: isDot ? 8 : 16,
+          minHeight: isDot ? 8 : 16,
+        ),
+        decoration: BoxDecoration(
+          color: badgeColor ?? const Color(0xFFE53935),
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(
+            color: barBackgroundColor,
+            width: 1.5,
+          ),
+        ),
+        child: isDot
+            ? const SizedBox.shrink()
+            : Center(
+                widthFactor: 1,
+                heightFactor: 1,
+                child: Text(
+                  badgeText!,
+                  style: TextStyle(
+                    color: badgeTextColor ?? Colors.white,
+                    fontSize: 9,
+                    fontWeight: FontWeight.bold,
+                    height: 1.0,
+                  ),
+                ),
+              ),
+      );
+    }
+
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        child,
+        Positioned(
+          top: badgeWidget != null ? -2 : -4,
+          right: badgeWidget != null ? -2 : -6,
+          child: badge,
+        ),
+      ],
+    );
+  }
+}
