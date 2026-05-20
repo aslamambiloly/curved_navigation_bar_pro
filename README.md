@@ -51,7 +51,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^2.0.0
+  curved_navigation_bar_pro: ^2.0.1
 ```
 
 Then run:
