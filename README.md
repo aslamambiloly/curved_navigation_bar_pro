@@ -9,7 +9,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/aslamambiloly/curved_navigation_bar_pro?style=flat)](https://github.com/aslamambiloly/curved_navigation_bar_pro/issues)
 
 
-A beautiful Flutter bottom navigation bar with a **smooth animated curved notch**, an **elastic FAB bubble** that glides between items, and comprehensive theming support.
+A beautiful Flutter curved bottom navigation bar with a **smooth animated curved notch**, an **elastic FAB bubble** that glides between items, and comprehensive theming support.
 
 ## Features
 
@@ -51,7 +51,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^2.0.1
+  curved_navigation_bar_pro: ^2.0.2
 ```
 
 Then run:

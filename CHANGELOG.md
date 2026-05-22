@@ -1,3 +1,7 @@
+## 2.0.2
+
+* Bug fixes and performance improvements.
+
 ## 2.0.1
 
 * Bug fixes and performance improvements.

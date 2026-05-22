@@ -1,4 +1,4 @@
-/// A beautiful Flutter bottom navigation bar with an animated curved notch FAB,
+/// A beautiful Flutter curved bottom navigation bar with an animated curved notch FAB,
 /// smooth elastic bubble animation, and fully customisable theming.
 ///
 /// ## Quick start
