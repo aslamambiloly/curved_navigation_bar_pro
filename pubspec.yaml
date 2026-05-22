@@ -10,6 +10,12 @@ screenshots:
   - description: 'Animated curved notch FAB sliding between nav items'
     path: doc/ss.png
 
+topics:
+  - navigation
+  - ui
+  - animation
+  - widgets
+  - material-design
 
 environment:
   sdk: ">=3.0.0 <4.0.0"
