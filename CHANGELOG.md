@@ -1,3 +1,7 @@
+## 2.0.6
+
+* Trigger analysis pipeline re-run.
+
 ## 2.0.5
 
 * Bug fixes and performance improvements.
