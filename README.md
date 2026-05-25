@@ -9,29 +9,23 @@
 [![GitHub issues](https://img.shields.io/github/issues/aslamambiloly/curved_navigation_bar_pro?style=flat)](https://github.com/aslamambiloly/curved_navigation_bar_pro/issues)
 
 
-A beautiful Flutter curved bottom navigation bar with a **smooth animated curved notch**, an **elastic FAB bubble** that glides between items, and comprehensive theming support.
+
+A highly customizable curved bottom navigation bar featuring a **smooth animated notch**, **gliding elastic FAB bubble**, **Notification Badges**, **Labels**, **10 presets**, and **Lottie/SVG/Image/Widget** icon support.
 
 ## Features
 
 - Animated notch that slides smoothly to the selected item
 - Elastic pop-in animation for the FAB bubble
 - Mathematically continuous C¹ shoulder curves (no kinks at the notch edges)
-- **Notification badges** — display counts, dots, or custom widgets on items
-- **10 built-in style presets** — drop in a complete look with one parameter
-- Full theming — colours, geometry, elevation, text styles
-- Built-in accessibility semantics
+- **Notification badges**: display counts, dots, or custom widgets on items
+- **10 built-in style presets**: drop in a complete look with one parameter
 - 2–6 navigation items
-- Lottie, SVG, Image or any Widget support for Icons
+- **Lottie**, **SVG**, **Image** or any **Widget** support for Icons
 - Zero dependencies beyond Flutter
 
 ## Preview
 
 <table>
-  <tr>
-    <td align="center"><b>Showcase</b></td>
-    <td align="center"><b>Playground</b></td>
-    <td align="center"><b>Showcase II</b></td>
-  </tr>
   <tr>
     <td>
       <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase.gif" width="250"/>
