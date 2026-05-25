@@ -1,3 +1,7 @@
+## 2.0.5
+
+* Bug fixes and performance improvements.
+
 ## 2.0.4
 
 * Added more screenshots to documenation.
