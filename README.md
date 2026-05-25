@@ -1,5 +1,3 @@
-# curved_navigation_bar_pro
-
 [![pub version](https://img.shields.io/pub/v/curved_navigation_bar_pro.svg)](https://pub.dev/packages/curved_navigation_bar_pro)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
@@ -11,16 +9,6 @@
 
 
 A highly customizable curved bottom navigation bar featuring a **smooth animated notch**, **gliding elastic FAB bubble**, **Notification Badges**, **Labels**, **10 presets**, and **Lottie/SVG/Image/Widget** icon support.
-
-## Features
-
-- **Animated notch** that slides smoothly to the selected item
-- **Elastic pop-in animation** for the FAB bubble
-- Mathematically continuous **C¹ shoulder curves** (no kinks at the notch edges)
-- **Notification badges**
-- **10 built-in style presets**
-- **Lottie**, **SVG**, **Image** or any **Widget** support for Icons
-- Zero dependencies beyond Flutter
 
 ## Tuning
 Everyone loves tuning. For some it will be girls, for some carburators and for some it will be navigation bar 🥲. If you are among them, you are in the right place. Let's tune the navigation bar. You can change almost every parameter of the navigation bar.
@@ -36,6 +24,18 @@ Everyone loves tuning. For some it will be girls, for some carburators and for s
   </td>
 </tr>
 </table>
+
+## Features
+
+- **Animated notch** that slides smoothly to the selected item
+- **Elastic pop-in animation** for the FAB bubble
+- Mathematically continuous **C¹ shoulder curves** (no kinks at the notch edges)
+- **Notification badges**
+- **10 built-in style presets**
+- **Lottie**, **SVG**, **Image** or any **Widget** support for Icons
+- Zero dependencies beyond Flutter
+
+
 
 
 
