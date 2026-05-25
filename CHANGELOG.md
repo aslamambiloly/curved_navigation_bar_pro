@@ -1,3 +1,7 @@
+## 2.0.4
+
+* Added more screenshots to documenation.
+
 ## 2.0.3
 
 * Updated documentation.
