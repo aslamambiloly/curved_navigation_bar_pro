@@ -13,7 +13,7 @@
 A highly customizable curved bottom navigation bar featuring a **smooth animated notch**, **gliding elastic FAB bubble**, **Notification Badges**, **Labels**, **10 presets**, and **Lottie/SVG/Image/Widget** icon support.
 
 
-<p>
+<p style="display: flex; align-items: center; justify-content: center; gap: 30px;">
   <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-params.png" width="250"/>
   <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-raw.gif" width="450"/>
 </p>
