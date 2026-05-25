@@ -15,12 +15,16 @@ A highly customizable curved bottom navigation bar featuring a **smooth animated
 
 <table style="border-collapse: separate; border-spacing: 0px; border: 0;">
   <tr>
-    <td style="border-radius: 35px; overflow: hidden; border: 0;">
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-params.png" width="250" style="border-radius: 35px"/>  
-      </td>
-      <td style="border-radius: 35px; overflow: hidden; border: 0;">
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-raw-rounded.gif" width="450" style="border-radius: 35px"/>  
-  </tr>
+  <td valign="middle">
+    <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-params.png" width="250"/>
+  </td>
+  <td valign="middle">
+    Tune the way you want!
+  </td>
+  <td valign="middle">
+    <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-raw-rounded.gif" width="450"/>
+  </td>
+</tr>
 </table>
 
 ## Features
@@ -37,14 +41,14 @@ A highly customizable curved bottom navigation bar featuring a **smooth animated
 
 <table style= "border: 0">
   <tr>
-    <td style="border-radius: 35px; overflow: hidden; border: 0;">
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase.gif" width="250" style="border-radius: 25px"/>
+    <td>
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase.gif" width="250"/>
     </td>
-    <td style="border-radius: 35px; overflow: hidden; border: 0;">
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/playground.gif" width="250" style="border-radius: 25px"/>
+    <td>
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/playground.gif" width="250"/>
     </td>
-     <td style="border-radius: 35px; overflow: hidden; border: 0;">
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase2.gif" width="250" style="border-radius: 25px"/>
+     <td>
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase2.gif" width="250"/>
     </td>
   </tr>
 </table>
