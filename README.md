@@ -13,38 +13,38 @@
 A highly customizable curved bottom navigation bar featuring a **smooth animated notch**, **gliding elastic FAB bubble**, **Notification Badges**, **Labels**, **10 presets**, and **Lottie/SVG/Image/Widget** icon support.
 
 
-<table style="border-collapse: separate; border-spacing: 10px;">
+<table style="border-collapse: separate; border-spacing: 0px; border: 0;">
   <tr>
-   <td style="border-radius: 35px; overflow: hidden;">
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-params.png" width="250" style="border-radius: 35px"/>
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning.gif" width="450" style="border-radius: 55px"/>
-    </td>
+    <td style="border-radius: 35px; overflow: hidden; border: 0;">
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-params.png" width="250" style="border-radius: 35px"/>  
+      </td>
+      <td style="border-radius: 35px; overflow: hidden; border: 0;">
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-raw.gif" width="450" style="border-radius: 35px"/>  
   </tr>
 </table>
 
 ## Features
 
-- Animated notch that slides smoothly to the selected item
-- Elastic pop-in animation for the FAB bubble
-- Mathematically continuous C¹ shoulder curves (no kinks at the notch edges)
-- **Notification badges**: display counts, dots, or custom widgets on items
-- **10 built-in style presets**: drop in a complete look with one parameter
-- 2–6 navigation items
+- **Animated notch** that slides smoothly to the selected item
+- **Elastic pop-in animation** for the FAB bubble
+- Mathematically continuous **C¹ shoulder curves** (no kinks at the notch edges)
+- **Notification badges**
+- **10 built-in style presets**
 - **Lottie**, **SVG**, **Image** or any **Widget** support for Icons
 - Zero dependencies beyond Flutter
 
 ## Preview
 
-<table>
+<table style= "border: 0">
   <tr>
-    <td>
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase.gif" width="250"/>
+    <td style="border-radius: 35px; overflow: hidden; border: 0;">
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase.gif" width="250" style="border-radius: 25px"/>
     </td>
-    <td>
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/playground.gif" width="250"/>
+    <td style="border-radius: 35px; overflow: hidden; border: 0;">
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/playground.gif" width="250" style="border-radius: 25px"/>
     </td>
-     <td>
-      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase2.gif" width="250"/>
+     <td style="border-radius: 35px; overflow: hidden; border: 0;">
+      <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/showcase2.gif" width="250" style="border-radius: 25px"/>
     </td>
   </tr>
 </table>
@@ -55,7 +55,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^2.0.2
+  curved_navigation_bar_pro: ^2.0.3
 ```
 
 Then run:
@@ -387,4 +387,5 @@ PRs and issues are welcome! Please open an issue first for significant changes.
 
 ## License
 
-[MIT](LICENSE) © 2026 aslamambiloly
+Made with 💛 by [aslamambiloly](https://github.com/aslamambiloly) © 2026
+

@@ -1,3 +1,7 @@
+## 2.0.3
+
+* Updated documentation.
+
 ## 2.0.2
 
 * Bug fixes and performance improvements.
