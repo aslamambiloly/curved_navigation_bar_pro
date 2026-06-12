@@ -2,6 +2,7 @@
 
 import 'package:curved_navigation_bar_pro/curved_navigation_bar_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -125,7 +126,6 @@ void main() {
       await tester.pumpWidget(_buildApp(index: 0));
       await tester.pumpWidget(_buildApp(index: 2));
       await tester.pumpAndSettle();
-      // No thrown exception = animation settled without errors.
       expect(find.text('SAVED'), findsOneWidget);
     });
 
@@ -194,7 +194,8 @@ void main() {
       expect(find.text('HOME'), findsOneWidget);
     });
 
-    testWidgets('renders correctly with a style preset', (tester) async {
+    testWidgets('renders correctly with goldenHour style preset',
+        (tester) async {
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(
@@ -202,7 +203,7 @@ void main() {
               items: _items,
               currentIndex: 0,
               onTap: (_) {},
-              navbarStyle: CNBPStyles.midnightBlue,
+              navbarStyle: CNBPStyles.goldenHour,
             ),
           ),
         ),
@@ -210,18 +211,58 @@ void main() {
       expect(find.text('HOME'), findsOneWidget);
     });
 
-    // ── Semantics (Option B — widget already has Semantics nodes) ─────────────
+    testWidgets('renders correctly with deepSpaceDark style preset',
+        (tester) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            bottomNavigationBar: CurvedNavigationBarPro(
+              items: _items,
+              currentIndex: 0,
+              onTap: (_) {},
+              navbarStyle: CNBPStyles.deepSpaceDark,
+            ),
+          ),
+        ),
+      );
+      expect(find.text('HOME'), findsOneWidget);
+    });
 
-    testWidgets('each item has a semantics node with its label', (tester) async {
+    testWidgets('explicit param overrides style preset', (tester) async {
+      // fabRadius: 40 should override the preset's fabRadius without throwing.
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            bottomNavigationBar: CurvedNavigationBarPro(
+              items: _items,
+              currentIndex: 0,
+              onTap: (_) {},
+              navbarStyle: CNBPStyles.roundedCoral,
+              fabRadius: 40,
+            ),
+          ),
+        ),
+      );
+      expect(find.text('HOME'), findsOneWidget);
+    });
+
+    // ── Semantics (Option B) ──────────────────────────────────────────────────
+    //
+    // _NavItemTile already wraps each item in:
+    //   Semantics(label: item.label, selected: isActive, button: true, …)
+    //
+    // Flutter may surface a label on more than one merged node, so we use
+    // findsWidgets instead of findsOneWidget, and ensureSemantics() to force
+    // the semantics tree to be built during tests.
+
+    testWidgets('each item has a semantics node labelled with its text',
+        (tester) async {
       await tester.pumpWidget(_buildApp());
       await tester.pumpAndSettle();
 
-      // SemanticsHandle ensures the semantics tree is built.
       final handle = tester.ensureSemantics();
 
       for (final item in _items) {
-        // findsWidgets (not findsOneWidget) because Flutter may surface the
-        // label on both the Semantics container and its child node.
         expect(
           find.bySemanticsLabel(item.label),
           findsWidgets,
@@ -234,17 +275,34 @@ void main() {
 
     testWidgets('active item semantics node is marked as selected',
         (tester) async {
-      await tester.pumpWidget(_buildApp(index: 1)); // SEARCH is active
+      await tester.pumpWidget(_buildApp(index: 1)); // SEARCH active
       await tester.pumpAndSettle();
 
       final handle = tester.ensureSemantics();
 
-      // Walk the semantics tree and find a node for 'SEARCH' that is selected.
-      final searchNode = tester.getSemantics(find.bySemanticsLabel('SEARCH').first);
+      final node = tester.getSemantics(find.bySemanticsLabel('SEARCH').first);
       expect(
-        searchNode.hasFlag(SemanticsFlag.isSelected),
+        node.hasFlag(SemanticsFlag.isSelected),
         isTrue,
         reason: 'Active item should carry the isSelected semantics flag',
+      );
+
+      handle.dispose();
+    });
+
+    testWidgets('inactive item semantics node is NOT marked as selected',
+        (tester) async {
+      await tester
+          .pumpWidget(_buildApp(index: 0)); // HOME active, SEARCH inactive
+      await tester.pumpAndSettle();
+
+      final handle = tester.ensureSemantics();
+
+      final node = tester.getSemantics(find.bySemanticsLabel('SEARCH').first);
+      expect(
+        node.hasFlag(SemanticsFlag.isSelected),
+        isFalse,
+        reason: 'Inactive item should NOT carry the isSelected flag',
       );
 
       handle.dispose();
@@ -258,7 +316,8 @@ void main() {
       final handle = tester.ensureSemantics();
 
       for (final item in _items) {
-        final node = tester.getSemantics(find.bySemanticsLabel(item.label).first);
+        final node =
+            tester.getSemantics(find.bySemanticsLabel(item.label).first);
         expect(
           node.hasFlag(SemanticsFlag.isButton),
           isTrue,
@@ -278,7 +337,8 @@ void main() {
           activeWidget: const Icon(Icons.home, color: Colors.white),
           label: 'HOME',
         ),
-        const CurvedNavigationItemPro(inactiveIcon: Icons.search, label: 'SEARCH'),
+        const CurvedNavigationItemPro(
+            inactiveIcon: Icons.search, label: 'SEARCH'),
       ];
       await tester.pumpWidget(_buildApp(items: customItems));
       expect(find.text('HOME'), findsOneWidget);
@@ -307,6 +367,26 @@ void main() {
           badgeText: '•',
         ),
         CurvedNavigationItemPro(inactiveIcon: Icons.home, label: 'HOME'),
+      ];
+      await tester.pumpWidget(_buildApp(items: badgedItems));
+      expect(find.text('ALERTS'), findsOneWidget);
+    });
+
+    testWidgets('renders custom badge widget without throwing', (tester) async {
+      final badgedItems = [
+        CurvedNavigationItemPro(
+          inactiveIcon: Icons.notifications_outlined,
+          label: 'ALERTS',
+          badgeWidget: Container(
+            width: 8,
+            height: 8,
+            decoration: const BoxDecoration(
+              color: Colors.red,
+              shape: BoxShape.circle,
+            ),
+          ),
+        ),
+        const CurvedNavigationItemPro(inactiveIcon: Icons.home, label: 'HOME'),
       ];
       await tester.pumpWidget(_buildApp(items: badgedItems));
       expect(find.text('ALERTS'), findsOneWidget);
