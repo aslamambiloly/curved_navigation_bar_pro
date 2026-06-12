@@ -1,3 +1,7 @@
+## 2.0.7
+
+* Added semantics for better indexing so that voiceover, talkback etc. can access
+
 ## 2.0.6
 
 * Trigger analysis pipeline re-run.

@@ -17,7 +17,7 @@ Everyone loves tuning. For some it will be girls, for some carburators and for s
     <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-params.png" width="260"/>
   </td>
   <td valign="middle">
-    <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning2.gif" width="450"/>
+    <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-raw-rounded.gif" width="450"/>
   </td>
 </tr>
 </table>
@@ -58,7 +58,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^2.0.6
+  curved_navigation_bar_pro: ^2.0.7
 ```
 
 Then run:
