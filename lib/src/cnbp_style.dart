@@ -187,7 +187,7 @@ enum CNBPStyles {
           notchShoulderRadius: 12,
           cornerRadius: 0,
           elevation: 14,
-          shadowColor: Color(0x42000000), // ≈ Colors.black26
+          shadowColor: Colors.black26, 
           animationDuration: Duration(milliseconds: 400),
           animationCurve: Curves.easeInOutCubic,
         );
@@ -207,7 +207,7 @@ enum CNBPStyles {
           notchShoulderRadius: 0,
           cornerRadius: 0,
           elevation: 20,
-          shadowColor: Color(0x3F00E5FF), // cyan 25 % α
+          shadowColor: Colors.black26, 
           animationDuration: Duration(milliseconds: 350),
           animationCurve: Curves.easeOutBack,
           activeTextStyle: TextStyle(
@@ -241,7 +241,7 @@ enum CNBPStyles {
           notchShoulderRadius: 20,
           cornerRadius: 28,
           elevation: 10,
-          shadowColor: Color(0x33FF6B6B), // coral 20 % α
+          shadowColor: Colors.black26,
           animationDuration: Duration(milliseconds: 480),
           animationCurve: Curves.easeInOutSine,
         );
@@ -261,7 +261,7 @@ enum CNBPStyles {
           notchShoulderRadius: 0,
           cornerRadius: 0,
           elevation: 6,
-          shadowColor: Color(0x1F000000), // black 12 % α
+          shadowColor: Colors.black26,
           animationDuration: Duration(milliseconds: 300),
           animationCurve: Curves.easeOut,
           activeTextStyle: TextStyle(
@@ -294,7 +294,7 @@ enum CNBPStyles {
           notchShoulderRadius: 16,
           cornerRadius: 20,
           elevation: 18,
-          shadowColor: Color(0x4C00C896), // emerald 30 % α
+          shadowColor: Colors.black26,
           animationDuration: Duration(milliseconds: 500),
           animationCurve: Curves.easeInOutBack,
           activeTextStyle: TextStyle(
@@ -327,7 +327,7 @@ enum CNBPStyles {
           notchShoulderRadius: 18,
           cornerRadius: 0,
           elevation: 12,
-          shadowColor: Color(0x2EFF9F43), // amber 18 % α
+          shadowColor: Colors.black26,
           animationDuration: Duration(milliseconds: 460),
           animationCurve: Curves.easeInOutSine,
           activeTextStyle: TextStyle(
@@ -360,7 +360,7 @@ enum CNBPStyles {
           notchShoulderRadius: 14,
           cornerRadius: 0,
           elevation: 22,
-          shadowColor: Color(0x47BE73FF), // lavender 28 % α
+          shadowColor: Colors.black26,
           animationDuration: Duration(milliseconds: 380),
           animationCurve: Curves.easeOutBack,
           activeTextStyle: TextStyle(
@@ -393,7 +393,7 @@ enum CNBPStyles {
           notchShoulderRadius: 10,
           cornerRadius: 20,
           elevation: 6,
-          shadowColor: Color(0x26607D8B), // blue-grey 15 % α
+          shadowColor: Colors.black26,
           animationDuration: Duration(milliseconds: 300),
           animationCurve: Curves.easeOut,
           activeTextStyle: TextStyle(
@@ -426,7 +426,7 @@ enum CNBPStyles {
           notchShoulderRadius: 22,
           cornerRadius: 24,
           elevation: 20,
-          shadowColor: Color(0x3FFF6AC1), // pink 25 % α
+          shadowColor: Colors.black26,
           animationDuration: Duration(milliseconds: 520),
           animationCurve: Curves.elasticOut,
           activeTextStyle: TextStyle(
@@ -459,7 +459,7 @@ enum CNBPStyles {
           notchShoulderRadius: 12,
           cornerRadius: 12,
           elevation: 18,
-          shadowColor: Color(0x38FFD700), // gold 22 % α
+          shadowColor: Colors.black26,
           animationDuration: Duration(milliseconds: 420),
           animationCurve: Curves.easeInOutCubic,
           activeTextStyle: TextStyle(
