@@ -1,3 +1,7 @@
+## 2.0.8
+
+* Refined documentation as well as CNBP Styles
+
 ## 2.0.7
 
 * Added semantics for better indexing so that voiceover, talkback etc. can access

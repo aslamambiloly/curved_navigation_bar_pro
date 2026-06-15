@@ -14,7 +14,7 @@ Everyone loves tuning. For some it will be girls, for some carburators and for s
 <table style="border-collapse: separate; border-spacing: 0px; border: 0;">
   <tr>
   <td valign="middle">
-    <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning-params.png" width="260"/>
+    <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning3params.png" width="360"/>
   </td>
   <td valign="middle">
     <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/tuning3rounded.gif" width="450"/>
@@ -58,7 +58,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^2.0.7
+  curved_navigation_bar_pro: ^2.0.8
 ```
 
 Then run:
@@ -152,64 +152,6 @@ CurvedNavigationBarPro(
   activeIconSize: 22,
 )
 ```
-
-## Badges
-
-Add notification badges to any navigation item to display counts, dots, or custom widgets:
-
-```dart
-CurvedNavigationBarPro(
-  items: [
-    CurvedNavigationItemPro(
-      inactiveIcon: Icons.home_outlined,
-      activeIcon: Icons.home_rounded,
-      label: 'Home',
-      badgeText: '3',  // Shows a red badge with "3"
-    ),
-    CurvedNavigationItemPro(
-      inactiveIcon: Icons.mail_outline,
-      activeIcon: Icons.mail_rounded,
-      label: 'Messages',
-      badgeText: '•',  // Shows a dot badge
-    ),
-    CurvedNavigationItemPro(
-      inactiveIcon: Icons.notifications_outlined,
-      activeIcon: Icons.notifications_rounded,
-      label: 'Alerts',
-      badgeText: '99+',
-      badgeColor: Colors.orange,  // Custom badge colour
-      badgeTextColor: Colors.black,  // Custom text colour
-    ),
-    CurvedNavigationItemPro(
-      inactiveIcon: Icons.shopping_cart_outlined,
-      activeIcon: Icons.shopping_cart_rounded,
-      label: 'Cart',
-      badgeWidget: Container(  // Fully custom badge widget
-        width: 20,
-        height: 20,
-        decoration: const BoxDecoration(
-          color: Colors.red,
-          shape: BoxShape.circle,
-        ),
-        child: const Center(
-          child: Text('5', style: TextStyle(color: Colors.white, fontSize: 10)),
-        ),
-      ),
-    ),
-  ],
-  currentIndex: _index,
-  onTap: (i) => setState(() => _index = i),
-)
-```
-
-### Badge properties
-
-| Property | Type | Default | Description |
-|---|---|---|---|
-| `badgeText` | `String?` | `null` | Text to display in the badge (e.g. "3", "99+", "•") |
-| `badgeColor` | `Color?` | `Color(0xFFE53935)` | Background colour of the badge |
-| `badgeTextColor` | `Color?` | `Colors.white` | Text colour inside the badge |
-| `badgeWidget` | `Widget?` | `null` | Custom widget to display as the badge (overrides text-based badge) |
 
 ## Built-in Style Presets
 
@@ -322,6 +264,64 @@ CurvedNavigationBarPro(
 > Note: Keep in mind to set the `repeat` as false for Lottie and set the `colorFilter` for Svg for a better user experience.
 
 <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/lottie1.gif" width="400"/>
+
+## Badges
+
+Add notification badges to any navigation item to display counts, dots, or custom widgets:
+
+```dart
+CurvedNavigationBarPro(
+  items: [
+    CurvedNavigationItemPro(
+      inactiveIcon: Icons.home_outlined,
+      activeIcon: Icons.home_rounded,
+      label: 'Home',
+      badgeText: '3',  // Shows a red badge with "3"
+    ),
+    CurvedNavigationItemPro(
+      inactiveIcon: Icons.mail_outline,
+      activeIcon: Icons.mail_rounded,
+      label: 'Messages',
+      badgeText: '•',  // Shows a dot badge
+    ),
+    CurvedNavigationItemPro(
+      inactiveIcon: Icons.notifications_outlined,
+      activeIcon: Icons.notifications_rounded,
+      label: 'Alerts',
+      badgeText: '99+',
+      badgeColor: Colors.orange,  // Custom badge colour
+      badgeTextColor: Colors.black,  // Custom text colour
+    ),
+    CurvedNavigationItemPro(
+      inactiveIcon: Icons.shopping_cart_outlined,
+      activeIcon: Icons.shopping_cart_rounded,
+      label: 'Cart',
+      badgeWidget: Container(  // Fully custom badge widget
+        width: 20,
+        height: 20,
+        decoration: const BoxDecoration(
+          color: Colors.red,
+          shape: BoxShape.circle,
+        ),
+        child: const Center(
+          child: Text('5', style: TextStyle(color: Colors.white, fontSize: 10)),
+        ),
+      ),
+    ),
+  ],
+  currentIndex: _index,
+  onTap: (i) => setState(() => _index = i),
+)
+```
+
+### Badge properties
+
+| Property | Type | Default | Description |
+|---|---|---|---|
+| `badgeText` | `String?` | `null` | Text to display in the badge (e.g. "3", "99+", "•") |
+| `badgeColor` | `Color?` | `Color(0xFFE53935)` | Background colour of the badge |
+| `badgeTextColor` | `Color?` | `Colors.white` | Text colour inside the badge |
+| `badgeWidget` | `Widget?` | `null` | Custom widget to display as the badge (overrides text-based badge) |
 
 
 ## API Reference
