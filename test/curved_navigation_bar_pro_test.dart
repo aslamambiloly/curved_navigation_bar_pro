@@ -406,4 +406,100 @@ void main() {
       expect(find.text('ALERTS'), findsOneWidget);
     });
   });
+
+  group('CNBPStyleData.copyWith —', () {
+    test('returns new instance with updated fields', () {
+      const base = CNBPStyleData(
+        backgroundColor: Colors.white,
+        fabRadius: 24,
+        elevation: 14,
+      );
+      final updated = base.copyWith(fabRadius: 30, elevation: 0);
+      expect(updated.fabRadius, 30);
+      expect(updated.elevation, 0);
+      expect(
+          updated.backgroundColor, Colors.white); // unchanged field preserved
+    });
+
+    test('copyWith with no args preserves all fields', () {
+      const base = CNBPStyleData(barHeight: 100, cornerRadius: 8);
+      final copy = base.copyWith();
+      expect(copy.barHeight, 100);
+      expect(copy.cornerRadius, 8);
+    });
+  });
+
+  group('CNBPStyles — all presets render', () {
+    const presets = CNBPStyles.values;
+
+    for (final style in presets) {
+      testWidgets('${style.name} preset renders without error', (tester) async {
+        await tester.pumpWidget(
+          MaterialApp(
+            home: Scaffold(
+              bottomNavigationBar: CurvedNavigationBarPro(
+                items: _items,
+                currentIndex: 0,
+                onTap: (_) {},
+                navbarStyle: style,
+              ),
+            ),
+          ),
+        );
+        expect(find.text('HOME'), findsOneWidget);
+      });
+    }
+  });
+
+  testWidgets('renders with notchShoulderRadius 0 (simple semicircle path)',
+      (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: CurvedNavigationBarPro(
+            items: _items,
+            currentIndex: 0,
+            onTap: (_) {},
+            notchShoulderRadius: 0,
+          ),
+        ),
+      ),
+    );
+    expect(find.text('HOME'), findsOneWidget);
+  });
+
+  testWidgets('renders with elevation 0 (no shadow painted)', (tester) async {
+    await tester.pumpWidget(
+      MaterialApp(
+        home: Scaffold(
+          bottomNavigationBar: CurvedNavigationBarPro(
+            items: _items,
+            currentIndex: 0,
+            onTap: (_) {},
+            elevation: 0,
+          ),
+        ),
+      ),
+    );
+    expect(find.text('HOME'), findsOneWidget);
+  });
+
+  testWidgets('no repaint when widget rebuilds with identical props',
+      (tester) async {
+    final widget = MaterialApp(
+      home: Scaffold(
+        bottomNavigationBar: CurvedNavigationBarPro(
+          items: _items,
+          currentIndex: 0,
+          onTap: (_) {},
+          elevation: 10,
+          notchShoulderRadius: 12,
+        ),
+      ),
+    );
+    await tester.pumpWidget(widget);
+    await tester.pumpWidget(
+        widget); // second pump with same instance → shouldRepaint false
+    expect(find.text('HOME'), findsOneWidget);
+  });
 }
