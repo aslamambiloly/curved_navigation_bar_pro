@@ -1,3 +1,7 @@
+## 2.0.9
+
+* Upgraded code covergae from 92% to 100%
+
 ## 2.0.8
 
 * Refined documentation as well as CNBP Styles
