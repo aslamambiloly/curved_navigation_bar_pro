@@ -1,5 +1,9 @@
 ## 2.0.9
 
+* Added Ko-fi and Codecy report
+
+## 2.0.9
+
 * Upgraded code covergae from 92% to 100%
 
 ## 2.0.8
