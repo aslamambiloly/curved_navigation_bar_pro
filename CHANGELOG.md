@@ -1,4 +1,4 @@
-## 2.0.9
+## 2.0.10
 
 * Added Ko-fi and Codecy report
 
