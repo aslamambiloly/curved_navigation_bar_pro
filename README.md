@@ -2,7 +2,10 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
 [![codecov](https://codecov.io/gh/aslamambiloly/curved_navigation_bar_pro/graph/badge.svg?token=PWD0447P18)](https://codecov.io/gh/aslamambiloly/curved_navigation_bar_pro)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/0e00e0a5afb347af9a4963f80eab2f60)](https://app.codacy.com/gh/aslamambiloly/curved_navigation_bar_pro/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
+
+<a href='https://ko-fi.com/N7K021PF59' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 
 A highly customizable curved bottom navigation bar featuring a **smooth animated notch**, **gliding elastic FAB bubble**, **Notification Badges**, **Labels**, **10 presets**, and **Lottie/SVG/Image/Widget** icon support.
