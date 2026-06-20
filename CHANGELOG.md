@@ -1,3 +1,7 @@
+## 2.0.11
+
+* Updated documentation
+
 ## 2.0.10
 
 * Added Ko-fi and Codecy report

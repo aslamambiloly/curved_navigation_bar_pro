@@ -5,7 +5,8 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/ab02ba0bd1804555927995bbd1e6dfa7)](https://app.codacy.com/gh/aslamambiloly/flutter_timeago_pro/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 
-<a href='https://ko-fi.com/N7K021PF59' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi2.png?v=6' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
+[![Support me on Ko-fi](https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/mandhi.png)](https://ko-fi.com/N7K021PF59)
+
 
 
 A highly customizable curved bottom navigation bar featuring a **smooth animated notch**, **gliding elastic FAB bubble**, **Notification Badges**, **Labels**, **10 presets**, and **Lottie/SVG/Image/Widget** icon support.
@@ -61,7 +62,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^2.0.10
+  curved_navigation_bar_pro: ^2.0.11
 ```
 
 Then run:
