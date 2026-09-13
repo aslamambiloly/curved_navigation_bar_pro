@@ -275,7 +275,8 @@ CurvedNavigationBarPro(
 )
 
 ```
-> Note: Keep in mind to set the `repeat` as false for Lottie and set the `colorFilter` for Svg for a better user experience.
+> [!NOTE]
+> Keep in mind to set the `repeat` as false for Lottie and set the `colorFilter` for Svg for a better user experience.
 
 <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/lottie1.gif" width="400"/>
 
