@@ -44,7 +44,7 @@ Everyone loves tuning. For some it will be girls, for some carburators, for some
 
 ## Compatibility
 
-> [!NOTE]
+
 > `curved_navigation_bar_pro` is implemented entirely in **pure Dart and Flutter**:
 > - **iOS Swift Package Manager (SPM)**: 100% compatible. Requires no CocoaPods or native SPM configuration.
 > - **Android Gradle Plugin (AGP 9.0+)**: 100% immune to Kotlin Gradle Plugin (KGP) deprecations and breaking changes.
