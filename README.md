@@ -39,10 +39,15 @@ Everyone loves tuning. For some it will be girls, for some carburators, for some
 - **Notification badges**
 - **10 built-in style presets**
 - **Lottie**, **SVG**, **Image** or any **Widget** support for Icons
+- **100% Pure Dart & Flutter** — Zero native code (`android/` or `ios/`), zero build configuration issues. Fully compatible with **Swift Package Manager (SPM)** and **Android Gradle Plugin 9.0+ (AGP 9.0)**.
 - Zero dependencies beyond Flutter
 
+## Compatibility
 
-
+> [!NOTE]
+> `curved_navigation_bar_pro` is implemented entirely in **pure Dart and Flutter**:
+> - **iOS Swift Package Manager (SPM)**: 100% compatible. Requires no CocoaPods or native SPM configuration.
+> - **Android Gradle Plugin (AGP 9.0+)**: 100% immune to Kotlin Gradle Plugin (KGP) deprecations and breaking changes.
 
 
 ## Preview
@@ -67,7 +72,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^2.0.11
+  curved_navigation_bar_pro: ^2.1.0
 ```
 
 Then run:
