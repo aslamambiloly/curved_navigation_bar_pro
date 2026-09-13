@@ -33,7 +33,7 @@ Everyone loves tuning. For some it will be girls, for some carburators, for some
 
 ## Happy News : )
 
-> [!NOTE]
+<!-- > [!NOTE] -->
 > `curved_navigation_bar_pro` is implemented entirely in **pure Dart and Flutter**. So don't worry about:
 > - **iOS Swift Package Manager (SPM)**: 100% compatible. Requires no CocoaPods or native SPM configuration.
 > - **Android Gradle Plugin (AGP 9.0+)**: 100% immune to Kotlin Gradle Plugin (KGP) deprecations and breaking changes.
@@ -275,8 +275,7 @@ CurvedNavigationBarPro(
 )
 
 ```
-> [!NOTE]
-> Keep in mind to set the `repeat` as false for Lottie and set the `colorFilter` for Svg for a better user experience.
+> Note: Keep in mind to set the `repeat` as false for Lottie and set the `colorFilter` for Svg for a better user experience.
 
 <img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/lottie1.gif" width="400"/>
 
