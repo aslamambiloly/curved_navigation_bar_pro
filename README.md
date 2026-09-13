@@ -42,7 +42,7 @@ Everyone loves tuning. For some it will be girls, for some carburators, for some
 - **100% Pure Dart & Flutter** — Zero native code (`android/` or `ios/`), zero build configuration issues. Fully compatible with **Swift Package Manager (SPM)** and **Android Gradle Plugin 9.0+ (AGP 9.0)**.
 - Zero dependencies beyond Flutter
 
-<!-- ## Compatibility -->
+## Happy News
 
 > [!NOTE]
 > `curved_navigation_bar_pro` is implemented entirely in **pure Dart and Flutter**:
