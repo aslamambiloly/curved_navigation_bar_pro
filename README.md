@@ -8,7 +8,7 @@
 </p>
 
 <p align="center">
-  <a href="https://ko-fi.com/N7K021PF59"><img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/mandhi.png" alt="Support me on Ko-fi"></a>
+  <a href="https://ko-fi.com/N7K021PF59"><img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/coffee.jpg" alt="Support me on Ko-fi"></a>
 </p>
 
 
