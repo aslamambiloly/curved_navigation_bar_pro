@@ -1,0 +1,19 @@
+# Build and cache
+.dart_tool/
+build/
+.packages
+.pub/
+.pub-cache/
+
+# IDE files
+.idea/
+.vscode/
+*.iml
+
+# OS files
+.DS_Store
+
+# Temporary and unnecessary files
+*.js
+*.log
+**/doc/api/
