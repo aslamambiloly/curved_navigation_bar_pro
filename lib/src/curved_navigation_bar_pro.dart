@@ -71,7 +71,7 @@ class CurvedNavigationBarPro extends StatefulWidget {
     this.inactiveTextStyle,
     this.showLabel,
     this.inactiveIconSize,
-    this.activeIconSize, 
+    this.activeIconSize,
   })  : assert(
           items.length >= 2 && items.length <= 6,
           'CurvedNavBar requires between 2 and 6 items, '
@@ -283,25 +283,36 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
     final styleData = widget.navbarStyle?.data;
 
     // ── Resolve: explicit param > style preset > hardcoded default ────────────
-    final activeColor =
-        widget.activeColor ?? styleData?.activeColor ?? theme.colorScheme.primary;
-    final fabColor =
-        widget.fabColor ?? styleData?.fabColor ?? activeColor;
+    final activeColor = widget.activeColor ??
+        styleData?.activeColor ??
+        theme.colorScheme.primary;
+    final fabColor = widget.fabColor ?? styleData?.fabColor ?? activeColor;
     final activeIconColor =
         widget.activeIconColor ?? styleData?.activeIconColor;
     final backgroundColor =
         widget.backgroundColor ?? styleData?.backgroundColor ?? Colors.white;
-    final inactiveColor =
-        widget.inactiveColor ?? styleData?.inactiveColor ?? const Color(0xFFADB5BD);
+    final inactiveColor = widget.inactiveColor ??
+        styleData?.inactiveColor ??
+        const Color(0xFFADB5BD);
     final barHeight = widget.barHeight ?? styleData?.barHeight ?? 110.0;
-    final fabRadius = widget.fabRadius ?? styleData?.fabRadius ?? 24.0;
+    // Resolve activeIconSize first so fabRadius can derive from it when not
+    // explicitly set. Resolution order:
+    //   explicit activeIconSize → preset activeIconSize → fabRadius * 0.92 → 22.08
+    // Then fabRadius:
+    //   explicit fabRadius → preset fabRadius → activeIconSize / 0.92 → 24.0
+    final resolvedFabRadius = widget.fabRadius ?? styleData?.fabRadius;
+    final activeIconSize = widget.activeIconSize ??
+        styleData?.activeIconSize ??
+        (resolvedFabRadius != null ? resolvedFabRadius * 0.92 : null) ??
+        22.08; // == 24 * 0.92, the same implicit default as before
+    final fabRadius =
+        widget.fabRadius ?? styleData?.fabRadius ?? (activeIconSize / 0.92);
     final fabGap = widget.fabGap ?? styleData?.fabGap ?? 10.0;
     final fabSink =
         (widget.fabSink ?? styleData?.fabSink ?? 22.0).clamp(0.0, fabRadius);
     final notchShoulderRadius =
         widget.notchShoulderRadius ?? styleData?.notchShoulderRadius ?? 12.0;
-    final cornerRadius =
-        widget.cornerRadius ?? styleData?.cornerRadius ?? 0.0;
+    final cornerRadius = widget.cornerRadius ?? styleData?.cornerRadius ?? 0.0;
     final contentPadding =
         widget.contentPadding ?? styleData?.contentPadding ?? cornerRadius;
     final elevation = widget.elevation ?? styleData?.elevation ?? 14.0;
@@ -316,11 +327,10 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
         widget.activeTextStyle ?? styleData?.activeTextStyle;
     final inactiveTextStyle =
         widget.inactiveTextStyle ?? styleData?.inactiveTextStyle;
-final showLabel = widget.showLabel ?? styleData?.showLabel ?? true;
+    final showLabel = widget.showLabel ?? styleData?.showLabel ?? true;
     final inactiveIconSize =
         widget.inactiveIconSize ?? styleData?.inactiveIconSize ?? 24.0;
-    final activeIconSize =
-        widget.activeIconSize ?? styleData?.activeIconSize ?? fabRadius * 0.92; 
+    // activeIconSize already resolved above (before fabRadius)
     // ─────────────────────────────────────────────────────────────────────────
 
     final fraction = _liveFraction;
@@ -335,7 +345,8 @@ final showLabel = widget.showLabel ?? styleData?.showLabel ?? true;
         final protrude = fabRadius - sink;
 
         final rawCX = contentPadding +
-            fraction * (widget.items.length - 1) * itemWidth + itemWidth / 2;
+            fraction * (widget.items.length - 1) * itemWidth +
+            itemWidth / 2;
         final bubbleCX = rawCX.clamp(
           fabRadius.toDouble(),
           totalWidth - fabRadius,
@@ -734,7 +745,6 @@ class _BubbleState extends State<_Bubble> with SingleTickerProviderStateMixin {
   }
 }
 
-
 // class _AmbiText extends StatelessWidget {
 //   final String text;
 //   final TextStyle? style;
@@ -814,7 +824,8 @@ class _BadgeWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hasBadge = badgeWidget != null || (badgeText != null && badgeText!.isNotEmpty);
+    final hasBadge =
+        badgeWidget != null || (badgeText != null && badgeText!.isNotEmpty);
     if (!hasBadge) return child;
 
     Widget badge;
@@ -823,8 +834,8 @@ class _BadgeWrapper extends StatelessWidget {
     } else {
       final isDot = badgeText == '•';
       badge = Container(
-        padding: isDot 
-            ? EdgeInsets.zero 
+        padding: isDot
+            ? EdgeInsets.zero
             : const EdgeInsets.symmetric(horizontal: 4.5, vertical: 2),
         constraints: BoxConstraints(
           minWidth: isDot ? 8 : 16,

@@ -24,8 +24,22 @@ linter:
     - use_decorated_box
     - use_if_null_to_convert_nulls_to_bools
     - use_super_parameters
+    
 
 analyzer:
   errors:
     missing_required_param: error
     missing_return: error
+  exclude:
+    - build/**
+    - .dart_tool/**
+    - lib/generated/**
+    - '**/*.g.dart'
+    - '**/*.freezed.dart'
+    - '**/*.mocks.dart'
+    - android/**
+    - ios/**
+    - web/**
+    - windows/**
+    - macos/**
+    - linux/**

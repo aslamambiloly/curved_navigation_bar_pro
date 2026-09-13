@@ -342,11 +342,12 @@ void main() {
 
     // ── Custom widget items ───────────────────────────────────────────────────
 
-    testWidgets('renders custom inactiveWidget without throwing', (tester) async {
+    testWidgets('renders custom inactiveWidget without throwing',
+        (tester) async {
       final customItems = [
-        CurvedNavigationItemPro(
-          inactiveWidget: const Icon(Icons.home, color: Colors.grey),
-          activeWidget: const Icon(Icons.home, color: Colors.white),
+        const CurvedNavigationItemPro(
+          inactiveWidget: Icon(Icons.home, color: Colors.grey),
+          activeWidget: Icon(Icons.home, color: Colors.white),
           label: 'HOME',
         ),
         const CurvedNavigationItemPro(

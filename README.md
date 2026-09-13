@@ -1,18 +1,22 @@
-[![pub version](https://img.shields.io/pub/v/curved_navigation_bar_pro.svg)](https://pub.dev/packages/curved_navigation_bar_pro)
-[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Flutter](https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter)](https://flutter.dev)
-[![codecov](https://codecov.io/gh/aslamambiloly/curved_navigation_bar_pro/graph/badge.svg?token=PWD0447P18)](https://codecov.io/gh/aslamambiloly/curved_navigation_bar_pro)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/ab02ba0bd1804555927995bbd1e6dfa7)](https://app.codacy.com/gh/aslamambiloly/flutter_timeago_pro/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+<p align="center">
+  <a href="https://pub.dev/packages/curved_navigation_bar_pro"><img src="https://img.shields.io/pub/v/curved_navigation_bar_pro.svg" alt="pub version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License: MIT"></a>
+  <a href="https://flutter.dev"><img src="https://img.shields.io/badge/Flutter-3.10%2B-blue?logo=flutter" alt="Flutter"></a>
+  <br>
+  <a href="https://codecov.io/gh/aslamambiloly/curved_navigation_bar_pro"><img src="https://codecov.io/gh/aslamambiloly/curved_navigation_bar_pro/graph/badge.svg?token=PWD0447P18" alt="codecov"></a>
+  <a href="https://app.codacy.com/gh/aslamambiloly/flutter_timeago_pro/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade"><img src="https://app.codacy.com/project/badge/Grade/ab02ba0bd1804555927995bbd1e6dfa7" alt="Codacy Badge"></a>
+</p>
 
-
-[![Support me on Ko-fi](https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/mandhi.png)](https://ko-fi.com/N7K021PF59)
+<p align="center">
+  <a href="https://ko-fi.com/N7K021PF59"><img src="https://raw.githubusercontent.com/aslamambiloly/curved_navigation_bar_pro/main/doc/mandhi.png" alt="Support me on Ko-fi"></a>
+</p>
 
 
 
 A highly customizable curved bottom navigation bar featuring a **smooth animated notch**, **gliding elastic FAB bubble**, **Notification Badges**, **Labels**, **10 presets**, and **Lottie/SVG/Image/Widget** icon support.
 
 ## Tuning
-Everyone loves tuning. For some it will be girls, for some carburators and for some it will be navigation bar 🥲. If you are among them, you are in the right place. Let's tune the navigation bar. You can change almost every parameter of the navigation bar.
+Everyone loves tuning. For some it will be girls, for some carburators, for some guitars and for some it will be navigation bar 🥲. If you are among them, you are in the right place. Let's tune the navigation bar. You can literally change almost every parameter of the navigation bar. Unleash your curveness obsession!
 
 
 <table style="border-collapse: separate; border-spacing: 0px; border: 0;">

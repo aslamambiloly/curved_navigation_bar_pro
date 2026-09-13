@@ -21,7 +21,7 @@
     },
     {
       "name": "clock",
-      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/clock-1.1.2",
+      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/clock-1.1.3",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -39,9 +39,9 @@
     },
     {
       "name": "flutter",
-      "rootUri": "file:///Users/aslamambiloly/flutter/packages/flutter",
+      "rootUri": "file:///Users/aslamambiloly/Downloads/flutter/packages/flutter",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.11"
     },
     {
       "name": "flutter_lints",
@@ -51,9 +51,9 @@
     },
     {
       "name": "flutter_test",
-      "rootUri": "file:///Users/aslamambiloly/flutter/packages/flutter_test",
+      "rootUri": "file:///Users/aslamambiloly/Downloads/flutter/packages/flutter_test",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.11"
     },
     {
       "name": "leak_tracker",
@@ -81,9 +81,9 @@
     },
     {
       "name": "matcher",
-      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/matcher-0.12.18",
+      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/matcher-0.12.20",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.10"
     },
     {
       "name": "material_color_utilities",
@@ -93,7 +93,7 @@
     },
     {
       "name": "meta",
-      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/meta-1.17.0",
+      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/meta-1.19.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -105,9 +105,9 @@
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///Users/aslamambiloly/flutter/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///Users/aslamambiloly/Downloads/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
-      "languageVersion": "3.9"
+      "languageVersion": "3.11"
     },
     {
       "name": "source_span",
@@ -117,7 +117,7 @@
     },
     {
       "name": "stack_trace",
-      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/stack_trace-1.12.1",
+      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/stack_trace-1.12.2",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -141,19 +141,19 @@
     },
     {
       "name": "test_api",
-      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/test_api-0.7.9",
+      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/test_api-0.7.12",
       "packageUri": "lib/",
-      "languageVersion": "3.7"
+      "languageVersion": "3.10"
     },
     {
       "name": "vector_math",
-      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/vector_math-2.2.0",
+      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/vector_math-2.4.2",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.10"
     },
     {
       "name": "vm_service",
-      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/vm_service-15.1.0",
+      "rootUri": "file:///Users/aslamambiloly/.pub-cache/hosted/pub.dev/vm_service-15.3.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -165,8 +165,8 @@
     }
   ],
   "generator": "pub",
-  "generatorVersion": "3.11.0",
-  "flutterRoot": "file:///Users/aslamambiloly/flutter",
-  "flutterVersion": "3.41.1",
+  "generatorVersion": "3.13.3",
+  "flutterRoot": "file:///Users/aslamambiloly/Downloads/flutter",
+  "flutterVersion": "3.47.4",
   "pubCache": "file:///Users/aslamambiloly/.pub-cache"
 }
