@@ -1,3 +1,7 @@
+## 2.1.1
+
+* Bug fixes and performance improvements.
+
 ## 2.1.0
 
 * Confirmed compatibility with iOS Swift Package Manager and Android Gradle Plugin (AGP 9.0), and optimized package size
