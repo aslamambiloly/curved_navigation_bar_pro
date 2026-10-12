@@ -1,3 +1,8 @@
+## 2.2.1
+
+* Updated documentation
+
+
 ## 2.2.0
 
 * Added `hapticFeedback` parameter with `CNBPHapticFeedback` styles (`selectionClick`, `lightImpact`, `mediumImpact`, `heavyImpact`, `vibrate`, `none`) and custom callback support (`CNBPHapticFeedback.custom`, `CNBPHapticFeedback.customWithIndex`).

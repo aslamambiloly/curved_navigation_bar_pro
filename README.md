@@ -42,8 +42,6 @@ Everyone loves tuning. For some it will be girls, for some carburators, for some
 - **Elastic pop-in animation** for the FAB bubble
 - Mathematically continuous **C¹ shoulder curves** (no kinks at the notch edges)
 - **Notification badges**
-- **Safe area support** — Automatic bottom safe area handling for modern edge-to-edge devices
-- **Haptic feedback** — Built-in tactile feedback (`selectionClick`, `lightImpact`, `mediumImpact`, `heavyImpact`, `vibrate`, `none`) or custom haptics
 - **10 built-in style presets**
 - **Lottie**, **SVG**, **Image** or any **Widget** support for Icons
 - Zero dependencies beyond Flutter
