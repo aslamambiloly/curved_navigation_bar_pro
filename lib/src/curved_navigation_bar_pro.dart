@@ -4,8 +4,11 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import 'cnbp_haptic.dart';
 import 'cnbp_style.dart';
 import 'curved_navigation_item_pro.dart';
+
+export 'cnbp_haptic.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
 //  Public widget
@@ -72,6 +75,11 @@ class CurvedNavigationBarPro extends StatefulWidget {
     this.showLabel,
     this.inactiveIconSize,
     this.activeIconSize,
+    // ── Safe Area ────────────────────────────────────────────────────────────
+    this.useSafeArea = true,
+    // ── Haptics ──────────────────────────────────────────────────────────────
+    this.hapticFeedback = CNBPHapticFeedback.selectionClick,
+    this.customHapticFeedback,
   })  : assert(
           items.length >= 2 && items.length <= 6,
           'CurvedNavBar requires between 2 and 6 items, '
@@ -208,6 +216,33 @@ class CurvedNavigationBarPro extends StatefulWidget {
   /// Icon size for active items.
   final double? activeIconSize;
 
+  /// Whether to respect the bottom safe area inset (e.g. for modern mobile devices
+  /// with gesture navigation / home indicators).
+  ///
+  /// When `true` (the default), safe area padding is applied to navigation items
+  /// and the bar's height is automatically adjusted to include the bottom safe
+  /// area padding.
+  final bool useSafeArea;
+
+  /// The haptic feedback style to trigger when a navigation item is tapped.
+  ///
+  /// Choose from built-in styles:
+  /// - [CNBPHapticFeedback.selectionClick] (default)
+  /// - [CNBPHapticFeedback.lightImpact]
+  /// - [CNBPHapticFeedback.mediumImpact]
+  /// - [CNBPHapticFeedback.heavyImpact]
+  /// - [CNBPHapticFeedback.vibrate]
+  /// - [CNBPHapticFeedback.none] (disables haptics)
+  ///
+  /// Or provide custom haptic feedback using [CNBPHapticFeedback.custom]
+  /// or [CNBPHapticFeedback.customWithIndex].
+  final CNBPHapticFeedback hapticFeedback;
+
+  /// Optional custom callback executed on tap for haptic feedback.
+  ///
+  /// When provided, this callback is invoked instead of [hapticFeedback].
+  final VoidCallback? customHapticFeedback;
+
   @override
   State<CurvedNavigationBarPro> createState() => _CurvedNavigationBarProState();
 }
@@ -277,6 +312,15 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
     super.dispose();
   }
 
+  void _handleTap(int index) {
+    if (widget.customHapticFeedback != null) {
+      widget.customHapticFeedback!();
+    } else {
+      widget.hapticFeedback.trigger(index);
+    }
+    widget.onTap(index);
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -294,7 +338,11 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
     final inactiveColor = widget.inactiveColor ??
         styleData?.inactiveColor ??
         const Color(0xFFADB5BD);
-    final barHeight = widget.barHeight ?? styleData?.barHeight ?? 110.0;
+    final rawBarHeight = widget.barHeight ?? styleData?.barHeight ?? 110.0;
+    final bottomPadding = widget.useSafeArea
+        ? (MediaQuery.maybePaddingOf(context)?.bottom ?? 0.0)
+        : 0.0;
+    final barHeight = rawBarHeight + bottomPadding;
     // Resolve activeIconSize first so fabRadius can derive from it when not
     // explicitly set. Resolution order:
     //   explicit activeIconSize → preset activeIconSize → fabRadius * 0.92 → 22.08
@@ -417,8 +465,9 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
                             inactiveIconSize: inactiveIconSize,
                             inactiveTextStyle: inactiveTextStyle,
                             showLabel: showLabel,
-                            onTap: () => widget.onTap(i),
+                            onTap: () => _handleTap(i),
                             barBackgroundColor: backgroundColor,
+                            useSafeArea: widget.useSafeArea,
                           ),
                         );
                       }),
@@ -430,11 +479,15 @@ class _CurvedNavigationBarProState extends State<CurvedNavigationBarPro>
                 Positioned(
                   left: bubbleCX - fabRadius,
                   top: 0,
-                  child: _Bubble(
-                    key: ValueKey(widget.currentIndex),
-                    radius: fabRadius,
-                    color: fabColor,
-                    child: activeWidget,
+                  child: GestureDetector(
+                    behavior: HitTestBehavior.opaque,
+                    onTap: () => _handleTap(widget.currentIndex),
+                    child: _Bubble(
+                      key: ValueKey(widget.currentIndex),
+                      radius: fabRadius,
+                      color: fabColor,
+                      child: activeWidget,
+                    ),
                   ),
                 ),
               ],
@@ -601,6 +654,7 @@ class _NavItemTile extends StatelessWidget {
     this.inactiveTextStyle,
     required this.showLabel,
     required this.barBackgroundColor,
+    this.useSafeArea = true,
   });
 
   final CurvedNavigationItemPro item;
@@ -614,9 +668,76 @@ class _NavItemTile extends StatelessWidget {
   final bool showLabel;
   final VoidCallback onTap;
   final Color barBackgroundColor;
+  final bool useSafeArea;
 
   @override
   Widget build(BuildContext context) {
+    Widget content = Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        AnimatedOpacity(
+          opacity: isActive ? 0.0 : 1.0,
+          duration: const Duration(milliseconds: 100),
+          child: _BadgeWrapper(
+            badgeText: item.badgeText,
+            badgeColor: item.badgeColor,
+            badgeTextColor: item.badgeTextColor,
+            badgeWidget: item.badgeWidget,
+            barBackgroundColor: barBackgroundColor,
+            child: item.resolvedInactiveWidget(
+              color: inactiveColor,
+              size: inactiveIconSize,
+            ),
+          ),
+        ),
+        if (showLabel) ...[
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: AnimatedDefaultTextStyle(
+                  duration: animationDuration,
+                  style: isActive
+                      ? activeTextStyle?.copyWith(color: activeColor) ??
+                          TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.9,
+                            color: activeColor,
+                          )
+                      : inactiveTextStyle?.copyWith(color: inactiveColor) ??
+                          TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w500,
+                            letterSpacing: 0.2,
+                            color: inactiveColor,
+                          ),
+                  child: Text(
+                    item.label,
+                    maxLines: 1,
+                    softWrap: false,
+                    overflow: TextOverflow.fade,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ],
+      ],
+    );
+
+    if (useSafeArea) {
+      content = SafeArea(
+        top: false,
+        left: false,
+        right: false,
+        bottom: true,
+        child: content,
+      );
+    }
+
     return Semantics(
       label: item.label,
       selected: isActive,
@@ -624,61 +745,7 @@ class _NavItemTile extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         behavior: HitTestBehavior.opaque,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            AnimatedOpacity(
-              opacity: isActive ? 0.0 : 1.0,
-              duration: const Duration(milliseconds: 100),
-              child: _BadgeWrapper(
-                badgeText: item.badgeText,
-                badgeColor: item.badgeColor,
-                badgeTextColor: item.badgeTextColor,
-                badgeWidget: item.badgeWidget,
-                barBackgroundColor: barBackgroundColor,
-                child: item.resolvedInactiveWidget(
-                  color: inactiveColor,
-                  size: inactiveIconSize,
-                ),
-              ),
-            ),
-            if (showLabel) ...[
-              const SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Expanded(
-                    child: AnimatedDefaultTextStyle(
-                      duration: animationDuration,
-                      style: isActive
-                          ? activeTextStyle?.copyWith(color: activeColor) ??
-                              TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 0.9,
-                                color: activeColor,
-                              )
-                          : inactiveTextStyle?.copyWith(color: inactiveColor) ??
-                              TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w500,
-                                letterSpacing: 0.2,
-                                color: inactiveColor,
-                              ),
-                      child: Text(
-                        item.label,
-                        maxLines: 1,
-                        softWrap: false,
-                        overflow: TextOverflow.fade,
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ],
-        ),
+        child: content,
       ),
     );
   }

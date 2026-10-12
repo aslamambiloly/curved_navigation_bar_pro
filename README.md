@@ -12,8 +12,6 @@
 </p>
 
 
-
-
 A highly customizable curved bottom navigation bar featuring a **smooth animated notch**, **gliding elastic FAB bubble**, **Notification Badges**, **Labels**, **10 presets**, and **Lottie/SVG/Image/Widget** icon support.
 
 ## Tuning
@@ -44,9 +42,10 @@ Everyone loves tuning. For some it will be girls, for some carburators, for some
 - **Elastic pop-in animation** for the FAB bubble
 - Mathematically continuous **C¹ shoulder curves** (no kinks at the notch edges)
 - **Notification badges**
+- **Safe area support** — Automatic bottom safe area handling for modern edge-to-edge devices
+- **Haptic feedback** — Built-in tactile feedback (`selectionClick`, `lightImpact`, `mediumImpact`, `heavyImpact`, `vibrate`, `none`) or custom haptics
 - **10 built-in style presets**
 - **Lottie**, **SVG**, **Image** or any **Widget** support for Icons
-- **100% Pure Dart & Flutter** — Zero native code (`android/` or `ios/`), zero build configuration issues. Fully compatible with **Swift Package Manager (SPM)** and **Android Gradle Plugin 9.0+ (AGP 9.0)**.
 - Zero dependencies beyond Flutter
 
 
@@ -72,7 +71,7 @@ Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^2.1.1
+  curved_navigation_bar_pro: ^2.2.0
 ```
 
 Then run:
@@ -164,6 +163,13 @@ CurvedNavigationBarPro(
   // Icon sizes
   inactiveIconSize: 24,
   activeIconSize: 22,
+
+  // Safe area
+  useSafeArea: true,
+
+  // Haptics
+  hapticFeedback: CNBPHapticFeedback.selectionClick,
+  // customHapticFeedback: () => myCustomHaptic(),
 )
 ```
 
@@ -338,6 +344,53 @@ CurvedNavigationBarPro(
 | `badgeWidget` | `Widget?` | `null` | Custom widget to display as the badge (overrides text-based badge) |
 
 
+## Haptic Feedback
+
+`CurvedNavigationBarPro` provides tactile feedback out of the box with the standard `selectionClick` style. You can choose any built-in haptic style or pass custom haptic feedback of your own choice:
+
+```dart
+// 1. Built-in haptic styles
+CurvedNavigationBarPro(
+  items: myItems,
+  onTap: (i) => setState(() => _index = i),
+  hapticFeedback: CNBPHapticFeedback.lightImpact, // or selectionClick (default), mediumImpact, heavyImpact, vibrate, none
+)
+
+// 2. Custom haptics of your own choice
+CurvedNavigationBarPro(
+  items: myItems,
+  onTap: (i) => setState(() => _index = i),
+  hapticFeedback: CNBPHapticFeedback.custom(() {
+    // Custom haptics, sound effects, or analytics
+  }),
+)
+
+// 3. Custom haptics receiving the tapped index
+CurvedNavigationBarPro(
+  items: myItems,
+  onTap: (i) => setState(() => _index = i),
+  hapticFeedback: CNBPHapticFeedback.customWithIndex((index) {
+    // Custom per-tab haptic pattern
+  }),
+)
+
+// 4. Or pass customHapticFeedback directly
+CurvedNavigationBarPro(
+  items: myItems,
+  onTap: (i) => setState(() => _index = i),
+  customHapticFeedback: () {
+    // Custom feedback
+  },
+)
+
+// 5. Disable haptics
+CurvedNavigationBarPro(
+  items: myItems,
+  onTap: (i) => setState(() => _index = i),
+  hapticFeedback: CNBPHapticFeedback.none,
+)
+```
+
 ## API Reference
 
 ### `CurvedNavigationBarPro`
@@ -369,6 +422,9 @@ CurvedNavigationBarPro(
 | `showLabel` | `bool?` | preset → `true` | Toggle visibility of labels below the icons |
 | `inactiveIconSize` | `double?` | preset → `24.0` | Icon size for inactive nav items |
 | `activeIconSize` | `double?` | preset → `fabRadius × 0.92` | Icon size inside the FAB bubble |
+| `useSafeArea` | `bool` | `true` | Whether to respect bottom safe area insets and adjust bar height |
+| `hapticFeedback` | `CNBPHapticFeedback` | `CNBPHapticFeedback.selectionClick` | Haptic feedback style (`selectionClick`, `lightImpact`, `mediumImpact`, `heavyImpact`, `vibrate`, `none`, or `custom`) |
+| `customHapticFeedback` | `VoidCallback?` | `null` | Optional custom callback executed on item tap |
 
 > **Resolution order:** explicit parameter → `navbarStyle` preset → hardcoded default
 

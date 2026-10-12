@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage> {
         notchShoulderRadius: 17,
         contentPadding: 19,
         navbarStyle: CNBPStyles.minimalMono,
+        hapticFeedback: CNBPHapticFeedback.selectionClick,
         activeIconSize: 26,
         inactiveIconSize: 26,
         inactiveColor: Colors.grey,

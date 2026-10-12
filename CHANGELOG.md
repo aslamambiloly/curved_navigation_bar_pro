@@ -1,3 +1,12 @@
+## 2.2.0
+
+* Added `hapticFeedback` parameter with `CNBPHapticFeedback` styles (`selectionClick`, `lightImpact`, `mediumImpact`, `heavyImpact`, `vibrate`, `none`) and custom callback support (`CNBPHapticFeedback.custom`, `CNBPHapticFeedback.customWithIndex`).
+* Added `customHapticFeedback` parameter for convenient custom haptic execution on item tap.
+* Enabled haptic feedback on active FAB bubble tap as well as navigation item taps.
+* Added `useSafeArea` parameter (defaults to `true`) to `CurvedNavigationBarPro` to support bottom safe area insets on modern devices (e.g., iPhone home indicator, Android gesture navigation).
+* Implemented `SafeArea` for `_NavItemTile` and automatically adjusted navigation bar height to accommodate the bottom safe area inset.
+* Updated documentation and added comprehensive test coverage for safe area and haptics behavior.
+
 ## 2.1.1
 
 * Bug fixes and performance improvements.

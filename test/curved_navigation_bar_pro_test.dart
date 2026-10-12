@@ -2,6 +2,7 @@
 
 import 'package:curved_navigation_bar_pro/curved_navigation_bar_pro.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -28,20 +29,33 @@ Widget _buildApp({
   Color? fabColor,
   Color? inactiveColor,
   bool? showLabel,
+  bool useSafeArea = true,
+  EdgeInsets? mediaQueryPadding,
+  CNBPHapticFeedback hapticFeedback = CNBPHapticFeedback.selectionClick,
+  VoidCallback? customHapticFeedback,
 }) {
-  return MaterialApp(
-    home: Scaffold(
-      bottomNavigationBar: CurvedNavigationBarPro(
-        items: items ?? _items,
-        currentIndex: index,
-        onTap: onTap ?? (_) {},
-        backgroundColor: backgroundColor,
-        activeColor: activeColor,
-        fabColor: fabColor,
-        inactiveColor: inactiveColor,
-        showLabel: showLabel,
-      ),
+  final home = Scaffold(
+    bottomNavigationBar: CurvedNavigationBarPro(
+      items: items ?? _items,
+      currentIndex: index,
+      onTap: onTap ?? (_) {},
+      backgroundColor: backgroundColor,
+      activeColor: activeColor,
+      fabColor: fabColor,
+      inactiveColor: inactiveColor,
+      showLabel: showLabel,
+      useSafeArea: useSafeArea,
+      hapticFeedback: hapticFeedback,
+      customHapticFeedback: customHapticFeedback,
     ),
+  );
+  return MaterialApp(
+    home: mediaQueryPadding != null
+        ? MediaQuery(
+            data: MediaQueryData(padding: mediaQueryPadding),
+            child: home,
+          )
+        : home,
   );
 }
 
@@ -49,7 +63,7 @@ Widget _buildApp({
 //  Semantics helpers
 // ─────────────────────────────────────────────────────────────────────────────
 
-/// Returns the first [Semantics] widget whose [SemanticsProperties.label]
+/// Returns the first [Semantics] widget whose label
 /// equals [label]. Works regardless of whether Flutter merges nodes upward.
 Finder _semanticsTileWithLabel(String label) {
   return find.byWidgetPredicate(
@@ -287,7 +301,7 @@ void main() {
         (widget) =>
             widget is Semantics &&
             widget.properties.label == 'SEARCH' &&
-            widget.properties.selected == true,
+            (widget.properties.selected ?? false),
         description: 'Semantics(label: "SEARCH", selected: true)',
       );
       expect(
@@ -309,7 +323,7 @@ void main() {
         (widget) =>
             widget is Semantics &&
             widget.properties.label == 'SEARCH' &&
-            widget.properties.selected == true,
+            (widget.properties.selected ?? false),
         description: 'Semantics(label: "SEARCH", selected: true)',
       );
       expect(
@@ -329,7 +343,7 @@ void main() {
           (widget) =>
               widget is Semantics &&
               widget.properties.label == item.label &&
-              widget.properties.button == true,
+              (widget.properties.button ?? false),
           description: 'Semantics(label: "${item.label}", button: true)',
         );
         expect(
@@ -502,5 +516,278 @@ void main() {
     await tester.pumpWidget(
         widget); // second pump with same instance → shouldRepaint false
     expect(find.text('HOME'), findsOneWidget);
+  });
+
+  group('SafeArea and useSafeArea —', () {
+    testWidgets('useSafeArea defaults to true on CurvedNavigationBarPro',
+        (tester) async {
+      final navBar = CurvedNavigationBarPro(
+        items: _items,
+        onTap: (_) {},
+      );
+      expect(navBar.useSafeArea, isTrue);
+    });
+
+    testWidgets(
+        'renders SafeArea and expands bar height when useSafeArea is true and bottom padding exists',
+        (tester) async {
+      const bottomInset = 34.0;
+      const barHeight = 110.0;
+      const fabRadius = 24.0;
+      const fabSink = 22.0;
+      const expectedTotalHeight = barHeight + bottomInset + (fabRadius - fabSink);
+
+      await tester.pumpWidget(
+        _buildApp(
+          useSafeArea: true,
+          mediaQueryPadding: const EdgeInsets.only(bottom: bottomInset),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      // Verify that SafeArea widgets exist within CurvedNavigationBarPro
+      final safeAreaFinder = find.descendant(
+        of: find.byType(CurvedNavigationBarPro),
+        matching: find.byType(SafeArea),
+      );
+      expect(safeAreaFinder, findsNWidgets(_items.length));
+
+      // Verify overall widget height includes bottom inset
+      final barSize = tester.getSize(find.byType(CurvedNavigationBarPro));
+      expect(barSize.height, expectedTotalHeight);
+    });
+
+    testWidgets(
+        'does not render SafeArea or expand height when useSafeArea is false',
+        (tester) async {
+      const bottomInset = 34.0;
+      const barHeight = 110.0;
+      const fabRadius = 24.0;
+      const fabSink = 22.0;
+      const expectedTotalHeight = barHeight + (fabRadius - fabSink);
+
+      await tester.pumpWidget(
+        _buildApp(
+          useSafeArea: false,
+          mediaQueryPadding: const EdgeInsets.only(bottom: bottomInset),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      // Verify that NO SafeArea widgets exist within CurvedNavigationBarPro
+      final safeAreaFinder = find.descendant(
+        of: find.byType(CurvedNavigationBarPro),
+        matching: find.byType(SafeArea),
+      );
+      expect(safeAreaFinder, findsNothing);
+
+      // Verify overall widget height does NOT include bottom inset
+      final barSize = tester.getSize(find.byType(CurvedNavigationBarPro));
+      expect(barSize.height, expectedTotalHeight);
+    });
+
+    testWidgets(
+        'nav item onTap functions correctly with useSafeArea true and bottom padding',
+        (tester) async {
+      int? tappedIndex;
+      await tester.pumpWidget(
+        _buildApp(
+          useSafeArea: true,
+          mediaQueryPadding: const EdgeInsets.only(bottom: 34.0),
+          onTap: (index) => tappedIndex = index,
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('SEARCH'));
+      await tester.pumpAndSettle();
+
+      expect(tappedIndex, 1);
+    });
+  });
+
+  group('Haptic feedback —', () {
+    testWidgets('hapticFeedback defaults to selectionClick on CurvedNavigationBarPro',
+        (tester) async {
+      final navBar = CurvedNavigationBarPro(
+        items: _items,
+        onTap: (_) {},
+      );
+      expect(navBar.hapticFeedback, equals(CNBPHapticFeedback.selectionClick));
+    });
+
+    testWidgets('triggers selectionClick haptic by default when tapping a nav item',
+        (tester) async {
+      final log = <MethodCall>[];
+      tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
+        SystemChannels.platform,
+        (MethodCall methodCall) async {
+          log.add(methodCall);
+          return null;
+        },
+      );
+
+      await tester.pumpWidget(_buildApp());
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('SEARCH'));
+      await tester.pumpAndSettle();
+
+      final hapticCalls = log.where((call) =>
+          call.method == 'HapticFeedback.vibrate' &&
+          call.arguments == 'HapticFeedbackType.selectionClick');
+      expect(hapticCalls, isNotEmpty);
+    });
+
+    testWidgets('triggers lightImpact when hapticFeedback is lightImpact',
+        (tester) async {
+      final log = <MethodCall>[];
+      tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
+        SystemChannels.platform,
+        (MethodCall methodCall) async {
+          log.add(methodCall);
+          return null;
+        },
+      );
+
+      await tester.pumpWidget(
+        _buildApp(hapticFeedback: CNBPHapticFeedback.lightImpact),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('SEARCH'));
+      await tester.pumpAndSettle();
+
+      final hapticCalls = log.where((call) =>
+          call.method == 'HapticFeedback.vibrate' &&
+          call.arguments == 'HapticFeedbackType.lightImpact');
+      expect(hapticCalls, isNotEmpty);
+    });
+
+    testWidgets('does not trigger haptic feedback when hapticFeedback is none',
+        (tester) async {
+      final log = <MethodCall>[];
+      tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
+        SystemChannels.platform,
+        (MethodCall methodCall) async {
+          log.add(methodCall);
+          return null;
+        },
+      );
+
+      await tester.pumpWidget(
+        _buildApp(hapticFeedback: CNBPHapticFeedback.none),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('SEARCH'));
+      await tester.pumpAndSettle();
+
+      final hapticCalls = log.where((call) =>
+          call.method == 'HapticFeedback.vibrate');
+      expect(hapticCalls, isEmpty);
+    });
+
+    testWidgets('triggers custom callback when using CNBPHapticFeedback.custom',
+        (tester) async {
+      var customTriggered = false;
+      await tester.pumpWidget(
+        _buildApp(
+          hapticFeedback: CNBPHapticFeedback.custom(() {
+            customTriggered = true;
+          }),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('SEARCH'));
+      await tester.pumpAndSettle();
+
+      expect(customTriggered, isTrue);
+    });
+
+    testWidgets(
+        'triggers customWithIndex callback receiving tapped index',
+        (tester) async {
+      int? receivedIndex;
+      await tester.pumpWidget(
+        _buildApp(
+          hapticFeedback: CNBPHapticFeedback.customWithIndex((index) {
+            receivedIndex = index;
+          }),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('SAVED'));
+      await tester.pumpAndSettle();
+
+      expect(receivedIndex, 2);
+    });
+
+    testWidgets(
+        'customHapticFeedback parameter takes precedence over hapticFeedback',
+        (tester) async {
+      var customParamCalled = false;
+      final log = <MethodCall>[];
+      tester.binding.defaultBinaryMessenger.setMockMethodCallHandler(
+        SystemChannels.platform,
+        (MethodCall methodCall) async {
+          log.add(methodCall);
+          return null;
+        },
+      );
+
+      await tester.pumpWidget(
+        _buildApp(
+          hapticFeedback: CNBPHapticFeedback.heavyImpact,
+          customHapticFeedback: () {
+            customParamCalled = true;
+          },
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.text('SEARCH'));
+      await tester.pumpAndSettle();
+
+      expect(customParamCalled, isTrue);
+      final hapticCalls = log.where((call) =>
+          call.method == 'HapticFeedback.vibrate');
+      expect(hapticCalls, isEmpty);
+    });
+
+    testWidgets('tapping active FAB bubble triggers haptic and onTap',
+        (tester) async {
+      int? tappedIndex;
+      var customHapticCalled = false;
+
+      await tester.pumpWidget(
+        _buildApp(
+          index: 0,
+          onTap: (i) => tappedIndex = i,
+          customHapticFeedback: () => customHapticCalled = true,
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      // Find the FAB bubble by looking for the active icon inside the bubble
+      await tester.tap(find.byIcon(Icons.home));
+      await tester.pumpAndSettle();
+
+      expect(tappedIndex, 0);
+      expect(customHapticCalled, isTrue);
+    });
+
+    test('all built-in haptic types trigger without error', () {
+      expect(() => CNBPHapticFeedback.custom(() {}).trigger(), returnsNormally);
+      expect(() => CNBPHapticFeedback.customWithIndex((_) {}).trigger(1), returnsNormally);
+      expect(() => CNBPHapticFeedback.none.trigger(), returnsNormally);
+      expect(() => CNBPHapticFeedback.selectionClick.trigger(), returnsNormally);
+      expect(() => CNBPHapticFeedback.lightImpact.trigger(), returnsNormally);
+      expect(() => CNBPHapticFeedback.mediumImpact.trigger(), returnsNormally);
+      expect(() => CNBPHapticFeedback.heavyImpact.trigger(), returnsNormally);
+      expect(() => CNBPHapticFeedback.vibrate.trigger(), returnsNormally);
+    });
   });
 }
