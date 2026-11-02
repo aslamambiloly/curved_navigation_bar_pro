@@ -1,3 +1,8 @@
+## 2.2.3
+
+* Trigger analysis pipeline re-run.
+
+
 ## 2.2.2
 
 * Updated documentation.
