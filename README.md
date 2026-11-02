@@ -63,13 +63,34 @@ Everyone loves tuning. For some it will be girls, for some carburators, for some
   </tr>
 </table>
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Quick start](#quick-start)
+- [Customisation](#customisation)
+- [Built-in Style Presets](#built-in-style-presets)
+  - [Apply a preset](#apply-a-preset)
+  - [Apply a preset and override one value](#apply-a-preset-and-override-one-value)
+  - [Use preset data directly](#use-preset-data-directly)
+  - [Available presets](#available-presets)
+- [Example with Lottie and Svg](#example-with-lottie-and-svg)
+- [Badges](#badges)
+  - [Badge properties](#badge-properties)
+- [Haptic Feedback](#haptic-feedback)
+- [API Reference](#api-reference)
+  - [`CurvedNavigationBarPro`](#curvednavigationbarpro)
+  - [`CurvedNavigationItemPro`](#curvednavigationitempro)
+- [Running the example](#running-the-example)
+- [Contributing](#contributing)
+- [License](#license)
+
 ## Installation
 
 Add to your `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  curved_navigation_bar_pro: ^2.2.1
+  curved_navigation_bar_pro: ^2.2.2
 ```
 
 Then run:

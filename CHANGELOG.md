@@ -1,3 +1,7 @@
+## 2.2.2
+
+* Updated documentation.
+
 ## 2.2.1
 
 * Updated documentation
